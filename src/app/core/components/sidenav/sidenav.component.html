@@ -1,0 +1,14 @@
+<mat-drawer-container class="home" autosize hasBackdrop>
+  <mat-drawer #drawer fixedInViewport="true" mode="over">
+    <div class="sidenav__header">
+      Menú
+    </div>
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-navigation-bar (toggleSidenav)="drawer.toggle()" class="home__toolbar"></app-navigation-bar>
+    <div class="home__content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br/><br/><br/>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { SharedModule } from '../shared/shared.module';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
-
+const components = [
+  NavigationBarComponent,
+  SidenavComponent
+];
 @NgModule({
-  declarations: [NavigationBarComponent],
+  declarations: [
+    ...components
+  ],
   imports: [
     CommonModule,
     SharedModule
   ],
-  exports: [NavigationBarComponent]
+  exports: [
+    ...components
+  ]
 })
 export class CoreModule { }

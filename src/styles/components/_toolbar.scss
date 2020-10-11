@@ -1,6 +1,10 @@
 .toolbar {
-    
   &__row {
+    display: block;
     justify-content: space-between;
+  }
+
+  &__right {
+    width: 64px;
   }
 }
