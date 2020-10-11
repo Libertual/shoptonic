@@ -1,0 +1,24 @@
+.home {
+ 
+  &__content {
+    margin-top: 64px;
+    overflow: auto;
+    height: calc(100vh - 84px);
+  }
+
+  &__toolbar {
+    position: fixed;
+    width: 100%;
+  }
+
+  &__footer {
+    background-color: lightcyan;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: darkslateblue;
+    text-align: center;
+    z-index: 1;
+  }
+}

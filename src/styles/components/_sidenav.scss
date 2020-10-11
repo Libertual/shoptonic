@@ -1,0 +1,9 @@
+.sidenav {
+  height: 100%;
+  &__header {
+    height: 120px;
+    width: 65vw;
+    max-width: 300px;
+    background-color: darkslategrey;
+  }
+}

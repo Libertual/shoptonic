@@ -1,14 +1,13 @@
 <mat-toolbar color="primary" class="toolbar">
     <mat-toolbar-row class="toolbar__row">
   
-      <button mat-icon-button>
+      <button mat-icon-button (click)="toggleSidenav.emit()" class="toolbar__sidenav-button">
         <mat-icon>menu</mat-icon>
       </button>
   
       <span> {{ 'title' | translate }} </span>
   
-      <div>
-  
+      <div class="toolbar__right">
       </div>
   
     </mat-toolbar-row>
