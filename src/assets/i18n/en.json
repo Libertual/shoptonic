@@ -1,4 +1,8 @@
 {
     "title": "Shoptonic",
-    "description": "Your shoping list"
+    "description": "Your shoping list",
+    "lang": {
+      "spanish": "Spanish",
+      "english": "English"
+    }
 }

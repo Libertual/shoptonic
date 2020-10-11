@@ -1,4 +1,9 @@
 {
     "title": "Shoptonic",
-    "description": "Tu lista de la compra"
+    "description": "Tu lista de la compra",
+    "lang": {
+      "spanish": "Español",
+      "english": "Inglés"
+    }
+
 }

@@ -8,6 +8,19 @@
       <span> {{ 'title' | translate }} </span>
   
       <div class="toolbar__right">
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="toolbar__sidenav-button">
+          <mat-icon>language</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('es')" [disabled]="translate.currentLang === 'es'">
+            <img src="/assets/img/flags/flag-es.svg">
+            <span>{{'lang.spanish' | translate}}</span>
+          </button>
+          <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('en')" [disabled]="translate.currentLang === 'en'">
+            <img src="/assets/img/flags/flag-en.svg">
+            <span>{{'lang.english' | translate}}</span>
+          </button>
+        </mat-menu>
       </div>
   
     </mat-toolbar-row>

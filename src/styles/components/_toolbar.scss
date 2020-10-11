@@ -7,4 +7,14 @@
   &__right {
     width: 64px;
   }
+
+  &__language-button {
+    display: flex !important;
+    align-items: center;
+    img {
+      width: 20px;
+      height: 12px;
+      margin: 1rem;
+    }
+  }
 }
