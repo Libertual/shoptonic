@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
+
   constructor (
     translate: TranslateService
   ) {
@@ -15,6 +16,9 @@ export class AppComponent {
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('es');
+
+    //this.data = this.scanner.isAutostarting;
+
   }
   title = 'Shoptonic';
 }

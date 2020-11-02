@@ -7,13 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavigationBarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
-  constructor(private translate: TranslateService) { }
+  constructor(public readonly translate: TranslateService) { }
 
-  ngOnInit(): void {
-    console.log('translate', this.translate);
-  }
+  ngOnInit(): void {}
 
-  changeLanguage(lang): void {
+  changeLanguage(lang: string): void {
     this.translate.use(lang);
   }
 }

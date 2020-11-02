@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { ScannerModule } from './modules/scanner/scanner.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { CoreModule } from './core/core.module';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     CoreModule,
     HttpClientModule,
+    SharedModule,
+    ScannerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
