@@ -2,7 +2,11 @@
     "title": "Shoptonic",
     "description": "Your shoping list",
     "lang": {
+      "language": "Language",
       "spanish": "Spanish",
       "english": "English"
+    },
+    "account": {
+      "logout": "Logout"
     }
 }

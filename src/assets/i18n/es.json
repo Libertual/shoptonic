@@ -2,8 +2,11 @@
     "title": "Shoptonic",
     "description": "Tu lista de la compra",
     "lang": {
+      "language": "Idioma",
       "spanish": "Español",
       "english": "Inglés"
+    },
+    "account": {
+      "logout": "Salir"
     }
-
 }
