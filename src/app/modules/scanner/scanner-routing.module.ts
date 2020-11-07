@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScannerComponent } from './scanner.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@app/shared/guards/auth.guard';
 
 const routes: Routes = [
   {

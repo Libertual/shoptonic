@@ -34,7 +34,7 @@
     <mat-slide-toggle [(ngModel)]="scannerEnabled" >Activar scanner!</mat-slide-toggle>
   </header>
   <div class="scanner" *ngIf="scannerEnabled">
-    <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
+    <zxing-scanner [enable]="scannerEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
       [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
       (camerasFound)="onCamerasFound($event)" (torchCompatible)="onTorchCompatible($event)"
       (scanError)="onScanError($event)">

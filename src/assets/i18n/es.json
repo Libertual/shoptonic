@@ -2,8 +2,19 @@
     "title": "Shoptonic",
     "description": "Tu lista de la compra",
     "lang": {
+      "language": "Idioma",
       "spanish": "Español",
       "english": "Inglés"
+    },
+    "account": {
+      "logout": "Salir"
+    },
+    "sidenav": {
+      "menu": {
+        "home": "Inicio",
+        "myLists": "Mis listas",
+        "scanner": "Escaner",
+        "configuration": "Configuración"
+      }
     }
-
 }

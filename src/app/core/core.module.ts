@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { AccountModule } from './account/account.module';
+import { HomeModule } from './home/home.module';
+
 
 const components = [
-  NavigationBarComponent,
-  SidenavComponent
+  AlertComponent
 ];
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ const components = [
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    AccountModule,
+    HomeModule
   ],
   exports: [
     ...components

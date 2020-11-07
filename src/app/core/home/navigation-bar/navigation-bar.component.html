@@ -8,10 +8,19 @@
       <span> {{ 'title' | translate }} </span>
   
       <div class="toolbar__right">
-        <button mat-icon-button [matMenuTriggerFor]="menu" class="toolbar__sidenav-button">
-          <mat-icon>language</mat-icon>
+        <button mat-icon-button [matMenuTriggerFor]="account" class="toolbar__sidenav-button">
+          <mat-icon>account_box</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #account="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="language">
+            <mat-icon>language</mat-icon><span>{{'lang.language' | translate}}</span>
+          </button>
+          <button mat-menu-item class="toolbar__language-button" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>{{'account.logout' | translate}}</span>
+          </button>
+        </mat-menu>
+        <mat-menu #language="matMenu">
           <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('es')" [disabled]="translate.currentLang === 'es'">
             <img src="/assets/img/flags/flag-es.svg">
             <span>{{'lang.spanish' | translate}}</span>

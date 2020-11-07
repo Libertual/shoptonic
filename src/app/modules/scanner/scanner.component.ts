@@ -15,7 +15,7 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent = new ZXingScannerComponent();
   data: any;
-  scannerEnabled;
+  scannerEnabled = true;
   isChecked = true;
   desiredDevice: MediaDeviceInfo = null;
   torch = false;
@@ -51,7 +51,7 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   model:any;
 
   constructor(
-    private OFFService: OpenFoodFactsService,
+    private OpenFoodFactsService: OpenFoodFactsService,
   ) {}
   
   ngOnInit(): void {
@@ -73,7 +73,7 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
     this.scannerEnabled = false;
-    this.OFFService.getProductByBarcode(resultString).subscribe(data => {
+    this.OpenFoodFactsService.getProductByBarcode(resultString).subscribe(data => {
       console.log('response', data);
       this.productResult = data.product;
     });
@@ -85,6 +85,7 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   }
 
   onHasPermission(has: boolean) {
+    console.log('onHasPermission', has);
     this.hasPermission = has;
   }
 

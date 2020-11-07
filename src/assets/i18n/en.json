@@ -2,7 +2,19 @@
     "title": "Shoptonic",
     "description": "Your shoping list",
     "lang": {
+      "language": "Language",
       "spanish": "Spanish",
       "english": "English"
+    },
+    "account": {
+      "logout": "Logout"
+    },
+    "sidenav": {
+      "menu": {
+        "home": "Home",
+        "scanner": "Scaner",
+        "myLists": "My lists",
+        "configuration": "Configuration"
+      }
     }
 }

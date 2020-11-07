@@ -1,9 +1,58 @@
 .sidenav {
   height: 100%;
   &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     height: 120px;
     width: 65vw;
     max-width: 300px;
-    background-color: darkslategrey;
+    background-color: rgb(40, 1, 56);
+    padding: 0.5rem;
+
+    &-name {
+      font-weight: bold;
+    }
+  }
+
+  &__menu {
+    list-style-type: none;
+    margin: 0;
+    margin-block-start: 0;
+    padding-inline-start: 0;
+
+    &-item {
+      a {
+        display: flex;
+        align-items: center;
+        height: 2rem;
+        margin: 0;
+        padding: 1rem;
+        outline: none;
+        text-decoration: none;
+        /* unvisited link */
+        &:link {
+          color: $grey-light-1;
+        }
+
+        /* visited link */
+        &:visited {
+          color: $grey-light-2;
+        }
+
+        /* mouse over link */
+        &:hover {
+          background-color: rgb(51, 50, 50);
+        }
+        /* selected link */
+        &:active {
+          color: $grey-light-1;
+        }
+
+        span {
+          padding-left: 1rem;
+        }
+      }
+    }
   }
 }

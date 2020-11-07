@@ -1,0 +1,45 @@
+<mat-drawer-container class="home" autosize hasBackdrop>
+  <mat-drawer #drawer fixedInViewport="true" mode="over" [opened]="true">
+    <div class="sidenav__header">
+      <div class="sidenav__header-name" *ngIf="session.user">
+        {{session.user.username}}
+      </div>
+      <div class="sidenav__header-email" *ngIf="session.user">
+        {{session.user.email}}
+      </div>
+    </div>
+    <ul class="sidenav__menu">
+      <li class="sidenav__menu-item">
+        <a [routerLink]="['/list']" routerLinkActive="router-link-exact-active" (click)="drawer.close()">
+          <mat-icon>playlist_add_check</mat-icon><span>{{'sidenav.menu.myLists' | translate}}</span>
+        </a>
+        <ul class="sidenav__menu">
+          <li class="sidenav__menu-item">
+            <a [routerLink]="['']" routerLinkActive="router-link-exact-active" (click)="drawer.close()">
+              <mat-icon>list</mat-icon><span> Lista 2</span>
+            </a>
+          </li>
+          <li class="sidenav__menu-item" >
+            <mat-icon>list</mat-icon><span> Lista 2</span>
+          </li>
+        </ul>
+      </li>
+      <li class="sidenav__menu-item">
+        <a [routerLink]="['/scanner']" routerLinkActive="router-link-exact-active" (click)="drawer.close()">
+          <mat-icon>qr_code_scanner</mat-icon><span>{{'sidenav.menu.scanner' | translate}}</span>
+        </a>
+      </li>
+      <li class="sidenav__menu-item">
+        <a [routerLink]="['']" routerLinkActive="router-link-exact-active" (click)="drawer.close()">
+          <mat-icon>settings</mat-icon><span>{{'sidenav.menu.configuration' | translate}}</span>
+        </a>
+      </li>
+    </ul>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-navigation-bar (toggleSidenav)="drawer.toggle()" class="home__toolbar"></app-navigation-bar>
+    <div class="home__content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
