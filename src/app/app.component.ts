@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AccountService } from './core/account/account.service';
+import { User } from './core/account/user.model';
 
 
 @Component({
@@ -8,9 +10,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
+  user: User;
+
   constructor (
+    private accountService: AccountService,
     translate: TranslateService
   ) {
+    // usuario
+    this.accountService.user.subscribe(x => this.user = x);
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('es');
 

@@ -1,3 +1,6 @@
-<app-sidenav></app-sidenav>
-<app-alert></app-alert>
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+  <app-alert></app-alert>
+  <router-outlet></router-outlet>
+</div>
 <div class="home__footer">Tecnual</div>

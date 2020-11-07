@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ScannerComponent } from './modules/scanner/scanner.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+
+const accountModule = () => import('./core/account/account.module').then(x => x.AccountModule);
+const homeModule = () => import('./core/components/home/home.module').then(x => x.HomeModule);
 
 const routes: Routes = [
 //  {path: '', component: AppComponent},
   {
-    path: 'scanner', 
-    loadChildren: () => import('./modules/scanner/scanner.module').then(m => m.ScannerModule)
-  },
-  {
     path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  }
+    loadChildren: homeModule,
+    canActivate: [AuthGuard]
+  },
+  { path: 'account', loadChildren: accountModule },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
