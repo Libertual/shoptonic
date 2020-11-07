@@ -8,5 +8,12 @@
     },
     "account": {
       "logout": "Logout"
+    },
+    "sidenav": {
+      "menu": {
+        "home": "Home",
+        "scanner": "Scaner",
+        "configuration": "Configuration"
+      }
     }
 }

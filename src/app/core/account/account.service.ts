@@ -7,9 +7,12 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from './user.model';
+import { LoginResponse } from './login/login-response.dto';
 
 @Injectable({ providedIn: 'root' })
-export class AccountService {
+export class 
+
+AccountService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
 
@@ -17,7 +20,9 @@ export class AccountService {
         private router: Router,
         private http: HttpClient
     ) {
-        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+        const session: any = JSON.parse(localStorage.getItem('session')); // TODO: tipear el objeto session
+        console.log('c session', JSON.parse(localStorage.getItem('session')));
+        this.userSubject = new BehaviorSubject<User>(session.user);
         this.user = this.userSubject.asObservable();
     }
 
@@ -26,18 +31,18 @@ export class AccountService {
     }
 
     login(username, password) {
-        return this.http.post<User>(`${environment.apiUrl}/auth/login`, { username, password })
-            .pipe(map(user => {
+        return this.http.post<LoginResponse>(`${environment.apiUrl}/auth/login`, { username, password })
+            .pipe(map(res => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
+                localStorage.setItem('session', JSON.stringify(res));
+                this.userSubject.next(res.user);
+                return res;
             }));
     }
 
     logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
+        localStorage.removeItem('session');
         this.userSubject.next(null);
         this.router.navigate(['/account/login']);
     }

@@ -13,8 +13,7 @@ const routes: Routes = [
     children: [
       { 
         path: 'scanner',
-        //loadChildren: () => import('../modules/scanner/scanner.module').then(m => m.ScannerModule)
-        component: ScannerComponent
+        loadChildren: () => import('@app/modules/scanner/scanner.module').then(m => m.ScannerModule)
       }
     ]
   }
