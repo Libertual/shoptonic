@@ -12,6 +12,7 @@
     "sidenav": {
       "menu": {
         "home": "Inicio",
+        "myLists": "Mis listas",
         "scanner": "Escaner",
         "configuration": "Configuración"
       }

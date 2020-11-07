@@ -13,6 +13,7 @@
       "menu": {
         "home": "Home",
         "scanner": "Scaner",
+        "myLists": "My lists",
         "configuration": "Configuration"
       }
     }

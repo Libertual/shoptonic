@@ -7,16 +7,16 @@ import { AccountService } from '@app/core/account/account.service';
   templateUrl: './sidenav.component.html'
 })
 export class SidenavComponent implements OnInit {
-  user;
+  session;
   constructor(
     private router: Router,
     private accountService: AccountService
     ) { 
-      this.user = this.accountService.userValue;
+      this.session = this.accountService.sessionValue;
 
     }
 
   ngOnInit(): void {
-     console.log('user', this.user);
+
   }
 }

@@ -8,6 +8,7 @@
     width: 65vw;
     max-width: 300px;
     background-color: rgb(40, 1, 56);
+    padding: 0.5rem;
 
     &-name {
       font-weight: bold;
@@ -19,39 +20,38 @@
     margin: 0;
     margin-block-start: 0;
     padding-inline-start: 0;
-    
+
     &-item {
-      display: flex;
-      align-items: center;
-      height: 2rem;
-      margin: 0;
-      padding: 1rem;
       a {
+        display: flex;
+        align-items: center;
+        height: 2rem;
+        margin: 0;
         padding: 1rem;
-      /* unvisited link */
-      &:link {
-        color: $grey-light-1;
+        outline: none;
         text-decoration: none;
-      }
+        /* unvisited link */
+        &:link {
+          color: $grey-light-1;
+        }
 
-      /* visited link */
-      &:visited {
-        color: $grey-light-2;
-      }
+        /* visited link */
+        &:visited {
+          color: $grey-light-2;
+        }
 
-      /* mouse over link */
-      &:hover {
-        color: $grey-dark-1;
-      }
+        /* mouse over link */
+        &:hover {
+          background-color: rgb(51, 50, 50);
+        }
+        /* selected link */
+        &:active {
+          color: $grey-light-1;
+        }
 
-      /* selected link */
-      &:active {
-        color: $grey-light-1;
-      }
-
-      }
-      &:hover {
-        background-color: rgb(51, 50, 50);
+        span {
+          padding-left: 1rem;
+        }
       }
     }
   }

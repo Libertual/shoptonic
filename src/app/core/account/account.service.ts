@@ -13,21 +13,20 @@ import { LoginResponse } from './login/login-response.dto';
 export class 
 
 AccountService {
-    private userSubject: BehaviorSubject<User>;
-    public user: Observable<User>;
+    private sessionSubject: BehaviorSubject<LoginResponse>;
+    public session: Observable<LoginResponse>;
 
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
         const session: any = JSON.parse(localStorage.getItem('session')); // TODO: tipear el objeto session
-        console.log('c session', JSON.parse(localStorage.getItem('session')));
-        this.userSubject = new BehaviorSubject<User>(session.user);
-        this.user = this.userSubject.asObservable();
+        this.sessionSubject = new BehaviorSubject<LoginResponse>(session? session: null);
+        this.session = this.sessionSubject.asObservable();
     }
 
-    public get userValue(): User {
-        return this.userSubject.value;
+    public get sessionValue(): LoginResponse {
+        return this.sessionSubject.value;
     }
 
     login(username, password) {
@@ -35,7 +34,7 @@ AccountService {
             .pipe(map(res => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('session', JSON.stringify(res));
-                this.userSubject.next(res.user);
+                this.sessionSubject.next(res);
                 return res;
             }));
     }
@@ -43,7 +42,7 @@ AccountService {
     logout() {
         // remove user from local storage and set current user to null
         localStorage.removeItem('session');
-        this.userSubject.next(null);
+        this.sessionSubject.next(null);
         this.router.navigate(['/account/login']);
     }
 
@@ -63,13 +62,13 @@ AccountService {
         return this.http.put(`${environment.apiUrl}/users/${id}`, params)
             .pipe(map(x => {
                 // update stored user if the logged in user updated their own record
-                if (id == this.userValue.id) {
+                if (id == this.sessionValue.user.id) {
                     // update local storage
-                    const user = { ...this.userValue, ...params };
-                    localStorage.setItem('user', JSON.stringify(user));
+                    const session = { ...this.sessionValue, ...params };
+                    localStorage.setItem('session', JSON.stringify(session));
 
                     // publish updated user to subscribers
-                    this.userSubject.next(user);
+                    this.sessionSubject.next(session);
                 }
                 return x;
             }));
@@ -79,7 +78,7 @@ AccountService {
         return this.http.delete(`${environment.apiUrl}/users/${id}`)
             .pipe(map(x => {
                 // auto logout if the logged in user deleted their own record
-                if (id == this.userValue.id) {
+                if (id == this.sessionValue.user.id) {
                     this.logout();
                 }
                 return x;

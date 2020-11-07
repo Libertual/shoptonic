@@ -17,7 +17,7 @@ export class AppComponent {
     translate: TranslateService
   ) {
     // usuario
-    this.accountService.user.subscribe(x => this.user = x);
+    this.accountService.session.subscribe(x => this.user = x? x.user: null);
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('es');
 
