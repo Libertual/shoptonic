@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ScannerComponent } from './scanner.component';
+import { SharedModule } from '@app/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ScannerComponent', () => {
   let component: ScannerComponent;
@@ -8,6 +12,11 @@ describe('ScannerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        BrowserAnimationsModule,
+        SharedModule
+      ],
       declarations: [ ScannerComponent ]
     })
     .compileComponents();

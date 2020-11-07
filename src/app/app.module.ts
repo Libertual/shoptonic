@@ -14,7 +14,6 @@ import { ScannerModule } from './modules/scanner/scanner.module';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
