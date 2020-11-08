@@ -55,7 +55,6 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   ) {}
   
   ngOnInit(): void {
-    console.log('scanner', this.scanner);
   }
   ngAfterViewInit() {
 
@@ -74,7 +73,6 @@ export class ScannerComponent implements OnInit, AfterViewInit {
     this.qrResultString = resultString;
     this.scannerEnabled = false;
     this.OpenFoodFactsService.getProductByBarcode(resultString).subscribe(data => {
-      console.log('response', data);
       this.productResult = data.product;
     });
   }
@@ -85,7 +83,6 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   }
 
   onHasPermission(has: boolean) {
-    console.log('onHasPermission', has);
     this.hasPermission = has;
   }
 

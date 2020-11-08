@@ -16,5 +16,11 @@
         "myLists": "My lists",
         "configuration": "Configuration"
       }
+    },
+    "global": {
+      "actions": {
+        "edit": "Edit",
+        "delete": "Delete"
+      }
     }
 }

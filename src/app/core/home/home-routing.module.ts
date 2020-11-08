@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: () => import('@app/modules/scanner/scanner.module').then(m => m.ScannerModule)
       },
       {
-        path: 'list',
+        path: '',
         loadChildren: () => import('@app/modules/list/list.module').then(m => m.ListModule)
       }
     ]

@@ -16,5 +16,11 @@
         "scanner": "Escaner",
         "configuration": "Configuración"
       }
+    },
+    "global": {
+      "actions": {
+        "edit": "Editar",
+        "delete": "Eliminar"
+      }
     }
 }

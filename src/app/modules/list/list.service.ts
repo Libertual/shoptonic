@@ -14,7 +14,6 @@ export class ListService {
   ) { 
     this.http.get<any>(`${environment.apiUrl}/list`).subscribe(
       res => {
-        console.log('userlists', res);
         this.userListsSubject.next(res);
       }
     );

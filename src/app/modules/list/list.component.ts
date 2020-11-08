@@ -6,10 +6,12 @@ import { ListService } from './list.service';
   templateUrl: './list.component.html'
 })
 export class ListComponent implements OnInit {
-
+  userLists: any;
   constructor(
     private listService: ListService
-  ) { }
+  ) { 
+    this.userLists = this.listService.userListsSubject;
+  }
 
   ngOnInit(): void {
   }

@@ -19,7 +19,6 @@ export class SidenavComponent implements OnInit {
     ) { 
       this.session = this.accountService.sessionValue;
       this.userLists = this.listService.userListsSubject;
-      console.log('ul', this.userLists);
     }
 
   ngOnInit(): void {

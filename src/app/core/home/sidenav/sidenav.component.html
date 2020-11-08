@@ -1,5 +1,5 @@
 <mat-drawer-container class="home" autosize hasBackdrop>
-  <mat-drawer #drawer fixedInViewport="true" mode="over" [opened]="true">
+  <mat-drawer #drawer fixedInViewport="true" mode="over">
     <div class="sidenav__header">
       <div class="sidenav__header-name" *ngIf="session.user">
         {{session.user.username}}
@@ -44,30 +44,6 @@
         </mat-expansion-panel-header>
       </mat-expansion-panel>
     </mat-accordion>
-    <!-- <ul class="sidenav__menu">
-      <li class="sidenav__menu-item">
-        <a [routerLink]="['/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <mat-icon>list</mat-icon><span>{{'sidenav.menu.myLists' | translate}}</span>
-        </a>
-        <ul class="sidenav__menu">
-          <li class="sidenav__menu-item" *ngFor="let list of userLists | async">
-            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close()">
-              <mat-icon>playlist_add_check</mat-icon><span matTooltip="{{list.description}}">{{ list.name }}</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="sidenav__menu-item">
-        <a [routerLink]="['/scanner']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <mat-icon>qr_code_scanner</mat-icon><span>{{'sidenav.menu.scanner' | translate}}</span>
-        </a>
-      </li>
-      <li class="sidenav__menu-item">
-        <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <mat-icon>settings</mat-icon><span>{{'sidenav.menu.configuration' | translate}}</span>
-        </a>
-      </li>
-    </ul> -->
   </mat-drawer>
   <mat-drawer-content>
     <app-navigation-bar (toggleSidenav)="drawer.toggle()" class="home__toolbar"></app-navigation-bar>

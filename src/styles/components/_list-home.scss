@@ -1,0 +1,22 @@
+.list-home {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  &__card {
+    
+    background-color: mediumpurple;
+    margin: 1rem;
+
+    &-image {
+      width: 100px;
+      height: 100px;
+    }
+
+    &-subtitle {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
