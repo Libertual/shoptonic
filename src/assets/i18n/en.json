@@ -18,9 +18,13 @@
       }
     },
     "global": {
+      "searchOrAdd": "Search or Add",
       "actions": {
         "edit": "Edit",
         "delete": "Delete"
       }
+    },
+    "items": {
+      "newProduct": "New product"
     }
 }

@@ -1,28 +1,32 @@
-<div class="list-home">
-  <mat-card class="list-home__card" *ngFor="let list of userLists | async">
-    <mat-card-header>
-      <div class="list-home__card-subtitle">
-        <div>
-          <mat-card-title>{{ list.name }}</mat-card-title>
-          <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
-        </div>
-        <div class="toolbar__right">
-          <span>{{list.items.length}}</span>
-          <button mat-icon-button [matMenuTriggerFor]="actions" class="toolbar__sidenav-button">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #actions="matMenu">
-            <button mat-menu-item>
-              <mat-icon>edit</mat-icon><span>{{'global.actions.edit' | translate}}</span>
-            </button>
-            <button mat-menu-item class="toolbar__language-button">
-              <mat-icon>delete</mat-icon>
-              <span>{{'global.actions.delete' | translate}}</span>
-            </button>
-          </mat-menu>
-        </div>
+<div *ngIf="list">
+  <form [formGroup]="listForm" class="list__form">
+    <mat-form-field class="list__search-field">
+      <mat-label>{{ 'global.searchOrAdd' | translate}}</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input type="text" matInput formControlName="search" autocomplete="off"
+        (input)="getFilteredItems($event.target.value)" x-webkit-speech>
+      <div matSuffix>
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner">
+          <mat-icon>qr_code_scanner</mat-icon>
+        </button>
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" (click)="clear()">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" (click)="addItem()">
+          <mat-icon>done</mat-icon>
+        </button>
       </div>
-    </mat-card-header>
-  </mat-card>
+    </mat-form-field>
+  </form>
+  <div class="list-autocomplete" *ngIf="search.length > 0">
+    <div *ngFor="let item of foundItems" class="list-autocomplete">
+      {{item.name}}
+    </div>
+  </div>
+  <div class="list-items" *ngFor="let item of list.items">
+    {{ item.name }}
+  </div>
 </div>
-

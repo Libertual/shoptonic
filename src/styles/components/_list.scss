@@ -1,0 +1,27 @@
+.list {
+  width: 100vw;
+  &__form {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  &__search-icon-button {
+    font-size: 1.5rem !important;
+  }
+  &__search-field {
+    margin: 0 1rem;
+    overflow: auto;
+    width: fit-content;
+
+    & .mat-form-field-prefix {
+      padding-right: 1rem;
+      top: 6px;
+    }
+    & .mat-form-field-suffix {
+      & .mat-icon {
+        // font-size: 1.2rem !important;
+      }
+    }
+  }
+}

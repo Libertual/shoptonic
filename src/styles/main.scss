@@ -10,6 +10,7 @@
 @import 'components/toolbar';
 @import 'components/sidenav';
 @import 'components/list-home';
+@import 'components/list';
 
 @import 'layout/grid';
 
@@ -19,4 +20,5 @@
 @import 'themes/dark';
 
 
-@import 'vendor/material'
+@import 'vendor/material';
+@import 'vendor/material-override';
