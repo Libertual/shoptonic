@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ListItemDTO } from './list-item.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,43 @@ export class ListService {
     private http: HttpClient
   ) { 
     this.userLists = this.userListsSubject.asObservable();
-    this.http.get<any>(`${environment.apiUrl}/list`).subscribe(
+    this.getUserList();
+  }
+  public get userListsValue() {
+    return this.userListsSubject.value;
+  }
+
+  public addItemToList(listId: string, listItem: ListItemDTO) {
+    return this.http.patch(`${environment.apiUrl}/list/${listId}/item`, listItem);
+  }
+
+  public addItemToListCart(listId: string, listItem: ListItemDTO) {
+    return this.http.patch(`${environment.apiUrl}/list/${listId}/cart/item`, listItem);
+  }
+
+  public getUserList() {
+    return this.http.get(`${environment.apiUrl}/list`).subscribe(
       res => {
         this.userListsSubject.next(res);
       }
     );
   }
-  public get userListsValue() {
-    return this.userListsSubject.value;
+
+  public removeItemFromList(listId: string, listItemId: string) {
+    return this.http.delete(`${environment.apiUrl}/list/${listId}/item/${listItemId}`).subscribe(
+      res => {
+        console.log('Borrado', res)
+        this.getUserList();
+      }
+    );
+  }
+
+  public removeItemFromListCart(listId: string, cartItemId: string) {
+    return this.http.delete(`${environment.apiUrl}/list/${listId}/cart/item/${cartItemId}`).subscribe(
+      res => {
+        console.log('Borrado', res)
+        this.getUserList();
+      }
+    );
   }
 }

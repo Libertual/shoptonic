@@ -3,9 +3,12 @@
   flex-direction: column;
   width: 100vw;
   &__card {
-    
     background-color: mediumpurple;
     margin: 1rem;
+
+    a {
+      text-decoration: none;
+    }
 
     &-image {
       width: 100px;

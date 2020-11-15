@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const materialModules = [
   MatIconModule,
@@ -25,13 +26,15 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatTooltipModule,
-  MatExpansionModule
+  MatExpansionModule,
+  DragDropModule
 ];
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    
     ...materialModules
   ],
   exports: [

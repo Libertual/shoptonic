@@ -4,29 +4,66 @@
       <mat-label>{{ 'global.searchOrAdd' | translate}}</mat-label>
       <mat-icon matPrefix>search</mat-icon>
       <input type="text" matInput formControlName="search" autocomplete="off"
-        (input)="getFilteredItems($event.target.value)" x-webkit-speech>
+        (input)="getFilteredItems($event.target.value)" x-webkit-speech (keypress.enter)="addItem()">
       <div matSuffix>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner">
-          <mat-icon>qr_code_scanner</mat-icon>
-        </button>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner">
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
           <mat-icon>edit</mat-icon>
         </button>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" (click)="clear()">
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search"
+          (click)="clear()">
           <mat-icon>clear</mat-icon>
         </button>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" (click)="addItem()">
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search"
+          (click)="addItem()">
           <mat-icon>done</mat-icon>
+        </button>
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search">
+          <mat-icon>qr_code_scanner</mat-icon>
         </button>
       </div>
     </mat-form-field>
   </form>
   <div class="list-autocomplete" *ngIf="search.length > 0">
     <div *ngFor="let item of foundItems" class="list-autocomplete">
-      {{item.name}}
+      <div (click)="addItemToList(item)">{{item.name}}</div>
     </div>
   </div>
-  <div class="list-items" *ngFor="let item of list.items">
-    {{ item.name }}
+  <div cdkDropListGroup>
+    <div class="example-container">
+      <div
+        id="listItems"
+        cdkDropList [cdkDropListData]="list.listItems" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of list.listItems" cdkDrag>
+          <span>{{item.name}}</span>
+          <div>
+            <button mat-button (click)="removeItemFromList(item)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-button (click)="addShoppingCart(item)">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Shoping Cart</h2>
+      <div
+        id="cartItems" 
+        cdkDropList [cdkDropListData]="list.cartItems" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of list.cartItems" cdkDrag>
+          <span>{{item.name}}</span>
+          <div>
+            <button mat-button (click)="removeItemFromListCart(item)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-button (click)="addShoppingCart(item)">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

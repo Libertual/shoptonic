@@ -3,8 +3,10 @@
     <mat-card-header>
       <div class="list-home__card-subtitle">
         <div>
-          <mat-card-title>{{ list.name }}</mat-card-title>
-          <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
+          <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-card-title>{{ list.name }}</mat-card-title>
+            <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
+          </a>
         </div>
         <div class="toolbar__right">
           <span>{{list.items.length}}</span>
