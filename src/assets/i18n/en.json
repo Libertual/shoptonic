@@ -18,13 +18,29 @@
       }
     },
     "global": {
+      "products": "Products",
       "searchOrAdd": "Search or Add",
       "actions": {
         "edit": "Edit",
-        "delete": "Delete"
+        "delete": "Delete",
+        "close": "Close",
+        "cancel": "Cancel",
+        "save": "Save"
       }
     },
+    "lists": {
+      "shoppingCart": "Shopping cart"
+    },
     "items": {
-      "newProduct": "New product"
+      "newProduct": "New product",
+      "actions": {
+        "moveToCart": "Move to cart",
+        "moveToList": "Move to list"
+      },
+      "edit": {
+        "name": "Name",
+        "quantity": "Quantity",
+        "price": "Price"
+      }
     }
 }

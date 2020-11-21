@@ -1,5 +1,7 @@
 
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -14,6 +16,8 @@ import { ScannerModule } from './modules/scanner/scanner.module';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     })
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'es-*' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

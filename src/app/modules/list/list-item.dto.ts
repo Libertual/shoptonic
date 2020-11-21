@@ -1,16 +1,18 @@
 import { ItemDTO } from '../item/item.dto';
 
 export class ListItemDTO {
+  _id: string;
   name: string;
   quantity: number;
   price: number;
   currency: string;
-  _id: string;
+  itemId: string;
+  
 
-  constructor(_id: string, name: string, quantity?: number, price?: number, currency?: string) {
-    this.quantity = quantity || null;
+  constructor(itemId: string, name: string, quantity?: number, price?: number, currency?: string) {
+    this.quantity = quantity || 1;
     this.name = name || null;
-    this.price = price || null;
-    this._id = _id;
+    this.price = price || 0;
+    this.itemId = itemId;
   }
 }

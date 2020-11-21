@@ -5,6 +5,10 @@
   }
 
   &__right {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-items: baseline;
     width: 64px;
   }
 

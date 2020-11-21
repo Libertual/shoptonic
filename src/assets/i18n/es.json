@@ -18,13 +18,31 @@
       }
     },
     "global": {
+      "remove": "Borrar",
+      "purchase": "Comprar",
+      "products": "Artículos",
       "searchOrAdd": "Buscar o Añadir",
       "actions": {
         "edit": "Editar",
-        "delete": "Eliminar"
+        "delete": "Eliminar",
+        "close": "Cerrar",
+        "cancel": "Cancelar",
+        "save": "Guardar"
       }
     },
+    "lists": {
+      "shoppingCart": "Cesta de la compra"
+    },
     "items": {
-      "newProduct": "Nuevo producto"
+      "newProduct": "Nuevo producto",
+      "actions": {
+        "moveToCart": "Mover a la cesta",
+        "moveToList": "Mover a la lista"
+      },
+      "edit": {
+        "name": "Nombre",
+        "quantity": "Cantidad",
+        "price": "Precio"
+      }
     }
 }

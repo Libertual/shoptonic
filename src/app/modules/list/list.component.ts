@@ -2,11 +2,13 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HomeService } from '@app/core/home/home.service';
 import { ItemDTO } from '../item/item.dto';
 import { ItemService } from '../item/item.service';
 import { ListItemDTO } from './list-item.dto';
 import { ListService } from './list.service';
+import { ListItemDialogComponent } from './list-item-dialog/list-item-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -14,6 +16,7 @@ import { ListService } from './list.service';
 })
 export class ListComponent implements OnInit {
   list: any;
+  listTotals: any = {listTotal: 0, cartTotal: 0, total: 5};
   listForm: FormGroup;
   foundItems = [];
   isDragging = false;
@@ -23,7 +26,8 @@ export class ListComponent implements OnInit {
     public readonly homeService: HomeService,
     private route: ActivatedRoute,
     private listService: ListService,
-    private itemService: ItemService
+    private itemService: ItemService,
+    public dialog: MatDialog
   ) {
     this.listForm = this.formBuilder.group({
       search: [''],
@@ -38,6 +42,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.listService.totals.subscribe( totals => {
+        this.listTotals = totals[params.id] ? totals[params.id] : {listTotal: 0, cartTotal: 0, total: 0};
+      });
       this.listService.userLists.subscribe(lists => {
         this.list = lists.length > 0 ? lists.find(list => list._id === params.id) : { name: '---' };
         const navigation = {
@@ -45,6 +52,20 @@ export class ListComponent implements OnInit {
         }
         this.homeService.navigationSubject.next(navigation);
       });
+    });
+  }
+  
+  openDialog(listItem: ListItemDTO, type: string): void {
+    const dialogRef = this.dialog.open(ListItemDialogComponent, {
+      data: {
+        listItem,
+        listId: this.list._id,
+        type
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.info('The dialog was closed', result);
     });
   }
 
@@ -58,7 +79,7 @@ export class ListComponent implements OnInit {
     }
   }
 
-  public addItem() {
+  public newItem() {
     const item: ItemDTO = {name: this.search};
     this.itemService.addItem(item).subscribe(item => {
       this.addItemToList(item);
@@ -66,20 +87,27 @@ export class ListComponent implements OnInit {
     });
   }
 
-  public addItemToList(item): void {
+  public addItemToList(item: ItemDTO): void {
     const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
     this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
-      console.log('item added to list', res);
       this.listService.getUserList();
       this.foundItems = [];
       this.search = '';
     })
   }
 
-  public addItemToListCart(item): void {
-    const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
+  public addListItemToList(listItem:ListItemDTO): void {
+    //const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
+    this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
+      this.listService.getUserList();
+      this.foundItems = [];
+      this.search = '';
+    })
+  }
+
+  public addListItemToListCart(listItem: ListItemDTO): void {
+    //const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
     this.listService.addItemToListCart(this.list._id, listItem).subscribe(res => {
-      console.log('item added to cart list', res);
       this.listService.getUserList();
       this.foundItems = [];
       this.search = '';
@@ -92,41 +120,28 @@ export class ListComponent implements OnInit {
 
   public dragging(state) {
     this.isDragging = state;
-    console.log('dragging', state);
   }
 
   public removeItemFromList(listItem) {
-    console.log('removeItemFromList', listItem);
     this.listService.removeItemFromList(this.list._id, listItem._id);
   }
 
   public removeItemFromListCart(listItem) {
-    console.log('removeItemFromListCart', listItem);
     this.listService.removeItemFromListCart(this.list._id, listItem._id);
   }
 
-  public addShoppingCart(item) {
-    console.log('addShoppingCart', item);
-  }
-
-  drop(event: CdkDragDrop<any[]>) { // TODO: Tipear correctamente
-    const item = event.previousContainer.data[event.previousIndex];
+  drop(event: CdkDragDrop<ListItemDTO[]>) { // TODO: Tipear correctamente
+    const listItem: ListItemDTO = event.previousContainer.data[event.previousIndex];
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      console.log('event.previousContainer.id', event.previousContainer.id);
-      if (event.previousContainer.id === 'listItems'){
-        console.log('removeItemFromList', item);
-        this.removeItemFromList(item);
-        if (event.container.id === 'cartItems'){
-          console.log('addItemToCartList', item);
-          this.addItemToListCart(item)
-        }
+      if (event.previousContainer.id === 'listItems' && event.container.id === 'cartItems'){
+        this.moveListItemToCart(listItem);
       }
       if (event.previousContainer.id === 'cartItems'){
-        this.removeItemFromListCart(item);
+        this.removeItemFromListCart(listItem);
         if (event.container.id === 'listItems'){
-          this.addItemToList(event.previousContainer.data[event.previousIndex])
+          this.addListItemToList(event.previousContainer.data[event.previousIndex])
         }
       }
       transferArrayItem(event.previousContainer.data,
@@ -135,5 +150,19 @@ export class ListComponent implements OnInit {
                         event.currentIndex);
     }
     // 
+  }
+
+  public moveListItemToCart(listItem: ListItemDTO): void {
+    this.removeItemFromList(listItem);
+    this.addListItemToListCart(listItem);
+  }
+
+  public moveCartItemToList(listItem: ListItemDTO): void {
+    this.removeItemFromListCart(listItem);
+    this.addListItemToList(listItem);
+  }
+
+  public editItem(item: ItemDTO): void {
+
   }
 }

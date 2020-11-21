@@ -4,7 +4,8 @@
       <mat-label>{{ 'global.searchOrAdd' | translate}}</mat-label>
       <mat-icon matPrefix>search</mat-icon>
       <input type="text" matInput formControlName="search" autocomplete="off"
-        (input)="getFilteredItems($event.target.value)" x-webkit-speech (keypress.enter)="addItem()">
+        (input)="getFilteredItems($event.target.value)" x-webkit-speech (keypress.enter)="newItem()"
+        [matAutocomplete]="auto">
       <div matSuffix>
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
           <mat-icon>edit</mat-icon>
@@ -14,56 +15,107 @@
           <mat-icon>clear</mat-icon>
         </button>
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search"
-          (click)="addItem()">
+          (click)="newItem()">
           <mat-icon>done</mat-icon>
         </button>
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search">
           <mat-icon>qr_code_scanner</mat-icon>
         </button>
       </div>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let item of foundItems" [value]="item.name" (onSelectionChange)="addItemToList(item)">
+          {{item.name}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </form>
-  <div class="list-autocomplete" *ngIf="search.length > 0">
+  <!-- <div class="list-autocomplete" *ngIf="search.length > 0">
     <div *ngFor="let item of foundItems" class="list-autocomplete">
       <div (click)="addItemToList(item)">{{item.name}}</div>
     </div>
-  </div>
-  <div cdkDropListGroup>
-    <div class="example-container">
-      <div
-        id="listItems"
-        cdkDropList [cdkDropListData]="list.listItems" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of list.listItems" cdkDrag>
-          <span>{{item.name}}</span>
-          <div>
-            <button mat-button (click)="removeItemFromList(item)">
-              <mat-icon>delete</mat-icon>
+  </div> -->
+  <!-- Lista Principal-->
+  <div cdkDropListGroup class="list-content">
+    <div class="list-container">
+      <div id="listItems" cdkDropList [cdkDropListData]="list.listItems" cdkDropListSortingDisabled
+        cdkDropListLockAxis="y" class="list-item" (cdkDropListDropped)="drop($event)">
+        <div class="list-item__box" *ngFor="let listItem of list.listItems" cdkDrag>
+          <div class="list-item__actions--handle" cdkDragHandle>
+            <mat-icon>swap_vert</mat-icon>
+          </div>
+          <span
+            class="list-item__title">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price | currency:'EUR':'symbol':'1.2-2':'es'}}={{(listItem.quantity * listItem.price) | currency:'EUR':'symbol':'1.2-2':'es'}}
+          </span>
+          <div class="list-item__actions">
+            <button mat-icon-button [matMenuTriggerFor]="itemMenu" class="toolbar__sidenav-button">
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-button (click)="addShoppingCart(item)">
-              <mat-icon>add_shopping_cart</mat-icon>
-            </button>
+            <mat-menu #itemMenu="matMenu">
+              <button mat-menu-item (click)="openDialog(listItem, 'list')">
+                <mat-icon>edit</mat-icon>
+                <span>{{'global.actions.edit' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="removeItemFromList(listItem)">
+                <mat-icon>delete</mat-icon>
+                <span>{{'global.actions.delete' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="moveListItemToCart(listItem)">
+                <mat-icon>add_shopping_cart</mat-icon>
+                <span>{{'items.actions.moveToCart' | translate}}</span>
+              </button>
+            </mat-menu>
           </div>
         </div>
       </div>
+    </div>
+    <!-- Shopping list -->
+    <div class="list-container">
+      <h2>{{'lists.shoppingCart' | translate}}</h2>
+      <div id="cartItems" cdkDropList cdkDropListSortingDisabled cdkDropListLockAxis="y"
+        [cdkDropListData]="list.cartItems" class="list-item" (cdkDropListDropped)="drop($event)">
+        <div class="list-item__box" *ngFor="let cartItem of list.cartItems" cdkDrag>
+          <div class="list-item__actions--handle" cdkDragHandle>
+            <mat-icon>swap_vert</mat-icon>
+          </div>
+          <span
+            class="list-item__title">{{cartItem.name}}</span><span>{{cartItem.quantity}}x{{cartItem.price | currency:'EUR':'symbol':'1.2-2':'es'}}={{(cartItem.quantity * cartItem.price) | currency:'EUR':'symbol':'1.2-2':'es'}}
+          </span>
+          <div class="list-item__actions">
+            <button mat-icon-button [matMenuTriggerFor]="itemMenu" class="toolbar__sidenav-button">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #itemMenu="matMenu">
+              <button mat-menu-item (click)="openDialog(cartItem, 'cart')">
+                <mat-icon>edit</mat-icon>
+                <span>{{'global.actions.edit' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="removeItemFromListCart(cartItem)">
+                <mat-icon>delete</mat-icon>
+                <span>{{'global.actions.delete' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="moveCartItemToList(cartItem)">
+                <mat-icon>list</mat-icon>
+                <span>{{'items.actions.moveToList' | translate}}</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="list-footer">
+    <div class="list-totals">
+      <span *ngIf="list.listItems">Lista: {{listTotals.listTotal | currency:'EUR':'symbol':'1.2-2':'es'}}
+        ({{listTotals.listQuantityTotal}} {{'global.products' | translate}})</span>
+      <span *ngIf="list.cartItems">Carrito: {{ listTotals.cartTotal | currency:'EUR':'symbol':'1.2-2':'es'}}
+        ({{listTotals.cartQuantityTotal}} {{'global.products' | translate}})</span>
+      <span>Total: {{listTotals.total | currency:'EUR':'symbol':'1.2-2':'es'}}
+        ({{listTotals.listQuantityTotal + listTotals.cartQuantityTotal}} {{'global.products' | translate}})</span>
+      </div>
+    <div class="list-actions">
+      <button mat-button>{{'global.remove' | translate}}</button>
+      <button mat-button>{{'global.purchase' | translate}}</button>
     </div>
 
-    <div class="example-container">
-      <h2>Shoping Cart</h2>
-      <div
-        id="cartItems" 
-        cdkDropList [cdkDropListData]="list.cartItems" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of list.cartItems" cdkDrag>
-          <span>{{item.name}}</span>
-          <div>
-            <button mat-button (click)="removeItemFromListCart(item)">
-              <mat-icon>delete</mat-icon>
-            </button>
-            <button mat-button (click)="addShoppingCart(item)">
-              <mat-icon>add_shopping_cart</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
