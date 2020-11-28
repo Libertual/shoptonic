@@ -19,7 +19,7 @@
     },
     "global": {
       "remove": "Borrar",
-      "purchase": "Comprar",
+      "saveCart": "Guardar cesta",
       "products": "Artículos",
       "searchOrAdd": "Buscar o Añadir",
       "actions": {

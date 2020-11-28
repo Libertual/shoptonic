@@ -149,7 +149,6 @@ export class ListComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
-    // 
   }
 
   public moveListItemToCart(listItem: ListItemDTO): void {
@@ -162,7 +161,28 @@ export class ListComponent implements OnInit {
     this.addListItemToList(listItem);
   }
 
-  public editItem(item: ItemDTO): void {
-
+  public purchase(): void {
+    this.listService.purchase(this.list._id, this.list.cartItems, this.listTotals).subscribe(res => {
+      console.log('purchase res', res);
+      this.list.cartItems = [];
+      this.removeCartItems();
+    });
   }
+
+  public removeListItems():void {
+    this.listService.removeListItems(this.list._id).subscribe((_res) => {
+      console.log('removeListItems', _res);
+      this.list.listItems = [];
+      this.listService.getUserList();
+    });
+  }
+
+  public removeCartItems():void {
+    this.listService.removeCartItems(this.list._id).subscribe((_res) => {
+      console.log('removeCartItems', _res);
+      this.list.cartItems = [];
+      this.listService.getUserList();
+    });
+  }
+
 }

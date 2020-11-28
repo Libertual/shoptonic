@@ -113,8 +113,8 @@
         ({{listTotals.listQuantityTotal + listTotals.cartQuantityTotal}} {{'global.products' | translate}})</span>
       </div>
     <div class="list-actions">
-      <button mat-button>{{'global.remove' | translate}}</button>
-      <button mat-button>{{'global.purchase' | translate}}</button>
+      <button mat-button (click)="removeListItems()">{{'global.remove' | translate}}</button>
+      <button mat-button (click)="purchase()">{{'global.saveCart' | translate}}</button>
     </div>
 
   </div>

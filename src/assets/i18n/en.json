@@ -18,6 +18,8 @@
       }
     },
     "global": {
+      "remove": "Remove",
+      "saveCart": "saveCart",
       "products": "Products",
       "searchOrAdd": "Search or Add",
       "actions": {

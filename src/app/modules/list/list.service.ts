@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AccountService } from '@app/core/account/account.service';
 import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ListItemDTO } from './list-item.dto';
@@ -14,7 +15,8 @@ export class ListService {
   public totals: Observable<any>;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private accountService: AccountService,
   ) { 
     this.userLists = this.userListsSubject.asObservable();
     this.totals = this.listsTotalsSubject.asObservable();
@@ -100,4 +102,15 @@ export class ListService {
     );
   }
 
+  public purchase(listId: string, listItems: ListItemDTO[], listTotals: any) {
+    return this.http.post(`${environment.apiUrl}/purchase`, {listId, listItems, totalPrice: listTotals.cartTotal, totalQuantity: listTotals.cartQuantityTotal});
+  }
+
+  public removeListItems(listId: string) {
+    return this.http.delete(`${environment.apiUrl}/list/${listId}/list`);
+  }
+
+  public removeCartItems(listId: string) {
+    return this.http.delete(`${environment.apiUrl}/list/${listId}/cart`);
+  }
 }
