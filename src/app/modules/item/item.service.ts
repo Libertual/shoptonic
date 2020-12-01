@@ -20,4 +20,8 @@ export class ItemService {
   public addItem(item: ItemDTO) {
     return this.http.post<any>(`${environment.apiUrl}/item`, item);
   }
+
+  public updateItemPrice(itemId: string, item: ItemDTO) {
+    return this.http.patch<any>(`${environment.apiUrl}/item/${itemId}`, item);
+  }
 }

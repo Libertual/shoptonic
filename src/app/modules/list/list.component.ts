@@ -9,6 +9,7 @@ import { ItemService } from '../item/item.service';
 import { ListItemDTO } from './list-item.dto';
 import { ListService } from './list.service';
 import { ListItemDialogComponent } from './list-item-dialog/list-item-dialog.component';
+import { ItemScannerDialogComponent } from '../scanner/item-scanner-dialog/item-scanner-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -19,7 +20,6 @@ export class ListComponent implements OnInit {
   listTotals: any = {listTotal: 0, cartTotal: 0, total: 5};
   listForm: FormGroup;
   foundItems = [];
-  isDragging = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -88,7 +88,7 @@ export class ListComponent implements OnInit {
   }
 
   public addItemToList(item: ItemDTO): void {
-    const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
+    const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1, item.price);
     this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
       this.foundItems = [];
@@ -116,10 +116,6 @@ export class ListComponent implements OnInit {
 
   public clear() {
     this.search = '';
-  }
-
-  public dragging(state) {
-    this.isDragging = state;
   }
 
   public removeItemFromList(listItem) {
@@ -185,4 +181,16 @@ export class ListComponent implements OnInit {
     });
   }
 
+  public openScanner() {
+    const dialogRef = this.dialog.open(ItemScannerDialogComponent, {
+      data: {
+        item: {},
+        listId: this.list._id
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.info('The scanner dialog was closed', result);
+    });
+  }
 }

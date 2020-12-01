@@ -1,6 +1,6 @@
 export class ItemDTO {
   _id?: string;
-  name: string;
+  name?: string;
   description?: string;
-  price?: string;
+  price?: number;
 }

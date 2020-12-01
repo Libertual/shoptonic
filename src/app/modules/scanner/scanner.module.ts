@@ -5,10 +5,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerRoutingModule } from './scanner-routing.module';
 import { OpenFoodFactsModule } from '../open-food-facts/open-food-facts.module';
+import { ItemScannerDialogComponent } from './item-scanner-dialog/item-scanner-dialog.component';
 
 @NgModule({
   declarations: [
-    ScannerComponent
+    ScannerComponent,
+    ItemScannerDialogComponent
   ],
   imports: [
     CommonModule,

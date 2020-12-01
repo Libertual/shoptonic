@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ItemDTO } from '@app/modules/item/item.dto';
+import { ItemService } from '@app/modules/item/item.service';
 import { ListService } from '../list.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class ListItemDialogComponent implements OnInit {
   editForm: FormGroup;
   constructor(
     private readonly listService: ListService,
+    private readonly itemService: ItemService,
     private readonly fb: FormBuilder,
     public dialogRef: MatDialogRef<ListItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -69,6 +72,13 @@ export class ListItemDialogComponent implements OnInit {
    this.data.listItem.price = this.price;
    this.data.listItem.quantity = this.quantity;
    this.listService.updateListItem(this.data.listId, this.data.listItem, this.data.type);
+   const item: ItemDTO = {};
+   item.name = this.name;
+   item.price = this.price;
+   console.log('this.data.listItem', this.data.listItem);
+   this.itemService.updateItemPrice(this.data.listItem.itemId, item).subscribe(res => {
+     console.log('res', res);
+   });
    this.dialogRef.close();
   }
 }
