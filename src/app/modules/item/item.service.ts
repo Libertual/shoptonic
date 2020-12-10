@@ -13,8 +13,12 @@ export class ItemService {
     private http: HttpClient
   ) { }
 
-  public searchItemsByfilter(filter): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/item?filter=${filter}`);
+  public searchItemsByName(name: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/item?name=${name}`);
+  }
+
+  public searchItemsByBarcode(barcode: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/item?barcode=${barcode}`);
   }
 
   public addItem(item: ItemDTO) {

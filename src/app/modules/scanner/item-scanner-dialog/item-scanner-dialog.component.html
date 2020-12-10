@@ -1,51 +1,23 @@
 <div class="scanner-shell" [hidden]="!hasDevices">
-  <section class="results" *ngIf="qrResultString">
-    <div>
-      <small>Result</small>
-      <strong>{{ qrResultString }}</strong>
-    </div>
-    <button mat-icon-button (click)="clearResult()">&times;</button>
-  </section>
   <span *ngIf="error">Error: {{ error }}</span>
-  <mat-menu #appMenu="matMenu">
-    <mat-selection-list>
-      <mat-list-option checkboxPosition="start" (click)="toggleTryHarder()" [selected]="tryHarder">
-        Enable Try-harder
-      </mat-list-option>
-      <mat-list-option checkboxPosition="start" (click)="toggleTorch()" [selected]="torchEnabled"
-        *ngIf="torchAvailable$ | async">
-        Enable Torch
-      </mat-list-option>
-    </mat-selection-list>
-    <mat-divider></mat-divider>
-  </mat-menu>
-
-  <header>
-    <mat-form-field appearance="fill">
-      <select matNativeControl matInput (change)="onDeviceSelectChange($event.target.value)">
-        <option value="" [selected]="!currentDevice">No Device Selected</option>
-        <option *ngFor="let device of availableDevices" [value]="device.deviceId"
-          [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>
-      </select>
-    </mat-form-field>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-slide-toggle [(ngModel)]="scannerEnabled" >Activar scanner!</mat-slide-toggle>
+  <header class="scanner__toolbar">
+    <button mat-icon-button (click)="toggleDevice()" cdkFocusInitial><mat-icon>cached</mat-icon></button>
+    <button mat-icon-button *ngIf="torchAvailable$ | async" (click)="toggleTorch()"><mat-icon [style]="torchEnabled ? 'color: white' : 'color: grey'">highlight</mat-icon></button>
+    <mat-slide-toggle [(ngModel)]="scannerEnabled" ></mat-slide-toggle>
   </header>
   <div class="scanner" *ngIf="scannerEnabled">
-    <zxing-scanner [enable]="scannerEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
-      [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
-      (camerasFound)="onCamerasFound($event)" (torchCompatible)="onTorchCompatible($event)"
+    <zxing-scanner 
+      [enable]="scannerEnabled"
+      [(device)]="currentDevice"
+      (scanSuccess)="onCodeResult($event)"
+      [formats]="formatsEnabled"
+      [tryHarder]="tryHarder"
+      (permissionResponse)="onHasPermission($event)"
+      (camerasFound)="onCamerasFound($event)"
+      (torchCompatible)="onTorchCompatible($event)"
+      [torch]="torchEnabled"
       (scanError)="onScanError($event)">
     </zxing-scanner>
-  </div>
-  <div *ngIf="productResult">
-    {{ productResult.generic_name}} {{ productResult.brands}}
-    <img src="{{ productResult.image_url }}" width="50px">
-    <img src="{{ productResult.image_front_url }}" width="50px">
-    <img src="{{ productResult.image_ingredients_url }}" width="50px">
-    <img src="{{ productResult.image_nutrition_url }}" width="50px">
   </div>
 </div>
 
@@ -84,3 +56,5 @@
   </blockquote>
 
 </ng-container>
+
+<button mat-button (click)="close()" cdkFocusInitial>Close</button>

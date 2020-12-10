@@ -18,7 +18,7 @@
           (click)="newItem()">
           <mat-icon>done</mat-icon>
         </button>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search" (click)="openScanner()">
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search" (click)="$event.stopPropagation(); openScanner()">
           <mat-icon>qr_code_scanner</mat-icon>
         </button>
       </div>

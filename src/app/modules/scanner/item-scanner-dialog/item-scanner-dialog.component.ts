@@ -1,9 +1,15 @@
-import { ViewChild } from '@angular/core';
+import { Inject, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
 import { OpenFoodFactsService } from '../../open-food-facts/open-food-facts.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ListItemDialogComponent } from '@app/modules/list/list-item-dialog/list-item-dialog.component';
+import { ListItemDTO } from '@app/modules/list/list-item.dto';
+import { ItemDTO } from '@app/modules/item/item.dto';
+import { Item } from '@app/modules/item/item.model';
+import { ItemService } from '@app/modules/item/item.service';
 
 @Component({
   selector: 'app-item-scanner-dialog',
@@ -50,10 +56,14 @@ export class ItemScannerDialogComponent implements OnInit {
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = true;
   model:any;
-
+  listItem: ListItemDTO;
+  
+  mostrar = '';
   constructor(
-    private OpenFoodFactsService: OpenFoodFactsService,
-  ) {}
+    public dialogRef: MatDialogRef<ItemScannerDialogComponent>
+  ) {
+
+  }
   
   ngOnInit(): void {
   }
@@ -66,21 +76,36 @@ export class ItemScannerDialogComponent implements OnInit {
   }
 
   onCamerasFound(devices: MediaDeviceInfo[]): void {
+    console.log('onCamerasFound', devices);
     this.availableDevices = devices;
     this.hasDevices = Boolean(devices && devices.length);
   }
 
-  onCodeResult(resultString: string) {
-    this.qrResultString = resultString;
+  public async onCodeResult(resultString: string) {
     this.scannerEnabled = false;
-    this.OpenFoodFactsService.getProductByBarcode(resultString).subscribe(data => {
-      this.productResult = data.product;
-    });
+    this.dialogRef.close(resultString);
+    return;
   }
 
   onDeviceSelectChange(selected: string) {
     const device = this.availableDevices.find(x => x.deviceId === selected);
     this.currentDevice = device || null;
+  }
+
+  public toggleDevice() {
+    console.log('ad', this.availableDevices, this.currentDevice);
+    this.mostrar = 'mal';
+    let index: number = this.availableDevices.indexOf(this.currentDevice);
+    index === -1 ? index = 0: null;
+    console.log('index', index );
+    if (index === (this.availableDevices.length - 1)) {
+      this.mostrar = 'vale igual ' + index;
+      index = 0
+    } else {
+      this.mostrar = 'no vale ' + index;
+       index++;
+    }
+    this.currentDevice = this.availableDevices[index];
   }
 
   onHasPermission(has: boolean) {
@@ -103,4 +128,7 @@ export class ItemScannerDialogComponent implements OnInit {
     this.error = error;
   }
 
+  public close() {
+    this.dialogRef.close();
+  }
 }
