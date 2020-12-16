@@ -23,6 +23,7 @@
       "products": "Products",
       "searchOrAdd": "Search or Add",
       "actions": {
+        "share": "Share",
         "edit": "Edit",
         "delete": "Delete",
         "close": "Close",
@@ -31,7 +32,18 @@
       }
     },
     "lists": {
-      "shoppingCart": "Shopping cart"
+      "shoppingCart": "Shopping cart",
+      "add": "Add new list",
+      "edit": "Edit list",
+      "share": {
+        "title": "Share",
+        "field": {
+          "usernameOrEmail": "User name or email"
+        },
+        "button": {
+          "send": "Send"
+        }
+      }
     },
     "items": {
       "newProduct": "New product",

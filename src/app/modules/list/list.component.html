@@ -4,7 +4,7 @@
       <mat-label>{{ 'global.searchOrAdd' | translate}}</mat-label>
       <mat-icon matPrefix>search</mat-icon>
       <input type="text" matInput formControlName="search" autocomplete="off"
-        (input)="getFilteredItems($event.target.value)" x-webkit-speech (keypress.enter)="newItem()"
+        (input)="getFilteredItems($event.target.value)" (keypress.enter)="newItem()"
         [matAutocomplete]="auto">
       <div matSuffix>
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
@@ -29,11 +29,6 @@
       </mat-autocomplete>
     </mat-form-field>
   </form>
-  <!-- <div class="list-autocomplete" *ngIf="search.length > 0">
-    <div *ngFor="let item of foundItems" class="list-autocomplete">
-      <div (click)="addItemToList(item)">{{item.name}}</div>
-    </div>
-  </div> -->
   <!-- Lista Principal-->
   <div cdkDropListGroup class="list-content">
     <div class="list-container">

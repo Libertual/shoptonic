@@ -199,16 +199,13 @@ export class ListComponent implements OnInit {
   private async processBarcode(barcode: string) {
     let item: Item = await this.itemService.searchItemsByBarcode(barcode).toPromise();
     if (item) {
-      console.log('item encontrado', item);
       this.addItemToList(item);
       return;
     } else {
-      console.log('item NO encontrado', item);
       const result = await this.openFoodFactsService.getProductByBarcode(barcode).toPromise();
       if (result.status !== 0) {
 
         const productResult = result.product;
-        console.log('product', result);
         let productName: string = '';
         if (productResult.generic_name_es && productResult.generic_name_es !== '') {
           productName = productResult.generic_name_es;

@@ -84,4 +84,8 @@ AccountService {
                 return x;
             }));
     }
+
+    public geFilteredUsers(filter: string): Observable<User[]> {
+      return this.http.get<User[]>(`${environment.apiUrl}/user?filter=` + filter);
+    }
 }

@@ -8,22 +8,31 @@
             <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
           </a>
         </div>
-        <div class="toolbar__right" >
+        <div class="toolbar__right">
           <span>{{(list.cartItems? list.cartItems.length: 0)}}/{{ ( (list.listItems? list.listItems.length: 0) + (list.cartItems? list.cartItems.length: 0))}}</span>
           <button mat-icon-button [matMenuTriggerFor]="actions" class="toolbar__sidenav-button">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #actions="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="onEdit(list)">
               <mat-icon>edit</mat-icon><span>{{'global.actions.edit' | translate}}</span>
             </button>
-            <button mat-menu-item class="toolbar__language-button">
+            <button mat-menu-item (click)="onDelete(list._id)">
               <mat-icon>delete</mat-icon>
               <span>{{'global.actions.delete' | translate}}</span>
+            </button>
+            <button mat-menu-item (click)="onShare(list._id)">
+              <mat-icon>share</mat-icon>
+              <span>{{'global.actions.share' | translate}}</span>
             </button>
           </mat-menu>
         </div>
       </div>
     </mat-card-header>
   </mat-card>
+</div>
+<div class="list-home__add-button">
+  <button mat-fab color="primary" aria-label="Add list" (click)="addList()" class="mat-elevation-z6">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

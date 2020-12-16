@@ -5,9 +5,19 @@ import { SharedModule } from '@app/shared/shared.module';
 import { ListRoutingModule } from './list-routing.module';
 import { ListHomeComponent } from './list-home/list-home.component';
 import { ListItemDialogComponent } from './list-item-dialog/list-item-dialog.component';
+import { ListEditComponent } from './list-home/edit/edit.component';
+import { ConfirmDialogComponent } from '@app/shared/components/confirm-dialog/confirm-dialog.component';
+import { ShareComponent } from './share/share.component';
 
 @NgModule({
-  declarations: [ListComponent, ListHomeComponent, ListItemDialogComponent],
+  declarations: [
+    ListComponent,
+    ListHomeComponent,
+    ListItemDialogComponent,
+    ListEditComponent,
+    ConfirmDialogComponent,
+    ShareComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AccountService } from '@app/core/account/account.service';
+import { User } from '@app/core/account/user.model';
 import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ListItemDTO } from './list-item.dto';
+import { List } from './list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -112,5 +114,19 @@ export class ListService {
 
   public removeCartItems(listId: string) {
     return this.http.delete(`${environment.apiUrl}/list/${listId}/cart`);
+  }
+
+
+  public addList(list: List): Observable<List> {
+    return this.http.post(`${environment.apiUrl}/list`, list);
+  }
+
+  public deleteList(listId: string): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/list/${listId}`);
+  }
+
+  public shareList(listId: string, user: User) {
+    console.log('User', user);
+    return this.http.put(`${environment.apiUrl}/list/${listId}/share-user`, user);
   }
 }

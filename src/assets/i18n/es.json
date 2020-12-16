@@ -23,6 +23,7 @@
       "products": "Artículos",
       "searchOrAdd": "Buscar o Añadir",
       "actions": {
+        "share": "Compartir",
         "edit": "Editar",
         "delete": "Eliminar",
         "close": "Cerrar",
@@ -31,7 +32,18 @@
       }
     },
     "lists": {
-      "shoppingCart": "Cesta de la compra"
+      "shoppingCart": "Cesta de la compra",
+      "add": "Añadir nueva lista",
+      "edit": "Editar lista",
+      "share": {
+        "title": "Compartir",
+        "field": {
+          "usernameOrEmail": "Nombre de usuario o email"
+        },
+        "button": {
+          "send": "Enviar"
+        }
+      }
     },
     "items": {
       "newProduct": "Nuevo producto",
