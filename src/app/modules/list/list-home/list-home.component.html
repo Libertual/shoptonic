@@ -1,34 +1,47 @@
 <div class="list-home">
   <mat-card class="list-home__card" *ngFor="let list of userLists | async">
     <mat-card-header>
-      <div class="list-home__card-subtitle">
-        <div>
-          <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <mat-card-title>{{ list.name }}</mat-card-title>
-            <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
-          </a>
-        </div>
-        <div class="toolbar__right">
-          <span>{{(list.cartItems? list.cartItems.length: 0)}}/{{ ( (list.listItems? list.listItems.length: 0) + (list.cartItems? list.cartItems.length: 0))}}</span>
-          <button mat-icon-button [matMenuTriggerFor]="actions" class="toolbar__sidenav-button">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #actions="matMenu">
-            <button mat-menu-item (click)="onEdit(list)">
-              <mat-icon>edit</mat-icon><span>{{'global.actions.edit' | translate}}</span>
+      <div class="list-home__card-header">
+          <div class="list-home__card-header--title">
+            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <mat-card-title>{{ list.name }}</mat-card-title>
+              <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
+            </a>
+          </div>
+          <div class="toolbar__right">
+            <span>{{(list.cartItems? list.cartItems.length: 0)}}/{{ ( (list.listItems? list.listItems.length: 0) +
+              (list.cartItems? list.cartItems.length: 0))}}</span>
+            <button mat-icon-button [matMenuTriggerFor]="actions" class="toolbar__sidenav-button">
+              <mat-icon>more_vert</mat-icon>
             </button>
-            <button mat-menu-item (click)="onDelete(list._id)">
-              <mat-icon>delete</mat-icon>
-              <span>{{'global.actions.delete' | translate}}</span>
-            </button>
-            <button mat-menu-item (click)="onShare(list._id)">
-              <mat-icon>share</mat-icon>
-              <span>{{'global.actions.share' | translate}}</span>
-            </button>
-          </mat-menu>
-        </div>
+            <mat-menu #actions="matMenu">
+              <button mat-menu-item (click)="onEdit(list)">
+                <mat-icon>edit</mat-icon><span>{{'global.actions.edit' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="onDelete(list._id)">
+                <mat-icon>delete</mat-icon>
+                <span>{{'global.actions.delete' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="onShare(list._id)">
+                <mat-icon>person_add</mat-icon>
+                <span>{{'global.actions.share' | translate}}</span>
+              </button>
+            </mat-menu>
+          </div>
       </div>
     </mat-card-header>
+    <mat-card-content>
+      <div class="list-home__avatar list-home__avatar--owner">
+        <img *ngIf="!list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="/v0/images/default-user.jpg">
+        <img *ngIf="list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="/v0/images/{{ list.owner.avatar.filename }}.{{ list.owner.avatar.fileExt }}">
+        <span>{{list.owner.username}}</span>
+      </div>
+      <div *ngFor="let user of list.sharedUsers" class="list-home__avatar list-home__avatar--shared-user">
+        <img *ngIf="!user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="/v0/images/default-user.jpg">
+        <img *ngIf="user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="/v0/images/{{ user.avatar.filename }}.{{ user.avatar.fileExt }}">
+        <span>{{user.username}}</span>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>
 <div class="list-home__add-button">

@@ -12,13 +12,14 @@ import { ListItemDialogComponent } from './list-item-dialog/list-item-dialog.com
 import { ItemScannerDialogComponent } from '../scanner/item-scanner-dialog/item-scanner-dialog.component';
 import { Item } from '../item/item.model';
 import { OpenFoodFactsService } from '../open-food-facts/open-food-facts.service';
+import { List } from './list.model';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html'
 })
 export class ListComponent implements OnInit {
-  list: any;
+  list: List;
   listTotals: any = { listTotal: 0, cartTotal: 0, total: 5 };
   listForm: FormGroup;
   foundItems = [];
@@ -36,6 +37,7 @@ export class ListComponent implements OnInit {
       search: [''],
     });
   }
+
   set search(val) {
     this.listForm.get('search').setValue(val);
   }
@@ -100,7 +102,6 @@ export class ListComponent implements OnInit {
   }
 
   public addListItemToList(listItem: ListItemDTO): void {
-    //const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
     this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
       this.foundItems = [];
@@ -109,7 +110,6 @@ export class ListComponent implements OnInit {
   }
 
   public addListItemToListCart(listItem: ListItemDTO): void {
-    //const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1);
     this.listService.addItemToListCart(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
       this.foundItems = [];
@@ -189,10 +189,7 @@ export class ListComponent implements OnInit {
     const dialogRef = this.dialog.open(ItemScannerDialogComponent);
 
     dialogRef.afterClosed().subscribe(barcode => {
-      console.info('The scanner dialog was closed', barcode);
       item ? this.processBarcode(barcode) : console.log('Botón cerrar pulsado');
-
-
     });
   }
 
