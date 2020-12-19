@@ -23,12 +23,22 @@
       "products": "Artículos",
       "searchOrAdd": "Buscar o Añadir",
       "actions": {
+        "register": "Registrar",
         "share": "Compartir",
         "edit": "Editar",
         "delete": "Eliminar",
         "close": "Cerrar",
         "cancel": "Cancelar",
         "save": "Guardar"
+      },
+      "form": {
+        "field": {
+          "username": "Nombre de usuario",
+          "name": "Nombre",
+          "email": "Email",
+          "password": "Contraseña",
+          "repeatPassword": "Repetir contraseña"
+        }
       }
     },
     "lists": {
