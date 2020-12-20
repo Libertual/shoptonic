@@ -1,23 +1,32 @@
-name: CI
-on:
-  push:
-    branches: [ main ]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1 #this will install Node and npm on Ubuntu
-      with:
-        node-version: '12.x'
-    - run: npm install
-    - run: npm install -g @angular/cli > /dev/null
-    - run: ng build --prod --output-path=dist/shoptonic --base-href="https://libertual.github.io/shoptonic/"
-    - uses: actions/checkout@v1
-    - name: Publish generated content to GitHub Pages
-      uses: Libertual/shoptonic@v1.4
-      with:
-          dir: dist/shoptonic
-          branch: gh-pages
-          token: ${{ secrets.ACCESS_TOKEN }}
+on: push  
+name: Build Angular project  
+jobs:  
+  build:  
+    runs-on: ubuntu-latest  
+    strategy:  
+      matrix:  
+        node-version: [12.x]  
+  
+    steps:  
+      - uses: actions/checkout@v1  
+  
+      - name: Cache node modules  
+        uses: actions/cache@v1  
+        with:  
+          path: ~/.npm  
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}  
+          restore-keys: |  
+            ${{ runner.os }}-node-  
+      - name: Node ${{ matrix.node-version }}  
+        uses: actions/setup-node@v1  
+        with:  
+          node-version: ${{ matrix.node-version }}  
+      - name: npm install and npm run build:ci  
+        run: |  
+          npm i  
+          npm run build:ci  
+      - name: Push Build to Releases  
+        uses: Libertual/shoptonic@v1  
+        with:  
+          artifacts: "dist/shoptonic/*"  
+          token: ${{ secrets.ACCESS_TOKEN }}   
