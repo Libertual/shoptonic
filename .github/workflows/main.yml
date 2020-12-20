@@ -23,7 +23,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: All things angular
-        uses: Libertual/shoptonic
+        uses: Libertual/shoptonic@v1
         with:
           github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
           build_configuration: staging # The build environment for the app. please look configurations in your angular.json
