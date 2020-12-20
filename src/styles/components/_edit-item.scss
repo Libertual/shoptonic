@@ -1,0 +1,22 @@
+.edit-item {
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-line {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .mat-form-field {
+      width: auto;
+      overflow: auto;
+
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

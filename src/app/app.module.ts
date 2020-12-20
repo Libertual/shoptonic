@@ -1,23 +1,54 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { ScannerModule } from './modules/scanner/scanner.module';
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    CoreModule,
+    HttpClientModule,
+    SharedModule,
+    ScannerModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-*' },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

@@ -1,0 +1,37 @@
+.home {
+ 
+  &__content {
+    // padding-top: 64px;
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+    // border: 1px solid red; 
+  }
+
+  &__toolbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    // display: none;
+  }
+
+  &__footer {
+    // display: none;
+    background-color: lightcyan;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: darkslateblue;
+    text-align: center;
+    z-index: 1;
+    height: 20px;
+  }
+
+  &__toolbar-space {
+    height: 64px;
+  }
+  &__footer-space {
+    height: 20px;
+  }
+}

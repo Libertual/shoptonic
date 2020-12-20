@@ -1,0 +1,26 @@
+<h2>{{ 'lists.share.title' | translate }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <input type="text"
+           placeholder="{{'lists.share.field.usernameOrEmail' | translate}}"
+           aria-label="Number"
+           matInput
+           (input)="getFilteredUsers($event.target.value)"
+           formControlName="filter"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayUser">
+      <mat-option *ngFor="let user of usersFound" [value]="user">
+        {{user.username}} - {{ user.email}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-button [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        {{ 'lists.share.button.send' | translate }} <mat-icon inline>person_add</mat-icon>
+    </button>
+    <button mat-button type="button" (click)="onClose()">Cancel <mat-icon inline>cancel</mat-icon></button>
+</div>
+
+</form>
