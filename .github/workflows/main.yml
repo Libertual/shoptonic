@@ -28,6 +28,6 @@ jobs:
     - name: Deploy
       uses: Libertual/shoptonic@v1.1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        folder: dist/shoptonic
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: dist/shoptonic
