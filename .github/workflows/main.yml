@@ -16,7 +16,7 @@ jobs:
     - run: ng build --prod --output-path=dist/shoptonic --base-href="https://libertual.github.io/shoptonic/"
     - uses: actions/checkout@v1
     - name: Publish generated content to GitHub Pages
-      uses: Libertual/shoptonic@v1
+      uses: Libertual/shoptonic@v1.1
       with:
           dir: dist/shoptonic
           branch: gh-pages
