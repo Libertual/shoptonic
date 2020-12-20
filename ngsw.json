@@ -1,0 +1,86 @@
+{
+  "configVersion": 1,
+  "timestamp": 1608491957626,
+  "index": "/shoptonic/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/shoptonic/favicon.ico",
+        "/shoptonic/index.html",
+        "/shoptonic/main-es2015.543e46335fa9db1487e7.js",
+        "/shoptonic/main-es5.543e46335fa9db1487e7.js",
+        "/shoptonic/manifest.webmanifest",
+        "/shoptonic/polyfills-es2015.6022d6f28e0500e60d30.js",
+        "/shoptonic/polyfills-es5.3dc88669732e648ed1e5.js",
+        "/shoptonic/runtime-es2015.66c79b9d36e7169e27b0.js",
+        "/shoptonic/runtime-es5.66c79b9d36e7169e27b0.js",
+        "/shoptonic/styles.e21637778faafbfb571a.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/shoptonic/assets/icons/icon-128x128.png",
+        "/shoptonic/assets/icons/icon-144x144.png",
+        "/shoptonic/assets/icons/icon-152x152.png",
+        "/shoptonic/assets/icons/icon-192x192.png",
+        "/shoptonic/assets/icons/icon-384x384.png",
+        "/shoptonic/assets/icons/icon-512x512.png",
+        "/shoptonic/assets/icons/icon-72x72.png",
+        "/shoptonic/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/shoptonic/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/shoptonic/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/shoptonic/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/shoptonic/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/shoptonic/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/shoptonic/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/shoptonic/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/shoptonic/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/shoptonic/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/shoptonic/index.html": "8ef9dfec7b1204644604032048a30c9298c37f48",
+    "/shoptonic/main-es2015.543e46335fa9db1487e7.js": "c5b7afff0ecdd3648585fded09ab45a380eb8a90",
+    "/shoptonic/main-es5.543e46335fa9db1487e7.js": "32251deac7703ac8405a9ade88180caf0cfd513c",
+    "/shoptonic/manifest.webmanifest": "ca6756037833d93ee601fb20e9883a242937ec12",
+    "/shoptonic/polyfills-es2015.6022d6f28e0500e60d30.js": "cad3129c71535baaab25ac06d8429734959b0b3f",
+    "/shoptonic/polyfills-es5.3dc88669732e648ed1e5.js": "ddab36708d3bfe0102402cd9e170eb47c267b9f8",
+    "/shoptonic/runtime-es2015.66c79b9d36e7169e27b0.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/shoptonic/runtime-es5.66c79b9d36e7169e27b0.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/shoptonic/styles.e21637778faafbfb571a.css": "17e8e2977f4c22344b363115d6fb4cabddd562cb"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
