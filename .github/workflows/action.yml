@@ -26,7 +26,7 @@ jobs:
           npm i  
           npm run build:ci  
       - name: Push Build to Releases  
-        uses: Libertual/shoptonic@v1  
+        uses: Libertual/shoptonic@v1.4  
         with:  
           artifacts: "dist/shoptonic/*"  
           token: ${{ secrets.ACCESS_TOKEN }}   
