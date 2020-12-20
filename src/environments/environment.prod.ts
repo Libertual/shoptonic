@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/v0'
+  apiUrl: 'https://shoptonic.herokuapp.com/v0'
 };
