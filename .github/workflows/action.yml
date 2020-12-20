@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1 #this will install Node and npm on Ubuntu
+      with:
+        node-version: '12.x'
+    - run: npm install
+    - run: npm install -g @angular/cli > /dev/null
+    - run: ng build --prod --output-path=dist/shoptonic --base-href="https://libertual.github.io/shoptonic/"
+    - uses: actions/checkout@v1
+    - name: Publish generated content to GitHub Pages
+      uses: Libertual/shoptonic@v1.2
+      with:
+          dir: dist/shoptonic
+          branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}
