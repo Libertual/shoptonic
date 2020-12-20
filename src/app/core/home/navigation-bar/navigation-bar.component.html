@@ -22,11 +22,11 @@
         </mat-menu>
         <mat-menu #language="matMenu">
           <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('es')" [disabled]="translate.currentLang === 'es'">
-            <img src="/assets/img/flags/flag-es.svg">
+            <img src="assets/img/flags/flag-es.svg">
             <span>{{'lang.spanish' | translate}}</span>
           </button>
           <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('en')" [disabled]="translate.currentLang === 'en'">
-            <img src="/assets/img/flags/flag-en.svg">
+            <img src="assets/img/flags/flag-en.svg">
             <span>{{'lang.english' | translate}}</span>
           </button>
         </mat-menu>

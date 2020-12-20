@@ -34,13 +34,13 @@
     </div>
     <mat-card-content>
       <div class="list-home__avatar list-home__avatar--owner">
-        <img *ngIf="!list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="/v0/images/default-user.jpg">
-        <img *ngIf="list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="/v0/images/{{ list.owner.avatar.filename }}.{{ list.owner.avatar.fileExt }}">
+        <img *ngIf="!list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="v0/images/default-user.jpg">
+        <img *ngIf="list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="v0/images/{{ list.owner.avatar.filename }}.{{ list.owner.avatar.fileExt }}">
         <span>{{list.owner.username}}</span>
       </div>
       <div *ngFor="let user of list.sharedUsers" class="list-home__avatar list-home__avatar--shared-user">
-        <img *ngIf="!user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="/v0/images/default-user.jpg">
-        <img *ngIf="user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="/v0/images/{{ user.avatar.filename }}.{{ user.avatar.fileExt }}">
+        <img *ngIf="!user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="v0/images/default-user.jpg">
+        <img *ngIf="user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="v0/images/{{ user.avatar.filename }}.{{ user.avatar.fileExt }}">
         <span>{{user.username}}</span>
       </div>
     </mat-card-content>
