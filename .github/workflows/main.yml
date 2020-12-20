@@ -13,10 +13,10 @@ jobs:
         node-version: '12.x'
     - run: npm install
     - run: npm install -g @angular/cli > /dev/null
-    - run: ng build --prod --output-path=dist --base-href="https://libertual.github.io/shoptonic/"
+    - run: ng build --prod --output-path=dist/shoptonic --base-href="https://libertual.github.io/shoptonic/"
     - name: Publish generated content to GitHub Pages
       uses: libertual/shoptonic@v1.1
       with:
-          dir: dist
+          dir: dist/shoptonic
           branch: gh-pages
           token: ${{ secrets.ACCESS_TOKEN }}
