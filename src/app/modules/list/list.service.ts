@@ -4,14 +4,14 @@ import { AccountService } from '@app/core/account/account.service';
 import { User } from '@app/core/account/user.model';
 import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ListItemDTO } from './list-item.dto';
+import { ListItem } from './list-item.model';
 import { List } from './list.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
-  public userListsSubject: BehaviorSubject<ListItemDTO[]> = new BehaviorSubject([]);
+  public userListsSubject: BehaviorSubject<ListItem[]> = new BehaviorSubject([]);
   public listsTotalsSubject: BehaviorSubject<any> = new BehaviorSubject([]);
   public userLists: Observable<any>;
   public totals: Observable<any>;
@@ -28,11 +28,11 @@ export class ListService {
     return this.userListsSubject.value;
   }
 
-  public addItemToList(listId: string, listItem: ListItemDTO) {
+  public addItemToList(listId: string, listItem: ListItem) {
     return this.http.patch(`${environment.apiUrl}/list/${listId}/item`, listItem);
   }
 
-  public addItemToListCart(listId: string, listItem: ListItemDTO) {
+  public addItemToListCart(listId: string, listItem: ListItem) {
     return this.http.patch(`${environment.apiUrl}/list/${listId}/cart/item`, listItem);
   }
 
@@ -79,7 +79,7 @@ export class ListService {
     );
   }
 
-  public updateListItem(listId: string, listItem: ListItemDTO, type: string) {
+  public updateListItem(listId: string, listItem: ListItem, type: string) {
     const listItemId = listItem._id;
     delete listItem._id;
     let url: string;
@@ -104,7 +104,7 @@ export class ListService {
     );
   }
 
-  public purchase(listId: string, listItems: ListItemDTO[], listTotals: any) {
+  public purchase(listId: string, listItems: ListItem[], listTotals: any) {
     return this.http.post(`${environment.apiUrl}/purchase`, {listId, listItems, totalPrice: listTotals.cartTotal, totalQuantity: listTotals.cartQuantityTotal});
   }
 

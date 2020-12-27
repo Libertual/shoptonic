@@ -1,6 +1,4 @@
-import { ItemDTO } from '../item/item.dto';
-
-export class ListItemDTO {
+export class ListItem {
   _id?: string;
   name: string;
   quantity: number;
