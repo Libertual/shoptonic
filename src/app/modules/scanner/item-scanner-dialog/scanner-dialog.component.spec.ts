@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItemScannerDialogComponent } from './item-scanner-dialog.component';
+import { ScannerDialogComponent } from './scanner-dialog.component';
 
-describe('ItemScannerDialogComponent', () => {
-  let component: ItemScannerDialogComponent;
-  let fixture: ComponentFixture<ItemScannerDialogComponent>;
+describe('ScannerDialogComponent', () => {
+  let component: ScannerDialogComponent;
+  let fixture: ComponentFixture<ScannerDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemScannerDialogComponent ]
+      declarations: [ ScannerDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemScannerDialogComponent);
+    fixture = TestBed.createComponent(ScannerDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

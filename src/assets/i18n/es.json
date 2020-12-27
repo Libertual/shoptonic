@@ -64,7 +64,8 @@
       "edit": {
         "name": "Nombre",
         "quantity": "Cantidad",
-        "price": "Precio"
+        "price": "Precio",
+        "barcode": "Código de barras"
       }
     }
 }
