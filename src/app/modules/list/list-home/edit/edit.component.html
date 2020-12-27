@@ -3,14 +3,14 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
       <mat-form-field>
-            <mat-label for="name">Name</mat-label>
+            <mat-label for="name">{{'edit.name' | translate }}</mat-label>
             <input matInput type="text" formControlName="name" />
             <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                 <div *ngIf="f.name.errors.required">Name is required</div>
             </div>
         </mat-form-field>
         <mat-form-field>
-            <mat-label for="description">Description</mat-label>
+            <mat-label for="description">{{ 'edit.description' | translate }}</mat-label>
             <input matInput type="text" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
             <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
             </div>
@@ -19,8 +19,8 @@
     <div>
         <button type="submit" mat-button [disabled]="loading">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            <mat-icon>save</mat-icon> Save
+            <mat-icon>save</mat-icon> {{ 'global.actions.save' | translate }}
         </button>
-        <button mat-button type="button" (click)="close()"><mat-icon>cancel</mat-icon> Cancel</button>
+        <button mat-button type="button" (click)="close()"><mat-icon>cancel</mat-icon> {{ 'global.actions.cancel' | translate }}</button>
     </div>
 </form>
