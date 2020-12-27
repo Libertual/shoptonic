@@ -7,6 +7,7 @@ import { List } from '../list.model';
 import { ListService } from '../list.service';
 import { ShareComponent } from '../share/share.component';
 import { ListEditComponent } from './edit/edit.component';
+import { environment } from 'src/environments/environment'
 
 @Component({
   selector: 'app-list-home',
@@ -15,6 +16,8 @@ import { ListEditComponent } from './edit/edit.component';
 export class ListHomeComponent implements OnInit {
   user: User;
   userLists: any;
+  apiUrl: string; 
+
   constructor(
     public dialog: MatDialog,
     private listService: ListService,
@@ -22,6 +25,8 @@ export class ListHomeComponent implements OnInit {
   ) { 
     this.userLists = this.listService.userListsSubject;
     this.user = this.accountService.sessionValue.user;
+    this.apiUrl = environment.apiUrl;
+    console.log('this.apiUrl', this.apiUrl);
   } 
 
   ngOnInit(): void {
