@@ -6,31 +6,41 @@
         <input matInput formControlName="name" required>
       </mat-form-field>
       <div class="edit-item__form-line">
+        <mat-form-field>
+          <mat-label>{{'items.edit.quantity' | translate}}</mat-label>
+          <input matInput #inputQuantity type="tel" step="any" min="0" formControlName="quantity" autocomplete="off">
+          <button mat-icon-button matSuffix (click)="addQuantity(-1)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <button mat-icon-button matSuffix (click)="addQuantity(1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{'items.edit.price' | translate}}</mat-label>
+          <input matInput #inputPrice type="tel" step="any" min="0" formControlName="price" autocomplete="off">
+          <button mat-icon-button matSuffix (click)="addPrice(-1)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <button mat-icon-button matSuffix (click)="addPrice(1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
       <mat-form-field>
-        <mat-label>{{'items.edit.quantity' | translate}}</mat-label>
-        <input matInput #inputQuantity type="tel" step="any" min="0" formControlName="quantity"  autocomplete="off">
-        <button mat-icon-button matSuffix (click)="addQuantity(-1)">
-          <mat-icon>remove</mat-icon>
-        </button>
-        <button mat-icon-button matSuffix (click)="addQuantity(1)">
-          <mat-icon>add</mat-icon>
-        </button>
+        <mat-label>{{'items.edit.barcode' | translate}}</mat-label>
+        <input matInput formControlName="barcode">
+        <div matSuffix>
+          <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!barcode" (click)="$event.stopPropagation(); openScanner()">
+            <mat-icon>qr_code_scanner</mat-icon>
+          </button>
+        </div>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>{{'items.edit.price' | translate}}</mat-label>
-        <input matInput #inputPrice type="tel" step="any" min="0" formControlName="price" autocomplete="off">
-        <button mat-icon-button matSuffix (click)="addPrice(-1)">
-          <mat-icon>remove</mat-icon>
-        </button>
-        <button mat-icon-button matSuffix (click)="addPrice(1)">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
     </div>
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">{{'global.actions.cancel' | translate}}</button>
-  <button mat-button cdkFocusInitial (click)="save()" [disabled]="!editForm.valid">{{'global.actions.save' | translate}}</button>
+  <button mat-button cdkFocusInitial (click)="save()" [disabled]="!editForm.valid">{{'global.actions.save' |
+    translate}}</button>
 </div>

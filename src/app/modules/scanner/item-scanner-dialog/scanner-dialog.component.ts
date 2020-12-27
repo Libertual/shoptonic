@@ -1,23 +1,17 @@
-import { Inject, ViewChild } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
-import { OpenFoodFactsService } from '../../open-food-facts/open-food-facts.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ListItemDialogComponent } from '@app/modules/list/list-item-dialog/list-item-dialog.component';
-import { ListItemDTO } from '@app/modules/list/list-item.dto';
-import { ItemDTO } from '@app/modules/item/item.dto';
-import { Item } from '@app/modules/item/item.model';
-import { ItemService } from '@app/modules/item/item.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item-scanner-dialog',
-  templateUrl: './item-scanner-dialog.component.html',
+  templateUrl: './scanner-dialog.component.html',
   styles: [
   ]
 })
-export class ItemScannerDialogComponent implements OnInit {
+export class ScannerDialogComponent implements OnInit {
   allowedFormats = [ BarcodeFormat.QR_CODE, BarcodeFormat.EAN_13, BarcodeFormat.CODE_128, BarcodeFormat.DATA_MATRIX ];
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent = new ZXingScannerComponent();
@@ -56,11 +50,10 @@ export class ItemScannerDialogComponent implements OnInit {
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = true;
   model:any;
-  listItem: ListItemDTO;
   
   mostrar = '';
   constructor(
-    public dialogRef: MatDialogRef<ItemScannerDialogComponent>
+    public dialogRef: MatDialogRef<ScannerDialogComponent>
   ) {
 
   }

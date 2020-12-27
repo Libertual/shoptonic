@@ -2,14 +2,14 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { HomeService } from '@app/core/home/home.service';
 import { ItemDTO } from '../item/item.dto';
 import { ItemService } from '../item/item.service';
-import { ListItemDTO } from './list-item.dto';
+import { ListItem } from './list-item.model';
 import { ListService } from './list.service';
 import { ListItemDialogComponent } from './list-item-dialog/list-item-dialog.component';
-import { ItemScannerDialogComponent } from '../scanner/item-scanner-dialog/item-scanner-dialog.component';
+import { ScannerDialogComponent } from '../scanner/item-scanner-dialog/scanner-dialog.component';
 import { Item } from '../item/item.model';
 import { OpenFoodFactsService } from '../open-food-facts/open-food-facts.service';
 import { List } from './list.model';
@@ -60,7 +60,7 @@ export class ListComponent implements OnInit {
     });
   }
 
-  openDialog(listItem: ListItemDTO, type: string): void {
+  editDialog(listItem: ListItem, type: string): void {
     const dialogRef = this.dialog.open(ListItemDialogComponent, {
       data: {
         listItem,
@@ -93,7 +93,10 @@ export class ListComponent implements OnInit {
   }
 
   public addItemToList(item: ItemDTO): void {
-    const listItem: ListItemDTO = new ListItemDTO(item._id, item.name, 1, item.price);
+    console.log('item', item);
+    const listItem: ListItem = new ListItem(item._id, item.name, 1, item.price, undefined);
+    console.log('listItem', listItem);
+
     this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
       this.foundItems = [];
@@ -101,7 +104,7 @@ export class ListComponent implements OnInit {
     })
   }
 
-  public addListItemToList(listItem: ListItemDTO): void {
+  public addListItemToList(listItem: ListItem): void {
     this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
       this.foundItems = [];
@@ -109,7 +112,7 @@ export class ListComponent implements OnInit {
     })
   }
 
-  public addListItemToListCart(listItem: ListItemDTO): void {
+  public addListItemToListCart(listItem: ListItem): void {
     this.listService.addItemToListCart(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
       this.foundItems = [];
@@ -129,8 +132,8 @@ export class ListComponent implements OnInit {
     this.listService.removeItemFromListCart(this.list._id, listItem._id);
   }
 
-  drop(event: CdkDragDrop<ListItemDTO[]>) { // TODO: Tipear correctamente
-    const listItem: ListItemDTO = event.previousContainer.data[event.previousIndex];
+  drop(event: CdkDragDrop<ListItem[]>) { // TODO: Tipear correctamente
+    const listItem: ListItem = event.previousContainer.data[event.previousIndex];
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -150,12 +153,12 @@ export class ListComponent implements OnInit {
     }
   }
 
-  public moveListItemToCart(listItem: ListItemDTO): void {
+  public moveListItemToCart(listItem: ListItem): void {
     this.removeItemFromList(listItem);
     this.addListItemToListCart(listItem);
   }
 
-  public moveCartItemToList(listItem: ListItemDTO): void {
+  public moveCartItemToList(listItem: ListItem): void {
     this.removeItemFromListCart(listItem);
     this.addListItemToList(listItem);
   }
@@ -186,7 +189,7 @@ export class ListComponent implements OnInit {
 
   public openScanner() {
     const item = {};
-    const dialogRef = this.dialog.open(ItemScannerDialogComponent);
+    const dialogRef = this.dialog.open(ScannerDialogComponent);
 
     dialogRef.afterClosed().subscribe(barcode => {
       item ? this.processBarcode(barcode) : console.log('Botón cerrar pulsado');

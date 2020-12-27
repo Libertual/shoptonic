@@ -46,7 +46,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #itemMenu="matMenu">
-              <button mat-menu-item (click)="openDialog(listItem, 'list')">
+              <button mat-menu-item (click)="editDialog(listItem, 'list')">
                 <mat-icon>edit</mat-icon>
                 <span>{{'global.actions.edit' | translate}}</span>
               </button>
@@ -80,7 +80,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #itemMenu="matMenu">
-              <button mat-menu-item (click)="openDialog(cartItem, 'cart')">
+              <button mat-menu-item (click)="editDialog(cartItem, 'cart')">
                 <mat-icon>edit</mat-icon>
                 <span>{{'global.actions.edit' | translate}}</span>
               </button>
@@ -111,6 +111,5 @@
       <button mat-button (click)="removeListItems()">{{'global.remove' | translate}}</button>
       <button mat-button (click)="purchase()">{{'global.saveCart' | translate}}</button>
     </div>
-
   </div>
 </div>
