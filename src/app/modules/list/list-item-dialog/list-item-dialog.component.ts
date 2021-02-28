@@ -31,7 +31,7 @@ export class ListItemDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ListItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.item.barcode = '';
-    console.log('listItem', data.listItem);
+    console.log('listItem', data);
     if (data.listItem)
       this.listItem = data.listItem;
     if (data.listItem.itemId) {
@@ -46,7 +46,7 @@ export class ListItemDialogComponent implements OnInit {
       name: new FormControl(data.listItem.name),
       quantity: new FormControl(data.listItem.quantity),
       price: new FormControl(data.listItem.price || 0),
-      barcode: new FormControl({ value: this.item.barcode, disabled: this.item.barcode ? true : false })
+      barcode: new FormControl({ value: data.listItem.barcode, disabled: data.listItem.barcode ? true : false })
     });
   }
 

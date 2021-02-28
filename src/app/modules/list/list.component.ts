@@ -93,9 +93,7 @@ export class ListComponent implements OnInit {
   }
 
   public addItemToList(item: ItemDTO): void {
-    console.log('item', item);
-    const listItem: ListItem = new ListItem(item._id, item.name, 1, item.price, undefined);
-    console.log('listItem', listItem);
+    const listItem: ListItem = new ListItem(item._id, item.name, 1, item.price, item.barcode);
 
     this.listService.addItemToList(this.list._id, listItem).subscribe(res => {
       this.listService.getUserList();
@@ -165,7 +163,6 @@ export class ListComponent implements OnInit {
 
   public purchase(): void {
     this.listService.purchase(this.list._id, this.list.cartItems, this.listTotals).subscribe(res => {
-      console.log('purchase res', res);
       this.list.cartItems = [];
       this.removeCartItems();
     });
@@ -173,7 +170,6 @@ export class ListComponent implements OnInit {
 
   public removeListItems(): void {
     this.listService.removeListItems(this.list._id).subscribe((_res) => {
-      console.log('removeListItems', _res);
       this.list.listItems = [];
       this.listService.getUserList();
     });
@@ -181,7 +177,6 @@ export class ListComponent implements OnInit {
 
   public removeCartItems(): void {
     this.listService.removeCartItems(this.list._id).subscribe((_res) => {
-      console.log('removeCartItems', _res);
       this.list.cartItems = [];
       this.listService.getUserList();
     });
@@ -204,7 +199,6 @@ export class ListComponent implements OnInit {
     } else {
       const result = await this.openFoodFactsService.getProductByBarcode(barcode).toPromise();
       if (result.status !== 0) {
-
         const productResult = result.product;
         let productName: string = '';
         if (productResult.generic_name_es && productResult.generic_name_es !== '') {
@@ -219,7 +213,6 @@ export class ListComponent implements OnInit {
 
         item = new Item(productName, barcode);
         item.openFoodFactsProduct = productResult;
-        console.log('item', item);
 
         this.itemService.addItem(item).subscribe(res => {
           this.addItemToList(item);

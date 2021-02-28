@@ -126,7 +126,6 @@ export class ListService {
   }
 
   public shareList(listId: string, user: User) {
-    console.log('User', user);
     return this.http.put(`${environment.apiUrl}/list/${listId}/share-user`, user);
   }
 }
