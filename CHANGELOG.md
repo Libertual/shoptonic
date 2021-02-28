@@ -1,3 +1,9 @@
+#### 1.4.2 (2021-02-28)
+
+##### Bug Fixes
+
+*  Installed necesary dependencies for zxing (358def54)
+
 #### 1.4.1 (2021-02-28)
 
 ##### Bug Fixes
