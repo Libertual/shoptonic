@@ -11,7 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styles: [
   ]
 })
-export class ScannerDialogComponent implements OnInit {
+export class ScannerDialogComponent {
   allowedFormats = [ BarcodeFormat.QR_CODE, BarcodeFormat.EAN_13, BarcodeFormat.CODE_128, BarcodeFormat.DATA_MATRIX ];
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent = new ZXingScannerComponent();
@@ -52,17 +52,7 @@ export class ScannerDialogComponent implements OnInit {
   model:any;
   
   mostrar = '';
-  constructor(
-    public dialogRef: MatDialogRef<ScannerDialogComponent>
-  ) {
-
-  }
-  
-  ngOnInit(): void {
-  }
-  ngAfterViewInit() {
-
-  }
+  constructor(public dialogRef: MatDialogRef<ScannerDialogComponent>) {}
   
   clearResult(): void {
     this.qrResultString = null;
