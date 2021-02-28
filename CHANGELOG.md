@@ -1,3 +1,15 @@
+#### 1.4.1 (2021-02-28)
+
+##### Bug Fixes
+
+*  Barcode errors (e248de0a)
+
+##### Other Changes
+
+*  Angular Material dependency (aee9e8dd)
+*  Angular 10 -> 11 (5f2368c9)
+*  @zxing/ngx-scanner dependency (4ffb9026)
+
 ## 1.0.0 (2020-12-27)
 
 ##### Bug Fixes
