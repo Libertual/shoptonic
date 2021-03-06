@@ -105,9 +105,7 @@ export class ListItemDialogComponent implements OnInit {
     const item: ItemDTO = {};
     item.name = this.name;
     item.price = this.price;
-    this.itemService.updateItemPrice(this.data.listItem.itemId, item).subscribe(res => {
-      console.info(res);
-    });
+    this.itemService.updateItemPrice(this.data.listItem.itemId, item).subscribe();
     this.dialogRef.close();
   }
 
