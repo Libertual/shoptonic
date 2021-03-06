@@ -187,7 +187,7 @@ export class ListComponent implements OnInit {
     const dialogRef = this.dialog.open(ScannerDialogComponent);
 
     dialogRef.afterClosed().subscribe(barcode => {
-      item ? this.processBarcode(barcode) : console.log('Botón cerrar pulsado');
+      item ? this.processBarcode(barcode) : console.info('Botón cerrar pulsado');
     });
   }
 
@@ -218,7 +218,7 @@ export class ListComponent implements OnInit {
           this.addItemToList(item);
         });
       } else {
-        console.log('No encontrado en OpenFoodFactsService');
+        console.info('No encontrado en OpenFoodFactsService');
       }
     }
   }

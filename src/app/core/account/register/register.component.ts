@@ -33,9 +33,7 @@ export class RegisterComponent implements OnInit {
 
   public register() {
     const user: User = new User(this.f.username.value, this.f.password.value, this.f.name.value, this.f.email.value);
-    console.log('user', user);
     this.accountService.register(user).subscribe(res => {
-      console.log('res', res);
       this.snackBar.open('Uasuario registrado correctamente!', 'Done', {
         duration: 2000,
       });

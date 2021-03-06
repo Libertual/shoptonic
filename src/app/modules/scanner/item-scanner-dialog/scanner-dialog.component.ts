@@ -59,7 +59,6 @@ export class ScannerDialogComponent {
   }
 
   onCamerasFound(devices: MediaDeviceInfo[]): void {
-    console.log('onCamerasFound', devices);
     this.availableDevices = devices;
     this.hasDevices = Boolean(devices && devices.length);
   }
@@ -76,11 +75,9 @@ export class ScannerDialogComponent {
   }
 
   public toggleDevice() {
-    console.log('ad', this.availableDevices, this.currentDevice);
     this.mostrar = 'mal';
     let index: number = this.availableDevices.indexOf(this.currentDevice);
     index === -1 ? index = 0: null;
-    console.log('index', index );
     if (index === (this.availableDevices.length - 1)) {
       this.mostrar = 'vale igual ' + index;
       index = 0

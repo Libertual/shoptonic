@@ -31,14 +31,12 @@ export class ListItemDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ListItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.item.barcode = '';
-    console.log('listItem', data);
     if (data.listItem)
       this.listItem = data.listItem;
     if (data.listItem.itemId) {
       this.itemService.searchItemById(data.listItem.itemId).subscribe(item => {
         this.item = item;
         this.barcode = item.barcode;
-        console.log('item found', item)
       });
     }
 
@@ -118,7 +116,7 @@ export class ListItemDialogComponent implements OnInit {
     const dialogRef = this.dialog.open(ScannerDialogComponent);
 
     dialogRef.afterClosed().subscribe(barcode => {
-      item ? this.processBarcode(barcode) : console.log('Botón cerrar pulsado');
+      item ? this.processBarcode(barcode) : console.info('Botón cerrar pulsado');
     });
   }
 
@@ -129,7 +127,6 @@ export class ListItemDialogComponent implements OnInit {
       this.snackBar.open(`El producto ya se encuentra en la base de datos con el nombre: ${item.name}`, 'Ok', {
         duration: 7000,
       });
-      console.log('Elproducto ya existe');
     } else {
       const result = await this.openFoodFactsService.getProductByBarcode(barcode).toPromise();
       if(result.status !== 0) {
@@ -137,9 +134,7 @@ export class ListItemDialogComponent implements OnInit {
         this.item.openFoodFactsProduct = productResult;
         this.item.barcode = barcode;
 
-        this.itemService.updateItem(this.item).subscribe(data => {
-          console.log('data', data);
-        });
+        this.itemService.updateItem(this.item).subscribe();
       }
     }
   }

@@ -26,7 +26,6 @@ export class ListHomeComponent implements OnInit {
     this.userLists = this.listService.userListsSubject;
     this.user = this.accountService.sessionValue.user;
     this.apiUrl = environment.apiUrl;
-    console.log('this.apiUrl', this.apiUrl);
   } 
 
   ngOnInit(): void {
@@ -52,7 +51,7 @@ export class ListHomeComponent implements OnInit {
           this.listService.getUserList();
         });
       } else {
-        console.log('closed without confirm');
+        console.info('closed without confirm');
       }
     })
   }

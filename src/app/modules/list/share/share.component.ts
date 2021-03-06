@@ -26,7 +26,6 @@ export class ShareComponent implements OnInit {
     public dialogRef: MatDialogRef<ShareComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    console.log('data', data);
     this.listId = data.listId;
    }
 
@@ -43,23 +42,17 @@ export class ShareComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log('submit', this.f.filter.value);
     if (this.f.filter.value._id) {
-      this.listService.shareList(this.listId, this.f.filter.value).subscribe(res => {
-        console.log('response share user', res);
-      });
+      this.listService.shareList(this.listId, this.f.filter.value).subscribe();
     }
   }
 
   public onClose() {
-    console.log('close');
     this.dialogRef.close(false);
   }
 
   public getFilteredUsers(filter) {
-    console.log(filter);
     this.accountService.geFilteredUsers(filter).subscribe(data => {
-      console.log('users', data);
       this.usersFound = data;
     })
   }

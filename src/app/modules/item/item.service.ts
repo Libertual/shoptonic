@@ -35,7 +35,6 @@ export class ItemService {
   }
 
   public updateItem(item: Item) {
-    console.log('modificar item: ', item);
     return this.http.post<Item>(`${environment.apiUrl}/item`, item);
   }
 }
