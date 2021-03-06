@@ -215,6 +215,7 @@ export class ListComponent implements OnInit {
         item.openFoodFactsProduct = productResult;
 
         this.itemService.addItem(item).subscribe(res => {
+          item._id = res._id;
           this.addItemToList(item);
         });
       } else {
