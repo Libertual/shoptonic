@@ -1,3 +1,14 @@
+### 1.5.0 (2021-03-28)
+
+##### New Features
+
+*  List gallery (fe5dc019)
+*  Save images on list (002c7e92)
+
+##### Bug Fixes
+
+*  Price bug (70073cf4)
+
 #### 1.4.2 (2021-02-28)
 
 ##### Bug Fixes
