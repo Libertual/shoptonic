@@ -1,7 +1,7 @@
 <div class="scanner-shell" [hidden]="!hasDevices">
   <span *ngIf="error">Error: {{ error }}</span>
   <header class="scanner__toolbar">
-    <button mat-icon-button (click)="toggleDevice()" cdkFocusInitial><mat-icon>cached</mat-icon></button>
+    <button mat-icon-button (click)="toggleDevice()" cdkFocusInitial><mat-icon>cameraswitch</mat-icon></button>
     <button mat-icon-button *ngIf="torchAvailable$ | async" (click)="toggleTorch()"><mat-icon [style]="torchEnabled ? 'color: white' : 'color: grey'">highlight</mat-icon></button>
     <mat-slide-toggle [(ngModel)]="scannerEnabled" ></mat-slide-toggle>
   </header>

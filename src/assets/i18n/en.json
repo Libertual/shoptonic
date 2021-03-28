@@ -1,72 +1,76 @@
 {
-    "title": "Shoptonic",
-    "description": "Your shoping list",
-    "lang": {
-      "language": "Language",
-      "spanish": "Spanish",
-      "english": "English"
+  "title": "Shoptonic",
+  "description": "Your shoping list",
+  "lang": {
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English"
+  },
+  "account": {
+    "logout": "Logout"
+  },
+  "sidenav": {
+    "menu": {
+      "home": "Home",
+      "scanner": "Scaner",
+      "myLists": "My lists",
+      "configuration": "Configuration"
+    }
+  },
+  "global": {
+    "remove": "Remove",
+    "saveCart": "saveCart",
+    "products": "Products",
+    "searchOrAdd": "Search or Add",
+    "actions": {
+      "register": "Register",
+      "share": "Share",
+      "edit": "Edit",
+      "delete": "Delete",
+      "close": "Close",
+      "cancel": "Cancel",
+      "save": "Save",
+      "yes": "Yes",
+      "no": "No"
     },
-    "account": {
-      "logout": "Logout"
-    },
-    "sidenav": {
-      "menu": {
-        "home": "Home",
-        "scanner": "Scaner",
-        "myLists": "My lists",
-        "configuration": "Configuration"
-      }
-    },
-    "global": {
-      "remove": "Remove",
-      "saveCart": "saveCart",
-      "products": "Products",
-      "searchOrAdd": "Search or Add",
-      "actions": {
-        "register": "Register",
-        "share": "Share",
-        "edit": "Edit",
-        "delete": "Delete",
-        "close": "Close",
-        "cancel": "Cancel",
-        "save": "Save"
-      },
-      "form": {
-        "field": {
-          "username": "User name",
-          "name": "Name",
-          "email": "Email",
-          "password": "Password",
-          "repeatPassword": "Repeat password"
-        }
-      }
-
-    },
-    "lists": {
-      "shoppingCart": "Shopping cart",
-      "add": "Add new list",
-      "edit": "Edit list",
-      "share": {
-        "title": "Share",
-        "field": {
-          "usernameOrEmail": "User name or email"
-        },
-        "button": {
-          "send": "Send"
-        }
-      }
-    },
-    "items": {
-      "newProduct": "New product",
-      "actions": {
-        "moveToCart": "Move to cart",
-        "moveToList": "Move to list"
-      },
-      "edit": {
+    "form": {
+      "field": {
+        "username": "User name",
         "name": "Name",
-        "quantity": "Quantity",
-        "price": "Price",
-        "barcode": "Barcode"
+        "email": "Email",
+        "password": "Password",
+        "repeatPassword": "Repeat password"
       }
     }
+  },
+  "lists": {
+    "shoppingCart": "Shopping cart",
+    "add": "Add new list",
+    "edit": "Edit list",
+    "share": {
+      "title": "Share",
+      "field": {
+        "usernameOrEmail": "User name or email"
+      },
+      "button": {
+        "send": "Send"
+      }
+    }
+  },
+  "items": {
+    "newProduct": "New product",
+    "actions": {
+      "moveToCart": "Move to cart",
+      "moveToList": "Move to list"
+    },
+    "edit": {
+      "name": "Name",
+      "quantity": "Quantity",
+      "price": "Price",
+      "barcode": "Barcode"
+    }
+  },
+  "image-attach": {
+    "title": "Camera"
+  }
 }

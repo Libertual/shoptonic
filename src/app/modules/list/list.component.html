@@ -109,7 +109,9 @@
       </div>
     <div class="list-actions">
       <button mat-button (click)="removeListItems()">{{'global.remove' | translate}}</button>
-      <button mat-button (click)="purchase()">{{'global.saveCart' | translate}}</button>
+      <button mat-button (click)="saveCart()">{{'global.saveCart' | translate}}</button>
+      <button mat-icon-button (click)="launchCamera()"><mat-icon>camera</mat-icon></button>
+      <button mat-icon-button (click)="showGallery()"><mat-icon>perm_media</mat-icon></button>
     </div>
   </div>
 </div>

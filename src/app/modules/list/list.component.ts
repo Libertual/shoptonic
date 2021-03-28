@@ -2,7 +2,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HomeService } from '@app/core/home/home.service';
 import { ItemDTO } from '../item/item.dto';
 import { ItemService } from '../item/item.service';
@@ -13,6 +13,8 @@ import { ScannerDialogComponent } from '../scanner/item-scanner-dialog/scanner-d
 import { Item } from '../item/item.model';
 import { OpenFoodFactsService } from '../open-food-facts/open-food-facts.service';
 import { List } from './list.model';
+import { ImageAttachComponent } from '@app/shared/components/image-attach/image-attach.component';
+import { ListGalleryComponent } from '@app/shared/components/list-gallery/list-gallery.component';
 
 @Component({
   selector: 'app-list',
@@ -161,13 +163,36 @@ export class ListComponent implements OnInit {
     this.addListItemToList(listItem);
   }
 
-  public purchase(): void {
-    this.listService.purchase(this.list._id, this.list.cartItems, this.listTotals).subscribe(res => {
-      this.list.cartItems = [];
-      this.removeCartItems();
+  /**
+   * Save current cart list
+   */
+  public saveCart(): void {
+
+  }
+
+  /**
+   * launchCamera
+   */
+  public launchCamera() {
+    const dialogRef: MatDialogRef<ImageAttachComponent> = this.dialog.open(ImageAttachComponent, { data: { listId: this.list._id } });
+    dialogRef.afterClosed().subscribe(capture => {
+      if (capture) {
+        this.list.images.push(capture);
+        this.listService.addImageToList(this.list._id, capture).subscribe(res => {
+        });
+      }
     });
   }
 
+  /**
+   * Show list gallery
+   */
+  public showGallery() {
+    const dialogRef: MatDialogRef<ListGalleryComponent> = this.dialog.open(ListGalleryComponent, { data: { images: this.list.images } });
+    dialogRef.afterClosed().subscribe(res => {
+      console.log('showGallery res: ', res);
+    });
+  }  
   public removeListItems(): void {
     this.listService.removeListItems(this.list._id).subscribe((_res) => {
       this.list.listItems = [];

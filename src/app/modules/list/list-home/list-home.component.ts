@@ -6,7 +6,7 @@ import { ConfirmDialogComponent } from '@app/shared/components/confirm-dialog/co
 import { List } from '../list.model';
 import { ListService } from '../list.service';
 import { ShareComponent } from '../share/share.component';
-import { ListEditComponent } from './edit/edit.component';
+import { ListEditComponent } from './edit/list-edit.component';
 import { environment } from 'src/environments/environment'
 
 @Component({
