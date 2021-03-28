@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListEditComponent } from './list-edit.component';
+import { ImageAttachComponent } from './image-attach.component';
 
-describe('ListEditComponent', () => {
-  let component: ListEditComponent;
-  let fixture: ComponentFixture<ListEditComponent>;
+describe('ImageAttachComponent', () => {
+  let component: ImageAttachComponent;
+  let fixture: ComponentFixture<ImageAttachComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListEditComponent ]
+      declarations: [ ImageAttachComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListEditComponent);
+    fixture = TestBed.createComponent(ImageAttachComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

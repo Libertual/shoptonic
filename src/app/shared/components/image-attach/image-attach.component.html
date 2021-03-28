@@ -1,0 +1,40 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <h2>{{'image-attach.title' | translate}}</h2> <div>{{WIDTH}} x {{HEIGHT}}</div>
+    <button mat-icon-button [mat-dialog-close]="false" cdkFocusInitial>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="image-attach__video-container" *ngIf="!error">
+    <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="video" autoplay [width]="WIDTH" [height]="HEIGHT"></video>
+    <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" (click)="removeCurrent()" [width]="WIDTH" [height]="HEIGHT"></canvas>
+  </div>
+  <div class="image-attach__camera-actions">
+    <button mat-icon-button color="primary" (click)="toggleTorch()"><mat-icon>flash_on</mat-icon></button>
+    <div class="image-attach__shutter">
+      <div class="image-attach__shutter-button" [class.hide]="isCaptured" (click)="captureImage()">
+        <mat-icon>circle</mat-icon>
+      </div>
+      <div class="image-attach__shutter-button disabled" [class.hide]="!isCaptured" (click)="$event.preventDefault()">
+        <mat-icon>circle</mat-icon>
+      </div>
+    </div>
+    <button mat-icon-button color="primary" (click)="toggleCamera()"><mat-icon>cameraswitch</mat-icon></button>
+  </div>
+  <div class="image-attach__error">
+    <div *ngIf="error" class="text-danger mt-4">
+      {{ error }}.
+    </div>
+  </div>
+
+  <ul class="image-attach__snap-container">
+    <li *ngFor="let src of captures; let idx = index" (click)="setPhoto(idx)">
+      <img [src]="src" [class.selected]="idx === imageSelectedIndex"/>
+    </li>
+  </ul>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-flat-button color="primary" (click)="save()" [disabled]="captures.length <= 0">
+      <mat-icon>save</mat-icon>{{ 'global.actions.save' | translate }}
+    </button>
+  </div>
+</div>

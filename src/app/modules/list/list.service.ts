@@ -104,8 +104,9 @@ export class ListService {
     );
   }
 
-  public purchase(listId: string, listItems: ListItem[], listTotals: any) {
-    return this.http.post(`${environment.apiUrl}/purchase`, {listId, listItems, totalPrice: listTotals.cartTotal, totalQuantity: listTotals.cartQuantityTotal});
+  public purchase(listId: string, list: List, listTotals: any) {
+    const cartItems = list.cartItems;
+    return this.http.post(`${environment.apiUrl}/purchase`, {listId, cartItems, totalPrice: listTotals.cartTotal, totalQuantity: listTotals.cartQuantityTotal, ticket: list.images || null});
   }
 
   public removeListItems(listId: string) {
@@ -125,7 +126,23 @@ export class ListService {
     return this.http.delete(`${environment.apiUrl}/list/${listId}`);
   }
 
+  /**
+   * Share lists with users
+   * @param listId 
+   * @param user 
+   * @returns Api response
+   */
   public shareList(listId: string, user: User) {
-    return this.http.put(`${environment.apiUrl}/list/${listId}/share-user`, user);
+    return this.http.put(`${environment.apiUrl}/list/${listId}/share-user`, user); // TODO: puede ser post
+  }
+
+  /**
+   * addImageToList
+   * @param listId list identifier
+   * @param image base64 image
+   * @returns Api response
+   */
+  public addImageToList(listId: string, image: string): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/list/${listId}/image`, {image});
   }
 }
