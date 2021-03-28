@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1615034421227,
+  "timestamp": 1616947312606,
   "index": "/shoptonic/index.html",
   "assetGroups": [
     {
@@ -11,18 +11,18 @@
         "ignoreVary": true
       },
       "urls": [
-        "/shoptonic/5-es2015.ddfc8ee9dfee3e33427c.js",
-        "/shoptonic/5-es5.ddfc8ee9dfee3e33427c.js",
+        "/shoptonic/5-es2015.b8e378801eb605648436.js",
+        "/shoptonic/5-es5.b8e378801eb605648436.js",
         "/shoptonic/favicon.ico",
         "/shoptonic/index.html",
-        "/shoptonic/main-es2015.167bd677ad7124e96c0b.js",
-        "/shoptonic/main-es5.167bd677ad7124e96c0b.js",
+        "/shoptonic/main-es2015.f9aeac2b3ea74aec664a.js",
+        "/shoptonic/main-es5.f9aeac2b3ea74aec664a.js",
         "/shoptonic/manifest.webmanifest",
         "/shoptonic/polyfills-es2015.c131ee7c37c2ac42bd19.js",
         "/shoptonic/polyfills-es5.2280d96c4806aba5f38e.js",
-        "/shoptonic/runtime-es2015.26dcd9e11cfec99efc50.js",
-        "/shoptonic/runtime-es5.26dcd9e11cfec99efc50.js",
-        "/shoptonic/styles.9f8053268c5b8666ef6d.css"
+        "/shoptonic/runtime-es2015.d602731e66e064103293.js",
+        "/shoptonic/runtime-es5.d602731e66e064103293.js",
+        "/shoptonic/styles.d5d76d1fd698e493da69.css"
       ],
       "patterns": []
     },
@@ -52,10 +52,10 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/shoptonic/5-es2015.ddfc8ee9dfee3e33427c.js": "8f31e14dc54386b5cb503ed0da667590f17e748a",
-    "/shoptonic/5-es5.ddfc8ee9dfee3e33427c.js": "7857bf9bb96450fb53654d02acaad5efbaec767e",
-    "/shoptonic/assets/i18n/en.json": "e3fe2a5228db909c507f658357d92dfe08baa6e5",
-    "/shoptonic/assets/i18n/es.json": "f2939fd7618a58e45f9158aa42c4f6e17647a807",
+    "/shoptonic/5-es2015.b8e378801eb605648436.js": "7196b0eb530aff326e792428eb70f063441cb255",
+    "/shoptonic/5-es5.b8e378801eb605648436.js": "9f9eeb186fbdabe0227287a9877c8c904d98c779",
+    "/shoptonic/assets/i18n/en.json": "3ef9c0eabf7a6e6e786437a35c0dee5f7ae4d946",
+    "/shoptonic/assets/i18n/es.json": "2e771613e5d86762a59ba38d010fc53d38d9f355",
     "/shoptonic/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/shoptonic/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/shoptonic/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -67,15 +67,15 @@
     "/shoptonic/assets/img/flags/flag-en.svg": "a3f2822a060c33f2a22721d67e8f451f4866e38e",
     "/shoptonic/assets/img/flags/flag-es.svg": "116f043014ebad1c2113c0cedd84a70b0f09aa7b",
     "/shoptonic/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/shoptonic/index.html": "0336dd41f512184e131499610d1f233976016f31",
-    "/shoptonic/main-es2015.167bd677ad7124e96c0b.js": "e555ea7b99cc2d752bede2c55af9d134876664fc",
-    "/shoptonic/main-es5.167bd677ad7124e96c0b.js": "a7b8db78b9a452ed86e3c8d2a71246df4b606199",
+    "/shoptonic/index.html": "c414f51735e477ff4343f6b05ff7283797829659",
+    "/shoptonic/main-es2015.f9aeac2b3ea74aec664a.js": "70eee52ec18ab7d6a46bd1548e44cc93b3628b2b",
+    "/shoptonic/main-es5.f9aeac2b3ea74aec664a.js": "46f964eb8bd88f7b35267edf963ddb714689854e",
     "/shoptonic/manifest.webmanifest": "ca6756037833d93ee601fb20e9883a242937ec12",
     "/shoptonic/polyfills-es2015.c131ee7c37c2ac42bd19.js": "65c537467564ee0ba776b629f71ed3413413a7cb",
     "/shoptonic/polyfills-es5.2280d96c4806aba5f38e.js": "f1fb001939e2a054d62f941e8281f6051a71bf04",
-    "/shoptonic/runtime-es2015.26dcd9e11cfec99efc50.js": "376f2330073002737b3305550486ef02bc4773ba",
-    "/shoptonic/runtime-es5.26dcd9e11cfec99efc50.js": "c08572ec2226b734ce6aac02d42fda7607d642b2",
-    "/shoptonic/styles.9f8053268c5b8666ef6d.css": "f7ad579c19001c294468412683328f0137f96e44"
+    "/shoptonic/runtime-es2015.d602731e66e064103293.js": "a5c80eb9e0cdb38a3f98d062cc3d156aee75885e",
+    "/shoptonic/runtime-es5.d602731e66e064103293.js": "9b7ce35f10be4e7ef648042964cfa5d8e161768e",
+    "/shoptonic/styles.d5d76d1fd698e493da69.css": "0b779144f3d6bbf375b5d5022c267432fd3c1c04"
   },
   "navigationUrls": [
     {
