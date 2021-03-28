@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ImageAttachComponent } from './components/image-attach/image-attach.component';
+import { ListGalleryComponent } from './components/list-gallery/list-gallery.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ImageAttachComponent } from './components/image-attach/image-attach.com
   ],
   declarations: [
     ConfirmDialogComponent,
-    ImageAttachComponent
+    ImageAttachComponent,
+    ListGalleryComponent
   ]
 })
 export class SharedModule { }

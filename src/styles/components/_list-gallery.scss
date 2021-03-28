@@ -1,0 +1,20 @@
+.list-gallery {
+  &-container {
+    margin: auto 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & img {
+      width: auto;
+      height: 65px;
+      margin-left: 1rem;
+      margin-top: 1rem;
+    
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
