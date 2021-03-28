@@ -1,3 +1,13 @@
 .mat-input-element {
   color: red;
 }
+
+.mat-dialog-container {
+  padding: 0 !important;
+  width: 100vw !important;
+}
+
+dialog-overview-example-dialog.ng-star-inserted > div {
+  margin-right: -24px;
+  margin-left: -24px;
+}

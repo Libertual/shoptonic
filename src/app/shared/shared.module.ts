@@ -4,20 +4,29 @@ import { MaterialModule } from './material/material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ImageAttachComponent } from './components/image-attach/image-attach.component';
+import { ListGalleryComponent } from './components/list-gallery/list-gallery.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    TranslateModule,
+    MaterialModule
   ],
   exports: [
     MaterialModule,
     TranslateModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmDialogComponent,
+    ImageAttachComponent
+  ],
+  declarations: [
+    ConfirmDialogComponent,
+    ImageAttachComponent,
+    ListGalleryComponent
   ]
 })
 export class SharedModule { }
