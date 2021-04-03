@@ -33,7 +33,7 @@
     </li>
   </ul>
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-flat-button color="primary" (click)="save()" [disabled]="captures.length <= 0">
+    <button mat-flat-button color="primary" (click)="save()" [disabled]="captures.length <= 0" cdkFocusInitial>
       <mat-icon>save</mat-icon>{{ 'global.actions.save' | translate }}
     </button>
   </div>

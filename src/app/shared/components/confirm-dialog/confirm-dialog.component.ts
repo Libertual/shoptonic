@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ConfirmDialogComponent implements OnInit {
   message: string;
   title: string;
+  @ViewChild('yes') yesButtonRef: MatButton;
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
@@ -18,7 +20,7 @@ export class ConfirmDialogComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    this.yesButtonRef.focus();
   }
    
   public onDismiss() {

@@ -47,6 +47,10 @@
     "shoppingCart": "Cesta de la compra",
     "add": "Añadir nueva lista",
     "edit": "Editar lista",
+    "confirm": {
+      "delete": "Borrar",
+      "deleteListMessage": "¿Deseas borrar el contenido de la lista?"
+    },
     "share": {
       "title": "Compartir",
       "field": {
