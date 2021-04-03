@@ -229,6 +229,10 @@ export class ListComponent implements OnInit {
       console.log("showGallery res: ", res);
     });
   }
+
+  /**
+   * Clear list items from list and from cart.
+   */
   public clearList(): void {
     const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
       ConfirmDialogComponent,
@@ -253,6 +257,9 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /**
+   * Remove items from cart list
+   */
   public removeCartItems(): void {
     this.listService.removeCartItems(this.list._id).subscribe((_res) => {
       this.list.cartItems = [];
@@ -260,6 +267,9 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /**
+   * Open scanner embebed app
+   */
   public openScanner() {
     const item = {};
     const dialogRef = this.dialog.open(ScannerDialogComponent);
@@ -271,6 +281,11 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /**
+   * Process barcode data on list
+   * @param barcode
+   * @returns 
+   */
   private async processBarcode(barcode: string) {
     let item: Item = await this.itemService
       .searchItemsByBarcode(barcode)
