@@ -1,3 +1,37 @@
+#### 1.5.1 (2021-04-04)
+
+##### New Features
+
+*  Confirm delete (61600e64)
+*  List gallery (fe5dc019)
+*  Save images on list (002c7e92)
+
+##### Bug Fixes
+
+*  jsdoc (7c42d24b)
+*  Price bug (70073cf4)
+
+##### Tests
+
+*  refactoring (5eb16545)
+
+#### 1.5.1 (2021-04-04)
+
+##### New Features
+
+*  Confirm delete (61600e64)
+*  List gallery (fe5dc019)
+*  Save images on list (002c7e92)
+
+##### Bug Fixes
+
+*  jsdoc (7c42d24b)
+*  Price bug (70073cf4)
+
+##### Tests
+
+*  refactoring (5eb16545)
+
 ### 1.5.0 (2021-03-28)
 
 ##### New Features
