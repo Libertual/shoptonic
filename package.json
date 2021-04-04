@@ -1,6 +1,6 @@
 {
   "name": "shoptonic",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href=/shoptonic/"
+    "deploy": "ng build --prod --base-href=/shoptonic/",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch"
   },
   "private": true,
   "dependencies": {
