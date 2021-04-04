@@ -24,6 +24,7 @@ export class ListHomeComponent implements OnInit {
     private accountService: AccountService,
   ) { 
     this.userLists = this.listService.userListsSubject;
+    console.log('AS: ', accountService);
     this.user = this.accountService.sessionValue.user;
     this.apiUrl = environment.apiUrl;
   } 

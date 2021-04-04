@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -18,7 +19,6 @@ export class ConfirmDialogComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
   }
    
   public onDismiss() {

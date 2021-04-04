@@ -4,8 +4,7 @@
       <mat-label>{{ 'global.searchOrAdd' | translate}}</mat-label>
       <mat-icon matPrefix>search</mat-icon>
       <input type="text" matInput formControlName="search" autocomplete="off"
-        (input)="getFilteredItems($event.target.value)" (keypress.enter)="newItem()"
-        [matAutocomplete]="auto">
+        (input)="getFilteredItems($event.target.value)" (keypress.enter)="newItem()" [matAutocomplete]="auto">
       <div matSuffix>
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
           <mat-icon>edit</mat-icon>
@@ -18,7 +17,8 @@
           (click)="newItem()">
           <mat-icon>done</mat-icon>
         </button>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search" (click)="$event.stopPropagation(); openScanner()">
+        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search"
+          (click)="$event.stopPropagation(); openScanner()">
           <mat-icon>qr_code_scanner</mat-icon>
         </button>
       </div>
@@ -38,8 +38,9 @@
           <div class="list-item__actions--handle" cdkDragHandle>
             <mat-icon>swap_vert</mat-icon>
           </div>
-          <span
-            class="list-item__title">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price | currency:'EUR':'symbol':'1.2-2':'es'}}={{(listItem.quantity * listItem.price) | currency:'EUR':'symbol':'1.2-2':'es'}}
+          <span class="list-item__title">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price |
+            currency:'EUR':'symbol':'1.2-2':'es'}}={{(listItem.quantity * listItem.price) |
+            currency:'EUR':'symbol':'1.2-2':'es'}}
           </span>
           <div class="list-item__actions">
             <button mat-icon-button [matMenuTriggerFor]="itemMenu" class="toolbar__sidenav-button">
@@ -72,8 +73,9 @@
           <div class="list-item__actions--handle" cdkDragHandle>
             <mat-icon>swap_vert</mat-icon>
           </div>
-          <span
-            class="list-item__title">{{cartItem.name}}</span><span>{{cartItem.quantity}}x{{cartItem.price | currency:'EUR':'symbol':'1.2-2':'es'}}={{(cartItem.quantity * cartItem.price) | currency:'EUR':'symbol':'1.2-2':'es'}}
+          <span class="list-item__title">{{cartItem.name}}</span><span>{{cartItem.quantity}}x{{cartItem.price |
+            currency:'EUR':'symbol':'1.2-2':'es'}}={{(cartItem.quantity * cartItem.price) |
+            currency:'EUR':'symbol':'1.2-2':'es'}}
           </span>
           <div class="list-item__actions">
             <button mat-icon-button [matMenuTriggerFor]="itemMenu" class="toolbar__sidenav-button">
@@ -106,12 +108,16 @@
         ({{listTotals.cartQuantityTotal}} {{'global.products' | translate}})</span>
       <span>Total: {{listTotals.total | currency:'EUR':'symbol':'1.2-2':'es'}}
         ({{listTotals.listQuantityTotal + listTotals.cartQuantityTotal}} {{'global.products' | translate}})</span>
-      </div>
+    </div>
     <div class="list-actions">
-      <button mat-button (click)="removeListItems()">{{'global.remove' | translate}}</button>
-      <button mat-button (click)="saveCart()">{{'global.saveCart' | translate}}</button>
-      <button mat-icon-button (click)="launchCamera()"><mat-icon>camera</mat-icon></button>
-      <button mat-icon-button (click)="showGallery()"><mat-icon>perm_media</mat-icon></button>
+      <div>
+        <button mat-button (click)="clearList()">{{'global.remove' | translate}}</button>
+        <button mat-button (click)="saveCart()">{{'global.saveCart' | translate}}</button>
+      </div>
+      <div>
+        <button mat-icon-button (click)="launchCamera()"><mat-icon>camera</mat-icon></button>
+        <button mat-icon-button (click)="showGallery()"><mat-icon>perm_media</mat-icon></button>
+      </div>
     </div>
   </div>
 </div>

@@ -3,8 +3,6 @@ import { BarcodeFormat } from '@zxing/library';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { BehaviorSubject } from 'rxjs';
 import { OpenFoodFactsService } from '../open-food-facts/open-food-facts.service';
-import { FormBuilder, FormControl } from '@angular/forms';
-
 
 @Component({
   selector: 'app-scanner',
