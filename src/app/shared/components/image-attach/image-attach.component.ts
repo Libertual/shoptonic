@@ -6,7 +6,7 @@ import Integer from '@zxing/library/esm/core/util/Integer';
   selector: 'app-image-attach',
   templateUrl: './image-attach.component.html'
 })
-export class ImageAttachComponent implements AfterViewInit {
+export class ImageAttachComponent implements OnInit {
   @ViewChild("video")
   public video: ElementRef;
 
@@ -45,7 +45,7 @@ export class ImageAttachComponent implements AfterViewInit {
       this.HEIGHT = parseInt((window.outerHeight * 0.5).toString(), 10);
    }
 
-  async ngAfterViewInit() {
+  async ngOnInit() {
     
     this.setSizeParams();
 

@@ -9,7 +9,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ConfirmDialogComponent implements OnInit {
   message: string;
   title: string;
-  @ViewChild('yes') yesButtonRef: MatButton;
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
@@ -20,7 +19,6 @@ export class ConfirmDialogComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.yesButtonRef.focus();
   }
    
   public onDismiss() {
