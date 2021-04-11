@@ -5,7 +5,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { HomeService } from "@app/core/home/home.service";
 import { ItemDTO } from "../item/item.dto";
@@ -20,6 +20,8 @@ import { List } from "./list.model";
 import { ImageAttachComponent } from "@app/shared/components/image-attach/image-attach.component";
 import { ListGalleryComponent } from "@app/shared/components/list-gallery/list-gallery.component";
 import { ConfirmDialogComponent } from "@app/shared/components/confirm-dialog/confirm-dialog.component";
+import { forkJoin, Observable, of } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-list",
@@ -32,6 +34,7 @@ export class ListComponent implements OnInit {
   foundItems = [];
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     public readonly homeService: HomeService,
     private route: ActivatedRoute,
@@ -114,7 +117,7 @@ export class ListComponent implements OnInit {
     );
 
     this.listService.addItemToList(this.list._id, listItem).subscribe((res) => {
-      this.listService.getUserList();
+      this.listService.getUserLists();
       this.foundItems = [];
       this.search = "";
     });
@@ -122,7 +125,7 @@ export class ListComponent implements OnInit {
 
   public addListItemToList(listItem: ListItem): void {
     this.listService.addItemToList(this.list._id, listItem).subscribe((res) => {
-      this.listService.getUserList();
+      this.listService.getUserLists();
       this.foundItems = [];
       this.search = "";
     });
@@ -132,7 +135,7 @@ export class ListComponent implements OnInit {
     this.listService
       .addItemToListCart(this.list._id, listItem)
       .subscribe((res) => {
-        this.listService.getUserList();
+        this.listService.getUserLists();
         this.foundItems = [];
         this.search = "";
       });
@@ -189,16 +192,67 @@ export class ListComponent implements OnInit {
     this.addListItemToListCart(listItem);
   }
 
+  /**
+   * Move cart item to list
+   * @param listItem List item
+   */
   public moveCartItemToList(listItem: ListItem): void {
     this.removeItemFromListCart(listItem);
     this.addListItemToList(listItem);
   }
 
   /**
-   * Save current cart list
+   * Confirm save current list
    */
-  public saveCart(): void {}
+  public saveListConfirm(): void {
 
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: "lists.confirm.save",
+        message: "lists.confirm.saveListMessage"
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirm) => {
+      if (confirm) this.saveList();
+    });
+  }
+
+  /**
+   * Save list
+   * Chage saved to true a create new list with de same name
+   */
+  public saveList() {
+    this.list.totals = this.listTotals;
+    this.listService.saveList(this.list).subscribe( res => {
+      console.log('list saved: ', res);
+      this.emptyList();
+    });
+  }
+
+  /**
+   * emptyList
+  */
+  public emptyList() {
+    const obserbables: Observable<any>[] = [
+      this.listService.removeListItems(this.list._id).pipe(catchError(e => of({error: true, e}))),
+      this.listService.removeCartItems(this.list._id).pipe(catchError(e => of({error: true, e}))),
+      this.listService.deleteAllImages(this.list._id).pipe(catchError(e => of({error: true, e})))
+    ]  
+    forkJoin(obserbables).subscribe(
+    next => {
+      console.log('forkjoin: ', next);
+      next[0].error ? this.list.listItems = []: null;
+      next[1].error ? this.list.cartItems = []: null;
+      next[2].error ? this.list.images = [] : null;
+      this.listService.getUserLists();
+    },
+    error => {
+      console.log('Error: ', error);
+    }
+    );
+  }
+  
   /**
    * launchCamera
    */
@@ -207,6 +261,7 @@ export class ListComponent implements OnInit {
       ImageAttachComponent,
       { data: { listId: this.list._id } }
     );
+
     dialogRef.afterClosed().subscribe((capture) => {
       if (capture) {
         this.list.images.push(capture);
@@ -247,11 +302,11 @@ export class ListComponent implements OnInit {
       if (res) {
         this.listService.removeListItems(this.list._id).subscribe((_res) => {
           this.list.listItems = [];
-          this.listService.getUserList();
+          this.listService.getUserLists();
         });
         this.listService.removeCartItems(this.list._id).subscribe((_res) => {
           this.list.cartItems = [];
-          this.listService.getUserList();
+          this.listService.getUserLists();
         });
       }
     });
@@ -263,7 +318,7 @@ export class ListComponent implements OnInit {
   public removeCartItems(): void {
     this.listService.removeCartItems(this.list._id).subscribe((_res) => {
       this.list.cartItems = [];
-      this.listService.getUserList();
+      this.listService.getUserLists();
     });
   }
 
