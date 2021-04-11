@@ -22,7 +22,7 @@ export class ListService {
   ) { 
     this.userLists = this.userListsSubject.asObservable();
     this.totals = this.listsTotalsSubject.asObservable();
-    this.getUserList();
+    this.getUserLists();
   }
   public get userListsValue() {
     return this.userListsSubject.value;
@@ -36,9 +36,11 @@ export class ListService {
     return this.http.patch(`${environment.apiUrl}/list/${listId}/cart/item`, listItem);
   }
 
-  public getUserList() {
+  public getUserLists() {
+    
     return this.http.get(`${environment.apiUrl}/list`).subscribe(
       (res: any[]) => {
+        console.log('get usersList', res);
         this.userListsSubject.next(res);
         const listTotals = {};
         res.map(list => {
@@ -66,7 +68,7 @@ export class ListService {
   public removeItemFromList(listId: string, listItemId: string) {
     return this.http.delete(`${environment.apiUrl}/list/${listId}/item/${listItemId}`).subscribe(
       res => {
-        this.getUserList();
+        this.getUserLists();
       }
     );
   }
@@ -74,7 +76,7 @@ export class ListService {
   public removeItemFromListCart(listId: string, cartItemId: string) {
     return this.http.delete(`${environment.apiUrl}/list/${listId}/cart/item/${cartItemId}`).subscribe(
       res => {
-        this.getUserList();
+        this.getUserLists();
       }
     );
   }
@@ -99,14 +101,15 @@ export class ListService {
     }
     return this.http.put(url, listItem).subscribe(
       res => {
-        this.getUserList();
+        this.getUserLists();
       }
     );
   }
 
-  public purchase(listId: string, list: List, listTotals: any) {
-    const cartItems = list.cartItems;
-    return this.http.post(`${environment.apiUrl}/purchase`, {listId, cartItems, totalPrice: listTotals.cartTotal, totalQuantity: listTotals.cartQuantityTotal, ticket: list.images || null});
+  public saveList(list: List): Observable<any> {
+    console.log('list', list)
+    const savedlist = new List( list.name, list.description, list.listItems, list.cartItems, list.owner, list.sharedUsers, list.images, list.totals);
+    return this.http.post(`${environment.apiUrl}/saved-list/`, savedlist);
   }
 
   public removeListItems(listId: string) {
@@ -144,5 +147,14 @@ export class ListService {
    */
   public addImageToList(listId: string, image: string): Observable<any> {
     return this.http.post(`${environment.apiUrl}/list/${listId}/image`, {image});
+  }
+
+  /**
+   * Delete all images
+   * @param listId 
+   * @returns response 
+   */
+  public deleteAllImages(listId: string) {
+    return this.http.delete(`${environment.apiUrl}/list/${listId}/image`);
   }
 }
