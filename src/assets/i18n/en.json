@@ -49,7 +49,9 @@
     "edit": "Edit list",
     "confirm": {
       "delete": "Delete",
-      "deleteListMessage": "Do you want to delete the content of the list?"
+      "deleteListMessage": "Do you want to delete the content of the list?",
+      "save": "Save list",
+      "saveListMessage": "Do you want to save this list?"
     },
     "share": {
       "title": "Share",
