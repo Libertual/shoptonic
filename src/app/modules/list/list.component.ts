@@ -225,7 +225,6 @@ export class ListComponent implements OnInit {
   public saveList() {
     this.list.totals = this.listTotals;
     this.listService.saveList(this.list).subscribe( res => {
-      console.log('list saved: ', res);
       this.emptyList();
     });
   }
@@ -241,14 +240,13 @@ export class ListComponent implements OnInit {
     ]  
     forkJoin(obserbables).subscribe(
     next => {
-      console.log('forkjoin: ', next);
       next[0].error ? this.list.listItems = []: null;
       next[1].error ? this.list.cartItems = []: null;
       next[2].error ? this.list.images = [] : null;
       this.listService.getUserLists();
     },
     error => {
-      console.log('Error: ', error);
+      console.error('Error: ', error);
     }
     );
   }
@@ -281,7 +279,7 @@ export class ListComponent implements OnInit {
       { data: { images: this.list.images } }
     );
     dialogRef.afterClosed().subscribe((res) => {
-      console.log("showGallery res: ", res);
+      console.info("showGallery res: ", res);
     });
   }
 
