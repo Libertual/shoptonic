@@ -14,7 +14,8 @@
       "home": "Inicio",
       "myLists": "Mis listas",
       "scanner": "Escaner",
-      "configuration": "Configuración"
+      "configuration": "Configuración",
+      "finance": "Finanzas"
     }
   },
   "global": {
@@ -46,7 +47,12 @@
   "lists": {
     "shoppingCart": "Cesta de la compra",
     "add": "Añadir nueva lista",
-    "edit": "Editar lista",
+    "edit": {
+      "button": "Editar Lista",
+      "name": "Nombre",
+      "description": "Descripción",
+      "income": "Ingreso"
+    },
     "confirm": {
       "delete": "Borrar",
       "deleteListMessage": "¿Deseas borrar el contenido de la lista?",

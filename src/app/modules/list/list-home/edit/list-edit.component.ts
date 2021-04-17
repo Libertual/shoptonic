@@ -6,7 +6,7 @@ import { ListService } from '../../list.service';
 
 @Component({
   selector: 'app-list-edit',
-  templateUrl: './edit.component.html'
+  templateUrl: './list-edit.component.html'
 })
 export class ListEditComponent implements OnInit {
   loading = false;
@@ -27,13 +27,15 @@ export class ListEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: ["", Validators.required],
-      description: ["", Validators.required]
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      income:[true]
     });
 
     if (this.list._id) {
       this.f.name.setValue(this.list.name);
       this.f.description.setValue(this.list.description);
+      this.f.income.setValue(this.list.income);
     }
 
   }
@@ -44,9 +46,9 @@ export class ListEditComponent implements OnInit {
   }
 
   public onSubmit() {
-
     this.list.name = this.f.name.value;
     this.list.description = this.f.description.value;
+    this.list.income = this.f.income.value;
 
     this.listService.addList(this.list).subscribe(data => {
       this.dialogRef.close(data);

@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from '@app/modules/list/list.component';
-import { ScannerComponent } from '@app/modules/scanner/scanner.component';
-import { ScannerModule } from '@app/modules/scanner/scanner.module';
-import { AuthGuard } from '@app/shared/guards/auth.guard';
-import { HomeComponent } from './home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
 const routes: Routes = [
@@ -28,6 +24,10 @@ const routes: Routes = [
       {
         path: 'list/:id',
         component: ListComponent
+      },
+      {
+        path: 'finance',
+        loadChildren: () => import('@app/modules/finance/finance.module').then(m => m.FinanceModule)
       }
     ]
   }

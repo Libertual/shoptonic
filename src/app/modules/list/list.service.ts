@@ -40,7 +40,6 @@ export class ListService {
     
     return this.http.get(`${environment.apiUrl}/list`).subscribe(
       (res: any[]) => {
-        console.log('get usersList', res);
         this.userListsSubject.next(res);
         const listTotals = {};
         res.map(list => {
@@ -107,7 +106,6 @@ export class ListService {
   }
 
   public saveList(list: List): Observable<any> {
-    console.log('list', list)
     const savedlist = new List( list.name, list.description, list.listItems, list.cartItems, list.owner, list.sharedUsers, list.images, list.totals);
     return this.http.post(`${environment.apiUrl}/saved-list/`, savedlist);
   }
