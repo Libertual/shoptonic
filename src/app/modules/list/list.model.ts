@@ -14,8 +14,9 @@ export class List {
   sharedUsers?: User[];
   images?: string[];
   totals?: any;
+  income?: boolean;
 
-  constructor(name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any) {
+  constructor(name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean) {
     name ? this.name = name : null;
     description ? this.description = description : null;
     listItems ? this.listItems = listItems : null;
@@ -24,5 +25,6 @@ export class List {
     sharedUsers ? this.sharedUsers = sharedUsers : null;
     images ? this.images = images : null;
     totals ? this.totals = totals : null;
+    income ? this.income = income : null;
   }
 }

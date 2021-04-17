@@ -47,7 +47,13 @@
   "lists": {
     "shoppingCart": "Shopping cart",
     "add": "Add new list",
-    "edit": "Edit list",
+    "edit": {
+      "button": "Edit List",
+      "name": "Name",
+      "description": "Description",
+      "income": "Income"
+    },
+
     "confirm": {
       "delete": "Delete",
       "deleteListMessage": "Do you want to delete the content of the list?",
