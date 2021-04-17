@@ -90,9 +90,6 @@ export class ImageAttachComponent implements OnInit {
       this.stream = await navigator.mediaDevices.getUserMedia(deviceConfig);
       if (this.stream) {
         this.video.nativeElement.srcObject = this.stream;
-        
-        
-        console.log('medidas', this.video.nativeElement.videoWidth + ' x ' + this.video.nativeElement.videoHeight);
         this.video.nativeElement.play();
         this.text = 'Medidasv: ' + this.stream.getVideoTracks()[0].getSettings().width + ' x ' + this.stream.getVideoTracks()[0].getSettings().height;
         this.error = null;
@@ -119,7 +116,6 @@ export class ImageAttachComponent implements OnInit {
   }
 
   public setPhoto(idx: number): void {
-    console.log('medidas', this.video.nativeElement.videoWidth + ' x ' + this.video.nativeElement.videoHeight);
     this.text = 'Medidas: ' + this.video.nativeElement.videoWidth + ' x ' + this.video.nativeElement.videoHeight;
     this.isCaptured = true;
     var image = new Image();
