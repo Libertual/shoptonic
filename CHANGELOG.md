@@ -1,3 +1,23 @@
+### 1.7.0 (2021-04-17)
+
+##### New Features
+
+*  Income flag (45abdc19)
+*  Finance chart (5eee6bc2)
+*  Save lists (49c14e52)
+*  Confirm delete (61600e64)
+*  List gallery (fe5dc019)
+*  Save images on list (002c7e92)
+
+##### Bug Fixes
+
+*  jsdoc (7c42d24b)
+*  Price bug (70073cf4)
+
+##### Tests
+
+*  refactoring (5eb16545)
+
 ### 1.6.0 (2021-04-11)
 
 ##### New Features
