@@ -19,7 +19,10 @@ export class FinanceComponent implements OnInit {
         type: 'time',
         time: {
           displayFormats: {
-            'year': 'MMM DD'
+            'hour':  'MMM DD HH:mm',
+            'day':   'MMM DD',
+            'month': 'MMM DD',
+            'year':  'YYYY MMM DD'
           }
         }
       }],
@@ -67,8 +70,7 @@ export class FinanceComponent implements OnInit {
           data.push(totalByDate[key]);
           this.lineChartLabels.push(key);
         }
-
-        this.lineChartData.push({ data },)
+        if (data.length > 0 ) this.lineChartData.push({ data },)
       }
     );
   }
