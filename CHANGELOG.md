@@ -1,3 +1,30 @@
+### 1.8.0 (2021-04-25)
+
+##### New Features
+
+*  finance tags filters (640be98e)
+*  list tags (c518fcac)
+*  Income flag (45abdc19)
+*  Finance chart (5eee6bc2)
+*  Save lists (49c14e52)
+*  Confirm delete (61600e64)
+*  List gallery (fe5dc019)
+*  Save images on list (002c7e92)
+
+##### Bug Fixes
+
+*  Chart legends (fb101e16)
+*  jsdoc (7c42d24b)
+*  Price bug (70073cf4)
+
+##### Code Style Changes
+
+*  finance style (04c0a929)
+
+##### Tests
+
+*  refactoring (5eb16545)
+
 ### 1.7.0 (2021-04-17)
 
 ##### New Features

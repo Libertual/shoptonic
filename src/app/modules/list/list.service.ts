@@ -105,9 +105,9 @@ export class ListService {
     );
   }
 
-  public saveList(list: List): Observable<any> {
-    const savedlist = new List( list.name, list.description, list.listItems, list.cartItems, list.owner, list.sharedUsers, list.images, list.totals);
-    return this.http.post(`${environment.apiUrl}/saved-list/`, savedlist);
+  public addSavedList(list: List): Observable<any> {
+    //const savedlist = new List( list._id, list.name, list.description, list.listItems, list.cartItems, list.owner, list.sharedUsers, list.images, list.totals, list.tags);
+    return this.http.post(`${environment.apiUrl}/saved-list/`, list);
   }
 
   public removeListItems(listId: string) {
@@ -118,8 +118,12 @@ export class ListService {
     return this.http.delete(`${environment.apiUrl}/list/${listId}/cart`);
   }
 
-
-  public addList(list: List): Observable<List> {
+  /**
+   * Save list o generate a new one
+   * @param list 
+   * @returns 
+   */
+  public saveList(list: List): Observable<List> {
     return this.http.post(`${environment.apiUrl}/list`, list);
   }
 

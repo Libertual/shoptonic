@@ -224,7 +224,7 @@ export class ListComponent implements OnInit {
    */
   public saveList() {
     this.list.totals = this.listTotals;
-    this.listService.saveList(this.list).subscribe( res => {
+    this.listService.addSavedList(this.list).subscribe( res => {
       this.emptyList();
     });
   }
