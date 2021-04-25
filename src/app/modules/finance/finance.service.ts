@@ -29,7 +29,6 @@ export class FinanceService {
       res => {
         this.dataSubject.next(res.data);
         this.filteredDataSubject.next(res.data); //TODO: provisional
-        console.log('data', res.data);
       },
       error => {
         console.error('getStats error: ', error);
@@ -59,7 +58,6 @@ export class FinanceService {
     const filteredData = (tags && tags.length > 0 ) ? 
       this.dataSubject.value.filter(data => data.tags.some(t => tags.indexOf(t) >= 0)):
       this.dataSubject.value;
-    console.log('filteredData', filteredData);
     this.filteredDataSubject.next(filteredData);    
   }
 }

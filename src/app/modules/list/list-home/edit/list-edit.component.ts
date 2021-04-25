@@ -56,8 +56,6 @@ export class ListEditComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log('ftags', this.f.tags.value);
-    console.log('tags', this.tags);
     this.list.name = this.f.name.value;
     this.list.description = this.f.description.value;
     this.list.income = this.f.income.value;
