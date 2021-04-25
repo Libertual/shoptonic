@@ -84,5 +84,14 @@
   },
   "image-attach": {
     "title": "Cámara"
+  },
+  "finance": {
+    "title": "Finanzas",
+    "filter": {
+      "tags": {
+        "title": "Tags",
+        "placeholder": "tag..."
+      }
+    }
   }
 }
