@@ -106,8 +106,8 @@ export class ListService {
   }
 
   public addSavedList(list: List): Observable<any> {
-    const savedlist = new List( list._id, list.name, list.description, list.listItems, list.cartItems, list.owner, list.sharedUsers, list.images, list.totals);
-    return this.http.post(`${environment.apiUrl}/saved-list/`, savedlist);
+    //const savedlist = new List( list._id, list.name, list.description, list.listItems, list.cartItems, list.owner, list.sharedUsers, list.images, list.totals, list.tags);
+    return this.http.post(`${environment.apiUrl}/saved-list/`, list);
   }
 
   public removeListItems(listId: string) {

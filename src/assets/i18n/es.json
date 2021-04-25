@@ -84,5 +84,8 @@
   },
   "image-attach": {
     "title": "Cámara"
+  },
+  "finance": {
+    "title": "Finanzas"
   }
 }

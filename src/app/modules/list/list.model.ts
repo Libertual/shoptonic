@@ -16,8 +16,9 @@ export class List {
   totals?: any;
   income?: boolean;
   tags?: string[];
+  createdAt?: string;
 
-  constructor(_id?: string, name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean) {
+  constructor(_id?: string, name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean, tags?: string[]) {
     _id ? this._id = _id : null;
     name ? this.name = name : null;
     description ? this.description = description : null;
