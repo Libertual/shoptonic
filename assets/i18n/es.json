@@ -87,7 +87,25 @@
   },
   "finance": {
     "title": "Finanzas",
+    "tabs": {
+      "graphic": "Gráfico",
+      "table": "Tabla"
+    },
+    "table": {
+      "col": {
+        "date": "Fecha",
+        "list": "Lista",
+        "amount": "€"
+      }
+    },
     "filter": {
+      "dateGroups": {
+        "title": "Agrupar por...",
+        "day": "Día",
+        "week": "Semana",
+        "month": "Mes",
+        "year": "Año"
+      },
       "tags": {
         "title": "Tags",
         "placeholder": "tag..."

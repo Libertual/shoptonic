@@ -87,6 +87,30 @@
     "title": "Camera"
   },
   "finance": {
-    "title": "Finance"
+    "title": "Finance",
+    "tabs": {
+      "graphic": "Graphic",
+      "table": "Table"
+    },
+    "table": {
+      "col": {
+        "date": "Date",
+        "list": "List",
+        "amount": "€"
+      }
+    },
+    "filter": {
+      "dateGroups": {
+        "title": "Group by...",
+        "day": "Day",
+        "week": "Week",
+        "month": "Month",
+        "year": "Year"
+      },
+      "tags": {
+        "title": "Tags",
+        "placeholder": "tag..."
+      }
+    }
   }
 }
