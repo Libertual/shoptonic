@@ -1,3 +1,11 @@
+#### 1.8.1 (2021-05-02)
+
+##### New Features
+
+*  data table (d3702f47)
+*  total in finance graphic bottom (7d6f6ee5)
+*  Group by tag (51952f47)
+
 ### 1.8.0 (2021-04-25)
 
 ##### New Features
