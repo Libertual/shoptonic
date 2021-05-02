@@ -15,15 +15,16 @@
             <a [routerLink]="['/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <mat-icon>list</mat-icon><span>{{'sidenav.menu.myLists' | translate}}</span>
             </a>
-        </mat-panel-title>
+          </mat-panel-title>
         </mat-expansion-panel-header>
         <ul class="sidenav__menu">
           <li class="sidenav__menu-item" *ngFor="let list of userLists | async">
-            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close()">
+            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+              (click)="drawer.close()">
               <mat-icon>playlist_add_check</mat-icon><span matTooltip="{{list.description}}">{{ list.name }}</span>
             </a>
           </li>
-        </ul> 
+        </ul>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -31,7 +32,7 @@
             <a [routerLink]="['/finance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <mat-icon>insert_chart_outlined</mat-icon><span>{{'sidenav.menu.finance' | translate}}</span>
             </a>
-        </mat-panel-title>
+          </mat-panel-title>
         </mat-expansion-panel-header>
       </mat-expansion-panel>
       <mat-expansion-panel>
@@ -40,7 +41,7 @@
             <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <mat-icon>settings</mat-icon><span>{{'sidenav.menu.configuration' | translate}}</span>
             </a>
-        </mat-panel-title>
+          </mat-panel-title>
         </mat-expansion-panel-header>
       </mat-expansion-panel>
     </mat-accordion>

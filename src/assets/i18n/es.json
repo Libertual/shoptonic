@@ -88,6 +88,13 @@
   "finance": {
     "title": "Finanzas",
     "filter": {
+      "dateGroups": {
+        "title": "Agrupar por...",
+        "day": "Día",
+        "week": "Semana",
+        "month": "Mes",
+        "year": "Año"
+      },
       "tags": {
         "title": "Tags",
         "placeholder": "tag..."
