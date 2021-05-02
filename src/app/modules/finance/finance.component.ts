@@ -34,6 +34,7 @@ export class FinanceComponent implements OnInit {
 
   selectedGroupDate: string = 'day';
   dateGroupsSelect: any[] = [ 'day', 'week', 'month', 'year'];
+  globalTotal = 0;
 
   public lineChartData: ChartDataSets[] = [];
   public lineChartLabels: Label[] = [];
@@ -116,7 +117,9 @@ export class FinanceComponent implements OnInit {
         });
 
         console.log('dateGroup', totalBy, this.selectedGroupDate);
+        this.globalTotal = 0;
         for( const key in totalBy[this.selectedGroupDate]) {
+          this.globalTotal += totalBy[this.selectedGroupDate][key];
           data.push(totalBy[this.selectedGroupDate][key]);
           this.lineChartLabels.push(key);
         }
@@ -126,7 +129,7 @@ export class FinanceComponent implements OnInit {
       }
     );    
   }
-  
+
   /**
    * onClick
    */

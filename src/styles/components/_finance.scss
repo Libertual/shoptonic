@@ -1,9 +1,13 @@
 .finance {
   &__filter {
-    margin: auto 1rem;
+    margin: 1rem;
 
     &-chip-list {
       width: 100%;
     }
+  }
+
+  &__total {
+    margin: 1rem;
   }
 }

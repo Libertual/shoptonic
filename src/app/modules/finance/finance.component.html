@@ -39,4 +39,6 @@
       [plugins]="lineChartPlugins" (click)="onClick($event)">
     </canvas>
   </div>
+  <div class="finance__total">Total: {{ globalTotal |
+    currency:'EUR':'symbol':'1.2-2':'es'}}</div>
 </div>
