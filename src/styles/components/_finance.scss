@@ -10,4 +10,13 @@
   &__total {
     margin: 1rem;
   }
+
+  &__table {
+    margin: auto;
+    width: 95%;
+  & table {
+    width: 100%;
+  }
+  }
+
 }

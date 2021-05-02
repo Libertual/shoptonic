@@ -4,6 +4,8 @@ import { FormControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAccordion } from '@angular/material/expansion';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { Observable } from 'rxjs';
@@ -26,11 +28,15 @@ export class FinanceComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  displayedColumns: string[] = ['date', 'name', 'total'];
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
+  
+  tableDataSource: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   selectedGroupDate: string = 'day';
   dateGroupsSelect: any[] = [ 'day', 'week', 'month', 'year'];
@@ -91,9 +97,9 @@ export class FinanceComponent implements OnInit {
    * groupData
    */
   public groupData() {
-    console.log('Group: ', this.selectedGroupDate);
     this.financeService.filteredData.subscribe(
       res => { 
+        this.setTableDataSource(res);
         this.lineChartLabels = [];
         this.lineChartData = [];
         const data = [];
@@ -116,7 +122,6 @@ export class FinanceComponent implements OnInit {
           }
         });
 
-        console.log('dateGroup', totalBy, this.selectedGroupDate);
         this.globalTotal = 0;
         for( const key in totalBy[this.selectedGroupDate]) {
           this.globalTotal += totalBy[this.selectedGroupDate][key];
@@ -130,6 +135,18 @@ export class FinanceComponent implements OnInit {
     );    
   }
 
+  public setTableDataSource(data) {
+    const datasource = data.map( item => {
+      return {
+        date: item.createdAt,
+        name: item.name,
+        total: item.totals.total
+        
+      }
+    });
+    this.tableDataSource = new MatTableDataSource<any>(datasource);
+    this.tableDataSource.paginator = this.paginator;
+  }
   /**
    * onClick
    */

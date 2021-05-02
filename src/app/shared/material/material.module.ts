@@ -11,6 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -38,7 +41,10 @@ const materialModules = [
   DragDropModule,
   MatSnackBarModule,
   MatChipsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTableModule,
+  MatTabsModule,
+  MatPaginatorModule
 ];
 
 @NgModule({
