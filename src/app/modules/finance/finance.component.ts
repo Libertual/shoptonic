@@ -3,6 +3,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatAccordion } from '@angular/material/expansion';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { Observable } from 'rxjs';
@@ -25,10 +28,19 @@ export class FinanceComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  displayedColumns: string[] = ['date', 'name', 'total'];
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+  
+  tableDataSource: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  selectedGroupDate: string = 'day';
+  dateGroupsSelect: any[] = [ 'day', 'week', 'month', 'year'];
+  globalTotal = 0;
 
   public lineChartData: ChartDataSets[] = [];
   public lineChartLabels: Label[] = [];
@@ -78,32 +90,63 @@ export class FinanceComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.groupData();
+  }
+
+  /**
+   * groupData
+   */
+  public groupData() {
     this.financeService.filteredData.subscribe(
       res => { 
+        this.setTableDataSource(res);
         this.lineChartLabels = [];
         this.lineChartData = [];
         const data = [];
         // Group by Date
-        const totalByDate = {};
-        const groupedByDate = {};
+        const totalBy = {};
         res.map( item =>{
           const date: Date = new Date(item.createdAt);
-          const day = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
-          groupedByDate[day] = item;
-          if (totalByDate[day]) totalByDate[day] += item.totals.total
-          else totalByDate[day] = item.totals.total;
+          const weekDate: Date = this.getDateOfWeek(this.getWeek(date), date);
+          let dateGroup;
+          if(this.selectedGroupDate === 'day') dateGroup = date.getFullYear() + '-' + (date.getMonth() + 1)   + '-' + date.getDate()
+            else if (this.selectedGroupDate === 'month') dateGroup = date.getFullYear() + '-' + (date.getMonth() + 1)
+            else if (this.selectedGroupDate === 'year') dateGroup = date.getFullYear()
+            else if (this.selectedGroupDate === 'week') dateGroup = weekDate.getFullYear() + '-' + (weekDate.getMonth() + 1)   + '-' + weekDate.getDate();
+
+          //groupedByDay[day] = item;
+          for (let group of this.dateGroupsSelect) {
+            if(!totalBy[group]) totalBy[group] = {};
+            if (totalBy[group][dateGroup]) totalBy[group][dateGroup] += item.totals.total
+            else totalBy[group][dateGroup] = item.totals.total;
+          }
         });
-        for( const key in totalByDate) {
-          data.push(totalByDate[key]);
+
+        this.globalTotal = 0;
+        for( const key in totalBy[this.selectedGroupDate]) {
+          this.globalTotal += totalBy[this.selectedGroupDate][key];
+          data.push(totalBy[this.selectedGroupDate][key]);
           this.lineChartLabels.push(key);
         }
-        if (data.length > 0 ) this.lineChartData.push({ data },)
+        if (data.length > 0 ) this.lineChartData.push({ data })
         this.allTags = this.financeService.getListTags();
         this.filterTags();
       }
-    );
+    );    
   }
 
+  public setTableDataSource(data) {
+    const datasource = data.map( item => {
+      return {
+        date: item.createdAt,
+        name: item.name,
+        total: item.totals.total
+        
+      }
+    });
+    this.tableDataSource = new MatTableDataSource<any>(datasource);
+    this.tableDataSource.paginator = this.paginator;
+  }
   /**
    * onClick
    */
@@ -157,11 +200,37 @@ export class FinanceComponent implements OnInit {
     this.financeService.filterData(this.tags);
   }
 
+  /**
+   * Filtro
+   * @param value 
+   * @returns 
+   */
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
    
     return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0 && !this.tags.includes(tag));
   }
 
+  /**
+   * Get Week
+   * @param date 
+   * @returns 
+   */
+  private getWeek(date: Date) {
+    const onejan: Date = new Date(date.getFullYear(),0,1);
+    return Math.ceil((((date.getTime() - onejan.getTime()) / 86400000) + onejan.getDay()+1)/7);
+  }
+  
+  /**
+   * Get date of week
+   * @param week 
+   * @param date 
+   * @returns 
+   */
+  private getDateOfWeek(week: number, date: Date) {
+    var d = (1 + (week - 1) * 7); // 1st of January + 7 days for each week
+
+    return new Date(date.getFullYear(), 0, d);
+}
 }
 
