@@ -18,16 +18,18 @@ export class List {
   tags?: string[];
   createdAt?: string;
 
-  constructor(_id?: string, name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean, tags?: string[]) {
-    _id ? this._id = _id : null;
-    name ? this.name = name : null;
-    description ? this.description = description : null;
-    listItems ? this.listItems = listItems : null;
-    cartItems ? this.cartItems = cartItems : null;
-    owner ? this.owner = owner : null;
-    sharedUsers ? this.sharedUsers = sharedUsers : null;
-    images ? this.images = images : null;
-    totals ? this.totals = totals : null;
-    income ? this.income = income : null;
+  //constructor(_id?: string, name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean, tags?: string[]) {
+  constructor(list: List) {
+    list._id ? this._id = list._id : null;
+    list.name ? this.name = list.name : null;
+    list.description ? this.description = list.description : null;
+    list.listItems ? this.listItems = list.listItems : null;
+    list.cartItems ? this.cartItems = list.cartItems : null;
+    list.owner ? this.owner = list.owner : null;
+    list.sharedUsers ? this.sharedUsers = list.sharedUsers : null;
+    list.images ? this.images = list.images : null;
+    list.totals ? this.totals = list.totals : null;
+    list.income ? this.income = list.income : null;
+    list.tags ? this.tags = list.tags : null;
   }
 }
