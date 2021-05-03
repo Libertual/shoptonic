@@ -30,7 +30,7 @@ export class ListEditComponent implements OnInit {
     public dialogRef: MatDialogRef<ListEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { 
-    this.list = data.list || new List();
+    this.list = data.list || {};
     this.isAddMode = data.isAddMode;
   }
 

@@ -1,3 +1,9 @@
+#### 1.8.2 (2021-05-03)
+
+##### Bug Fixes
+
+*  dates on saved lists (f1c9ce2d)
+
 #### 1.8.1 (2021-05-02)
 
 ##### New Features
