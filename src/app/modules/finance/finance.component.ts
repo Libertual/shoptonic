@@ -1,4 +1,6 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -12,6 +14,8 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FinanceService } from './finance.service';
 
+
+registerLocaleData(es, 'es');
 @Component({
   selector: 'app-finance',
   templateUrl: './finance.component.html',
@@ -107,7 +111,8 @@ export class FinanceComponent implements OnInit {
         const totalBy = {};
         res.map( item =>{
           const date: Date = new Date(item.createdAt);
-          const weekDate: Date = this.getDateOfWeek(this.getWeek(date), date);
+          // const weekDate: Date = this.getDateOfWeek(this.getWeek(date), date);
+          const weekDate: Date = this.getWeekDate(new Date(item.createdAt));
           let dateGroup;
           if(this.selectedGroupDate === 'day') dateGroup = date.getFullYear() + '-' + (date.getMonth() + 1)   + '-' + date.getDate()
             else if (this.selectedGroupDate === 'month') dateGroup = date.getFullYear() + '-' + (date.getMonth() + 1)
@@ -147,6 +152,7 @@ export class FinanceComponent implements OnInit {
     this.tableDataSource = new MatTableDataSource<any>(datasource);
     this.tableDataSource.paginator = this.paginator;
   }
+
   /**
    * onClick
    */
@@ -207,30 +213,18 @@ export class FinanceComponent implements OnInit {
    */
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-   
+  
     return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0 && !this.tags.includes(tag));
   }
 
   /**
-   * Get Week
+   * Get date of the week
    * @param date 
    * @returns 
    */
-  private getWeek(date: Date) {
-    const onejan: Date = new Date(date.getFullYear(),0,1);
-    return Math.ceil((((date.getTime() - onejan.getTime()) / 86400000) + onejan.getDay()+1)/7);
+  public getWeekDate(date)
+  {
+    var lastday = date.getDate() - date.getDay() + 1;
+    return new Date(date.setDate(lastday)); 
   }
-  
-  /**
-   * Get date of week
-   * @param week 
-   * @param date 
-   * @returns 
-   */
-  private getDateOfWeek(week: number, date: Date) {
-    var d = (1 + (week - 1) * 7); // 1st of January + 7 days for each week
-
-    return new Date(date.getFullYear(), 0, d);
 }
-}
-

@@ -17,10 +17,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const materialModules = [
@@ -44,7 +46,9 @@ const materialModules = [
   MatSelectModule,
   MatTableModule,
   MatTabsModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 @NgModule({
