@@ -35,7 +35,7 @@
       <div id="listItems" cdkDropList [cdkDropListData]="list.listItems" cdkDropListSortingDisabled
         cdkDropListLockAxis="y" class="list-item" (cdkDropListDropped)="drop($event)">
         <div class="list-item__box" *ngFor="let listItem of list.listItems" cdkDrag>
-          <div class="list-item__actions--handle" cdkDragHandle>
+          <div class="list-item__actions--handle" cdkDragHandle (click)="moveListItemToCart(listItem)">
             <mat-icon>swap_vert</mat-icon>
           </div>
           <span class="list-item__title">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price |
@@ -70,7 +70,7 @@
       <div id="cartItems" cdkDropList cdkDropListSortingDisabled cdkDropListLockAxis="y"
         [cdkDropListData]="list.cartItems" class="list-item" (cdkDropListDropped)="drop($event)">
         <div class="list-item__box" *ngFor="let cartItem of list.cartItems" cdkDrag>
-          <div class="list-item__actions--handle" cdkDragHandle>
+          <div class="list-item__actions--handle" cdkDragHandle (click)="moveCartItemToList(cartItem)">
             <mat-icon>swap_vert</mat-icon>
           </div>
           <span class="list-item__title">{{cartItem.name}}</span><span>{{cartItem.quantity}}x{{cartItem.price |
