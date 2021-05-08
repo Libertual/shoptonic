@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1620081861195,
+  "timestamp": 1620470000788,
   "index": "/shoptonic/index.html",
   "assetGroups": [
     {
@@ -11,19 +11,19 @@
         "ignoreVary": true
       },
       "urls": [
-        "/shoptonic/5-es2015.03ef02aa6b73845c7462.js",
-        "/shoptonic/5-es5.03ef02aa6b73845c7462.js",
-        "/shoptonic/6-es2015.c84dcb97ef53ce395f3c.js",
-        "/shoptonic/6-es5.c84dcb97ef53ce395f3c.js",
+        "/shoptonic/5-es2015.1dc10dff2c9db03f7b33.js",
+        "/shoptonic/5-es5.1dc10dff2c9db03f7b33.js",
+        "/shoptonic/6-es2015.9a7219061354160d3c18.js",
+        "/shoptonic/6-es5.9a7219061354160d3c18.js",
         "/shoptonic/favicon.ico",
         "/shoptonic/index.html",
-        "/shoptonic/main-es2015.2abe0a628009cb36ab64.js",
-        "/shoptonic/main-es5.2abe0a628009cb36ab64.js",
+        "/shoptonic/main-es2015.53989fe4685ac8bfdec9.js",
+        "/shoptonic/main-es5.53989fe4685ac8bfdec9.js",
         "/shoptonic/manifest.webmanifest",
         "/shoptonic/polyfills-es2015.c131ee7c37c2ac42bd19.js",
         "/shoptonic/polyfills-es5.2280d96c4806aba5f38e.js",
-        "/shoptonic/runtime-es2015.21e0b846f9438d854a1c.js",
-        "/shoptonic/runtime-es5.21e0b846f9438d854a1c.js",
+        "/shoptonic/runtime-es2015.70b8b9497b07183629e1.js",
+        "/shoptonic/runtime-es5.70b8b9497b07183629e1.js",
         "/shoptonic/styles.2791a1a38638c167b159.css"
       ],
       "patterns": []
@@ -54,10 +54,10 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/shoptonic/5-es2015.03ef02aa6b73845c7462.js": "825ccafd49608275272799340aca19d4e4a9d64b",
-    "/shoptonic/5-es5.03ef02aa6b73845c7462.js": "2ddf87b3195a4525a6a1a7bfc8103b352ab3abe2",
-    "/shoptonic/6-es2015.c84dcb97ef53ce395f3c.js": "8b3c390bb872c383a4a2092d47d01742288fa65e",
-    "/shoptonic/6-es5.c84dcb97ef53ce395f3c.js": "6e937c13b26cd9bd453b7ed8b150bd47e98dec1f",
+    "/shoptonic/5-es2015.1dc10dff2c9db03f7b33.js": "508eee43b648d4061cf989a52e156e1a5c3099b0",
+    "/shoptonic/5-es5.1dc10dff2c9db03f7b33.js": "50f9fa9cd335d27ecffebd5977a1db2bfa865bf3",
+    "/shoptonic/6-es2015.9a7219061354160d3c18.js": "cf277c14d501a7458bf64fe95eed8d7981b7e40d",
+    "/shoptonic/6-es5.9a7219061354160d3c18.js": "b9b7daf8f51b36e27222ad90eea1d465b02bb887",
     "/shoptonic/assets/i18n/en.json": "94c61aaff4fd44abdc29587549d1b7b4bd8efa01",
     "/shoptonic/assets/i18n/es.json": "011b3b0fb10b2e0d4796d66179ff2f70129a1e73",
     "/shoptonic/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
@@ -71,14 +71,14 @@
     "/shoptonic/assets/img/flags/flag-en.svg": "a3f2822a060c33f2a22721d67e8f451f4866e38e",
     "/shoptonic/assets/img/flags/flag-es.svg": "116f043014ebad1c2113c0cedd84a70b0f09aa7b",
     "/shoptonic/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/shoptonic/index.html": "7da25fa749d2f203b0a3d6335b2c5075b899583c",
-    "/shoptonic/main-es2015.2abe0a628009cb36ab64.js": "f35041fd260ad537232e157ffb2099799f1e5786",
-    "/shoptonic/main-es5.2abe0a628009cb36ab64.js": "98980083a52e0ab907c7b5256ac7d2ba27ba3dd8",
+    "/shoptonic/index.html": "5aabf5d48462fd5bb5cbaa72f78795fa1b774539",
+    "/shoptonic/main-es2015.53989fe4685ac8bfdec9.js": "f4a38e79c6fb62b30f12d236b90bd6330702b3b8",
+    "/shoptonic/main-es5.53989fe4685ac8bfdec9.js": "5f565e0d606258c9b777eaa691929a594db87b70",
     "/shoptonic/manifest.webmanifest": "ca6756037833d93ee601fb20e9883a242937ec12",
     "/shoptonic/polyfills-es2015.c131ee7c37c2ac42bd19.js": "65c537467564ee0ba776b629f71ed3413413a7cb",
     "/shoptonic/polyfills-es5.2280d96c4806aba5f38e.js": "f1fb001939e2a054d62f941e8281f6051a71bf04",
-    "/shoptonic/runtime-es2015.21e0b846f9438d854a1c.js": "28c61c7965f3b7b19c6660f5443fd645c92894fd",
-    "/shoptonic/runtime-es5.21e0b846f9438d854a1c.js": "b618d188c8d07083ade774fdea15b9506cfc357d",
+    "/shoptonic/runtime-es2015.70b8b9497b07183629e1.js": "6ee0e6329ae916fce33db3c5806553297f18dd4f",
+    "/shoptonic/runtime-es5.70b8b9497b07183629e1.js": "afb0660ff1e37d9334b00a03a65e574b4e9bda92",
     "/shoptonic/styles.2791a1a38638c167b159.css": "ed550bbf02f26143eed1ccbf6dd9e1eea41f530e"
   },
   "navigationUrls": [
