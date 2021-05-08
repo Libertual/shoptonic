@@ -17,7 +17,7 @@ import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-registerLocaleData(es);
+registerLocaleData(es, 'es');
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ registerLocaleData(es);
     })
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'es-*' },
+    { provide: LOCALE_ID, useValue: 'es' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
