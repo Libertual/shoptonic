@@ -1,5 +1,5 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { registerLocaleData } from '@angular/common';
+import { DecimalPipe, registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -81,7 +81,8 @@ export class FinanceComponent implements OnInit {
   public lineChartPlugins = [];
   
   constructor(
-    private financeService: FinanceService
+    private financeService: FinanceService,
+    private _decimalPipe: DecimalPipe
   ) {
     this.financeService.getStats();
     this.filterTags();
@@ -130,7 +131,9 @@ export class FinanceComponent implements OnInit {
         this.globalTotal = 0;
         for( const key in totalBy[this.selectedGroupDate]) {
           this.globalTotal += totalBy[this.selectedGroupDate][key];
-          data.push(totalBy[this.selectedGroupDate][key]);
+          let total: number = totalBy[this.selectedGroupDate][key];
+          total = Math.round(total * 100) / 100;
+          data.push(total);
           this.lineChartLabels.push(key);
         }
         if (data.length > 0 ) this.lineChartData.push({ data })
