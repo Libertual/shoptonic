@@ -4,15 +4,26 @@ import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { List } from '../list/list.model';
 
+/**
+ * Finance service
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class FinanceService {
+  /** All statistics data. Subject */
   public dataSubject: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  /** Filtered statistics data. Subject */
   public filteredDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  /** All data. Obserbable */
   public allData: Observable<any>;
+  /** Filtered statistics data. Observable */
   public filteredData: Observable<List[]>;
 
+  /**
+   * Constructor
+   * @param http 
+   */
   constructor(
     private http: HttpClient,
   ) { 

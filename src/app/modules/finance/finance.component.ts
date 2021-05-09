@@ -23,23 +23,34 @@ registerLocaleData(es, 'es');
   ]
 })
 export class FinanceComponent implements OnInit {
-
-  visible = true;
+  /** True if a tag can be selected */
   selectable = true;
+  /** True if can remove a tag */
   removable = true;
+  /** separators */
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  /** Tag form control */
   tagCtrl = new FormControl();
+  /** Filtered tags array */
   filteredTags: Observable<string[]>;
+  /** Tags */
   tags: string[] = [];
-  allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  /** Al tags */
+  allTags: string[] = [];
+  /** Column names array  */
   displayedColumns: string[] = ['date', 'name', 'total'];
 
+  /** Tags input control  */
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
+  /** Autocomplete component */
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
+  /** Material accordion component */
   @ViewChild(MatAccordion) accordion: MatAccordion;
   
+  /** Table data Source */
   tableDataSource: MatTableDataSource<any>;
+  /** Material paginator */
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   selectedGroupDate: string = 'day';
@@ -80,6 +91,11 @@ export class FinanceComponent implements OnInit {
   public lineChartType = 'line';
   public lineChartPlugins = [];
   
+  /**
+   * Constructor
+   * @param financeService 
+   * @param _decimalPipe 
+   */
   constructor(
     private financeService: FinanceService,
     private _decimalPipe: DecimalPipe
@@ -88,12 +104,18 @@ export class FinanceComponent implements OnInit {
     this.filterTags();
    }
 
+   /**
+    * Filter list tags
+    */
    private filterTags() {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(''),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.filter(tag => !this.tags.includes(tag))));
    }
 
+  /**
+   * On init
+   */
   ngOnInit(): void {
     this.groupData();
   }
@@ -142,7 +164,10 @@ export class FinanceComponent implements OnInit {
       }
     );    
   }
-
+  /**
+   * Set table data source
+   * @param data 
+   */
   public setTableDataSource(data) {
     const datasource = data.map( item => {
       return {

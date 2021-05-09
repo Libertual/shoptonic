@@ -5,14 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "start:dev": "ng serve --host 0.0.0.0 --ssl --ssl-key localhost.key  --ssl-cert localhost.crt",
-    "build": "ng build",
+    "build": "npx compodoc && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href=/shoptonic/",
+    "deploy": "npx compodoc && ng build --prod --base-href=/shoptonic/",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor",
-    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch"
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch",
+    "docs": "npx compodoc",
+    "docs:dev": "npx compodoc -s --watch"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,7 @@
     "@angular-devkit/build-angular": "^0.1102.2",
     "@angular/cli": "~11.2.2",
     "@angular/compiler-cli": "~11.2.3",
+    "@compodoc/compodoc": "^1.1.11",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

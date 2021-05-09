@@ -1,0 +1,917 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular -&gt; Shoptonic</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular -&gt; Shoptonic</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ListHomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/list/list-home/list-home.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-list-home</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./list-home.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#apiUrl">apiUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#user">user</a>
+                            </li>
+                            <li>
+                                <a href="#userLists">userLists</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addList">addList</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onDelete">onDelete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onEdit">onEdit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onShare">onShare</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog, listService: <a href="../injectables/ListService.html">ListService</a>, accountService: <a href="../injectables/AccountService.html">AccountService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>listService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ListService.html" target="_self" >ListService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>accountService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AccountService.html" target="_self" >AccountService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            addList
+                        </b>
+                        <a href="#addList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDelete"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            onDelete
+                        </b>
+                        <a href="#onDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onDelete(listId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEdit"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            onEdit
+                        </b>
+                        <a href="#onEdit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onEdit(list: <a href="../classes/List.html">List</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>list</td>
+                                    <td>
+                                                <code><a href="../classes/List.html" target="_self" >List</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onShare"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            onShare
+                        </b>
+                        <a href="#onShare"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onShare(listId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="apiUrl"></a>
+                        <span class="name">
+                            <b>
+                            apiUrl</b>
+                            <a href="#apiUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userLists"></a>
+                        <span class="name">
+                            <b>
+                            userLists</b>
+                            <a href="#userLists"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/list/list-home/list-home.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { AccountService } from &#x27;@app/core/account/account.service&#x27;;
+import { User } from &#x27;@app/core/account/user.model&#x27;;
+import { ConfirmDialogComponent } from &#x27;@app/shared/components/confirm-dialog/confirm-dialog.component&#x27;;
+import { List } from &#x27;../list.model&#x27;;
+import { ListService } from &#x27;../list.service&#x27;;
+import { ShareComponent } from &#x27;../share/share.component&#x27;;
+import { ListEditComponent } from &#x27;./edit/list-edit.component&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;
+
+@Component({
+  selector: &#x27;app-list-home&#x27;,
+  templateUrl: &#x27;./list-home.component.html&#x27;
+})
+export class ListHomeComponent implements OnInit {
+  user: User;
+  userLists: any;
+  apiUrl: string; 
+
+  constructor(
+    public dialog: MatDialog,
+    private listService: ListService,
+    private accountService: AccountService,
+  ) { 
+    this.userLists &#x3D; this.listService.userListsSubject;
+    this.user &#x3D; this.accountService.sessionValue.user;
+    this.apiUrl &#x3D; environment.apiUrl;
+  } 
+
+  ngOnInit(): void {
+    this.listService.getUserLists();
+  }
+
+  public onEdit(list: List) {
+    const dialogRef &#x3D; this.dialog.open(ListEditComponent, {data: {list, isAddMode: false}});
+
+    dialogRef.afterClosed().subscribe(list &#x3D;&gt; {
+      this.listService.getUserLists();
+    });
+  }
+
+  public onDelete(listId: string) {
+    const message &#x3D; &#x27;Deseas borrar la lista&#x27;;
+    const title &#x3D; &#x27;Borrar lista&#x27;;
+    const dialogRef &#x3D; this.dialog.open(ConfirmDialogComponent, {data: {message, title}});
+
+    dialogRef.afterClosed().subscribe(isConfirmed &#x3D;&gt; {
+      if (isConfirmed) {
+        this.listService.deleteList(listId).subscribe(res &#x3D;&gt; {
+          this.listService.getUserLists();
+        });
+      } else {
+        console.info(&#x27;closed without confirm&#x27;);
+      }
+    })
+  }
+
+  public addList() {
+    const dialogRef &#x3D; this.dialog.open(ListEditComponent, {data: {isAddMode: true}});
+
+    dialogRef.afterClosed().subscribe(list &#x3D;&gt; {
+      console.info(&#x27;The list edit dialog was closed&#x27;, list);
+      this.listService.getUserLists();
+    });
+  }
+
+  public onShare(listId: string) {
+    const dialogRef &#x3D; this.dialog.open(ShareComponent, {data: {listId}});
+
+    dialogRef.afterClosed().subscribe(res &#x3D;&gt; {
+      console.info(&#x27;The share dialog was closed&#x27;, res);
+      this.listService.getUserLists();
+    });
+    
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;list-home&quot;&gt;
+  &lt;mat-card class&#x3D;&quot;list-home__card&quot; *ngFor&#x3D;&quot;let list of userLists | async&quot;&gt;
+    &lt;div&gt;
+      &lt;div class&#x3D;&quot;list-home__card-header&quot;&gt;
+          &lt;div class&#x3D;&quot;list-home__card-header-title&quot;&gt;
+            &lt;a [routerLink]&#x3D;&quot;[&#x27;/list/&#x27; + list._id]&quot; routerLinkActive&#x3D;&quot;active&quot; [routerLinkActiveOptions]&#x3D;&quot;{exact: true}&quot;&gt;
+              &lt;mat-card-title&gt;
+                {{ list.name }}
+                &lt;mat-icon *ngIf&#x3D;&quot;list.income&quot;&gt;file_download&lt;/mat-icon&gt;
+                &lt;mat-icon *ngIf&#x3D;&quot;!list.income&quot;&gt;file_upload&lt;/mat-icon&gt;
+              &lt;/mat-card-title&gt;
+              &lt;mat-card-subtitle&gt;{{ list.description }}&lt;/mat-card-subtitle&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;toolbar__right&quot;&gt;
+            &lt;span&gt;
+              {{(list.cartItems? list.cartItems.length: 0)}}/{{ ( (list.listItems? list.listItems.length: 0) +
+              (list.cartItems? list.cartItems.length: 0))}}
+            &lt;/span&gt;
+            &lt;button mat-icon-button [matMenuTriggerFor]&#x3D;&quot;actions&quot; class&#x3D;&quot;toolbar__sidenav-button&quot;&gt;
+              &lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;mat-menu #actions&#x3D;&quot;matMenu&quot;&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;onEdit(list)&quot;&gt;
+                &lt;mat-icon&gt;edit&lt;/mat-icon&gt;&lt;span&gt;{{&#x27;global.actions.edit&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;onDelete(list._id)&quot;&gt;
+                &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;global.actions.delete&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;onShare(list._id)&quot;&gt;
+                &lt;mat-icon&gt;person_add&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;global.actions.share&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/mat-menu&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;mat-card-content&gt;
+      &lt;div class&#x3D;&quot;list-home__avatar list-home__avatar--owner&quot;&gt;
+        &lt;img *ngIf&#x3D;&quot;!list.owner.avatar&quot; class&#x3D;&quot;list-home__avatar-img list-home__avatar-img--owner&quot; src&#x3D;&quot;{{ apiUrl }}/images/default-user.jpg&quot;&gt;
+        &lt;img *ngIf&#x3D;&quot;list.owner.avatar&quot; class&#x3D;&quot;list-home__avatar-img list-home__avatar-img--owner&quot; src&#x3D;&quot;{{ apiUrl }}/images/{{ list.owner.avatar.filename }}.{{ list.owner.avatar.fileExt }}&quot;&gt;
+        &lt;span&gt;{{list.owner.username}}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div *ngFor&#x3D;&quot;let user of list.sharedUsers&quot; class&#x3D;&quot;list-home__avatar list-home__avatar--shared-user&quot;&gt;
+        &lt;img *ngIf&#x3D;&quot;!user.avatar&quot; class&#x3D;&quot;list-home__avatar-img list-home__avatar-img--shared-user&quot; src&#x3D;&quot;{{ apiUrl }}/images/default-user.jpg&quot;&gt;
+        &lt;img *ngIf&#x3D;&quot;user.avatar&quot; class&#x3D;&quot;list-home__avatar-img list-home__avatar-img--shared-user&quot; src&#x3D;&quot;{{ apiUrl }}/images/{{ user.avatar.filename }}.{{ user.avatar.fileExt }}&quot;&gt;
+        &lt;span&gt;{{user.username}}&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/mat-card-content&gt;
+  &lt;/mat-card&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;list-home__add-button&quot;&gt;
+  &lt;button mat-fab color&#x3D;&quot;primary&quot; aria-label&#x3D;&quot;Add list&quot; (click)&#x3D;&quot;addList()&quot; class&#x3D;&quot;mat-elevation-z6&quot;&gt;
+    &lt;mat-icon&gt;add&lt;/mat-icon&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="list-home">  <mat-card class="list-home__card" *ngFor="let list of userLists | async">    <div>      <div class="list-home__card-header">          <div class="list-home__card-header-title">            <a [routerLink]="[\'/list/\' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">              <mat-card-title>                {{ list.name }}                <mat-icon *ngIf="list.income">file_download</mat-icon>                <mat-icon *ngIf="!list.income">file_upload</mat-icon>              </mat-card-title>              <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>            </a>          </div>          <div class="toolbar__right">            <span>              {{(list.cartItems? list.cartItems.length: 0)}}/{{ ( (list.listItems? list.listItems.length: 0) +              (list.cartItems? list.cartItems.length: 0))}}            </span>            <button mat-icon-button [matMenuTriggerFor]="actions" class="toolbar__sidenav-button">              <mat-icon>more_vert</mat-icon>            </button>            <mat-menu #actions="matMenu">              <button mat-menu-item (click)="onEdit(list)">                <mat-icon>edit</mat-icon><span>{{\'global.actions.edit\' | translate}}</span>              </button>              <button mat-menu-item (click)="onDelete(list._id)">                <mat-icon>delete</mat-icon>                <span>{{\'global.actions.delete\' | translate}}</span>              </button>              <button mat-menu-item (click)="onShare(list._id)">                <mat-icon>person_add</mat-icon>                <span>{{\'global.actions.share\' | translate}}</span>              </button>            </mat-menu>          </div>      </div>    </div>    <mat-card-content>      <div class="list-home__avatar list-home__avatar--owner">        <img *ngIf="!list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="{{ apiUrl }}/images/default-user.jpg">        <img *ngIf="list.owner.avatar" class="list-home__avatar-img list-home__avatar-img--owner" src="{{ apiUrl }}/images/{{ list.owner.avatar.filename }}.{{ list.owner.avatar.fileExt }}">        <span>{{list.owner.username}}</span>      </div>      <div *ngFor="let user of list.sharedUsers" class="list-home__avatar list-home__avatar--shared-user">        <img *ngIf="!user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="{{ apiUrl }}/images/default-user.jpg">        <img *ngIf="user.avatar" class="list-home__avatar-img list-home__avatar-img--shared-user" src="{{ apiUrl }}/images/{{ user.avatar.filename }}.{{ user.avatar.fileExt }}">        <span>{{user.username}}</span>      </div>    </mat-card-content>  </mat-card></div><div class="list-home__add-button">  <button mat-fab color="primary" aria-label="Add list" (click)="addList()" class="mat-elevation-z6">    <mat-icon>add</mat-icon>  </button></div></div>'
+    var COMPONENTS = [{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageAttachComponent', 'selector': 'app-image-attach'},{'name': 'ItemComponent', 'selector': 'app-item'},{'name': 'LayoutComponent', 'selector': 'app-layout'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'ListEditComponent', 'selector': 'app-list-edit'},{'name': 'ListGalleryComponent', 'selector': 'app-list-gallery'},{'name': 'ListHomeComponent', 'selector': 'app-list-home'},{'name': 'ListItemDialogComponent', 'selector': 'app-list-item-dialog'},{'name': 'LoginComponent', 'selector': ''},{'name': 'NavigationBarComponent', 'selector': 'app-navigation-bar'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ScannerComponent', 'selector': 'app-scanner'},{'name': 'ScannerDialogComponent', 'selector': 'app-item-scanner-dialog'},{'name': 'ShareComponent', 'selector': 'app-share'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ListHomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ListHomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
