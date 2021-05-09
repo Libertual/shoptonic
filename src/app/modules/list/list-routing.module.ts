@@ -5,7 +5,7 @@ import { ListHomeComponent } from './list-home/list-home.component';
 const routes: Routes = [
   {
     path: '',
-    component: ListHomeComponent,
+    component: ListHomeComponent
   }
 ];
 

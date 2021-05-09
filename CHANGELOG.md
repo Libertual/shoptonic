@@ -1,3 +1,18 @@
+#### 1.8.4 (2021-05-09)
+
+##### Documentation Changes
+
+*  Compodoc documentation (601e67f5)
+
+##### New Features
+
+*  Move items on click (9b9382e6)
+
+##### Bug Fixes
+
+*  style on item edit (8ea9786e)
+*  decimal numbers on finance data (de4fe74b)
+
 #### 1.8.3 (2021-05-08)
 
 ##### Bug Fixes

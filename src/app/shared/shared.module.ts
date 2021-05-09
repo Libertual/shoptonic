@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -27,6 +27,9 @@ import { ListGalleryComponent } from './components/list-gallery/list-gallery.com
     ConfirmDialogComponent,
     ImageAttachComponent,
     ListGalleryComponent
+  ],
+  providers: [
+    DecimalPipe
   ]
 })
 export class SharedModule { }

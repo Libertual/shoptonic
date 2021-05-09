@@ -1,4 +1,10 @@
-<div mat-dialog-content>
+<div class="dialog">
+  <div class="dialog-header">
+    <h2>{{ 'items.edit.title' | translate }}</h2>
+    <button mat-icon-button [mat-dialog-close]="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <form [formGroup]="editForm">
     <div class="edit-item-container">
       <mat-form-field>
@@ -39,7 +45,7 @@
     </div>
   </form>
 </div>
-<div mat-dialog-actions>
+<div class="dialog-actions">
   <button mat-button (click)="cancel()">{{'global.actions.cancel' | translate}}</button>
   <button mat-button cdkFocusInitial (click)="save()" [disabled]="!editForm.valid">{{'global.actions.save' |
     translate}}</button>
