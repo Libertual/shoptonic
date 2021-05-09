@@ -76,6 +76,7 @@
       "moveToList": "Mover a la lista"
     },
     "edit": {
+      "title": "Editar producto",
       "name": "Nombre",
       "quantity": "Cantidad",
       "price": "Precio",

@@ -1,0 +1,2553 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular -&gt; Shoptonic</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular -&gt; Shoptonic</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/list/list.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-list</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./list.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#foundItems">foundItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#homeService">homeService</a>
+                            </li>
+                            <li>
+                                <a href="#list">list</a>
+                            </li>
+                            <li>
+                                <a href="#listForm">listForm</a>
+                            </li>
+                            <li>
+                                <a href="#listTotals">listTotals</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addItemToList">addItemToList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addListItemToList">addListItemToList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addListItemToListCart">addListItemToListCart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#clear">clear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#clearList">clearList</a>
+                            </li>
+                            <li>
+                                <a href="#drop">drop</a>
+                            </li>
+                            <li>
+                                <a href="#editDialog">editDialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#emptyList">emptyList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getFilteredItems">getFilteredItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#launchCamera">launchCamera</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveCartItemToList">moveCartItemToList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveListItemToCart">moveListItemToCart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#newItem">newItem</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#openScanner">openScanner</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#processBarcode">processBarcode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeCartItems">removeCartItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeItemFromList">removeItemFromList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeItemFromListCart">removeItemFromListCart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#saveList">saveList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#saveListConfirm">saveListConfirm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#showGallery">showGallery</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#search">search</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, homeService: <a href="../injectables/HomeService.html">HomeService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, listService: <a href="../injectables/ListService.html">ListService</a>, itemService: <a href="../injectables/ItemService.html">ItemService</a>, dialog: MatDialog, openFoodFactsService: <a href="../injectables/OpenFoodFactsService.html">OpenFoodFactsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/list/list.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>homeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HomeService.html" target="_self" >HomeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>listService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ListService.html" target="_self" >ListService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>itemService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ItemService.html" target="_self" >ItemService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>openFoodFactsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OpenFoodFactsService.html" target="_self" >OpenFoodFactsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addItemToList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            addItemToList
+                        </b>
+                        <a href="#addItemToList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addItemToList(item: <a href="../classes/ItemDTO.html">ItemDTO</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/ItemDTO.html" target="_self" >ItemDTO</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addListItemToList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            addListItemToList
+                        </b>
+                        <a href="#addListItemToList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addListItemToList(listItem: <a href="../classes/ListItem.html">ListItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="126"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:126</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+                                    <td>
+                                                <code><a href="../classes/ListItem.html" target="_self" >ListItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addListItemToListCart"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            addListItemToListCart
+                        </b>
+                        <a href="#addListItemToListCart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addListItemToListCart(listItem: <a href="../classes/ListItem.html">ListItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+                                    <td>
+                                                <code><a href="../classes/ListItem.html" target="_self" >ListItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clear"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            clear
+                        </b>
+                        <a href="#clear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clear()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:144</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            clearList
+                        </b>
+                        <a href="#clearList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="289"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:289</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Clear list items from list and from cart.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drop"></a>
+                    <span class="name">
+                        <b>
+                            drop
+                        </b>
+                        <a href="#drop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>drop(event: CdkDragDrop<ListItem[]>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="156"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:156</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>CdkDragDrop&lt;ListItem[]&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editDialog"></a>
+                    <span class="name">
+                        <b>
+                            editDialog
+                        </b>
+                        <a href="#editDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editDialog(listItem: <a href="../classes/ListItem.html">ListItem</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:78</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+                                    <td>
+                                                <code><a href="../classes/ListItem.html" target="_self" >ListItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emptyList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            emptyList
+                        </b>
+                        <a href="#emptyList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>emptyList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="235"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:235</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>emptyList</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFilteredItems"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getFilteredItems
+                        </b>
+                        <a href="#getFilteredItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getFilteredItems(searchFilter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>searchFilter</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="launchCamera"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            launchCamera
+                        </b>
+                        <a href="#launchCamera"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>launchCamera()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="257"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:257</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>launchCamera</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveCartItemToList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            moveCartItemToList
+                        </b>
+                        <a href="#moveCartItemToList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveCartItemToList(listItem: <a href="../classes/ListItem.html">ListItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:199</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Move cart item to list</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+                                    <td>
+                                                <code><a href="../classes/ListItem.html" target="_self" >ListItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>List item</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveListItemToCart"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            moveListItemToCart
+                        </b>
+                        <a href="#moveListItemToCart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveListItemToCart(listItem: <a href="../classes/ListItem.html">ListItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:190</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+                                    <td>
+                                                <code><a href="../classes/ListItem.html" target="_self" >ListItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newItem"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            newItem
+                        </b>
+                        <a href="#newItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>newItem()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openScanner"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            openScanner
+                        </b>
+                        <a href="#openScanner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openScanner()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="326"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:326</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open scanner embebed app</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="processBarcode"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                            processBarcode
+                        </b>
+                        <a href="#processBarcode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>processBarcode(barcode: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="342"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:342</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Process barcode data on list</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>barcode</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeCartItems"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            removeCartItems
+                        </b>
+                        <a href="#removeCartItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeCartItems()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="316"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:316</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove items from cart list</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeItemFromList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            removeItemFromList
+                        </b>
+                        <a href="#removeItemFromList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeItemFromList(listItem)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="148"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:148</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeItemFromListCart"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            removeItemFromListCart
+                        </b>
+                        <a href="#removeItemFromListCart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeItemFromListCart(listItem)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:152</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>listItem</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            saveList
+                        </b>
+                        <a href="#saveList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:225</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Save list
+Chage saved to true a create new list with de same name</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveListConfirm"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            saveListConfirm
+                        </b>
+                        <a href="#saveListConfirm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveListConfirm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:207</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Confirm save current list</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showGallery"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            showGallery
+                        </b>
+                        <a href="#showGallery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showGallery()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="276"
+                            class="link-to-prism">src/app/modules/list/list.component.ts:276</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Show list gallery</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/modules/list/list.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="foundItems"></a>
+                        <span class="name">
+                            <b>
+                            foundItems</b>
+                            <a href="#foundItems"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/list/list.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="homeService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                                <span class="modifier">Readonly</span>
+                            homeService</b>
+                            <a href="#homeService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/HomeService.html" target="_self" >HomeService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/list/list.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="list"></a>
+                        <span class="name">
+                            <b>
+                            list</b>
+                            <a href="#list"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/List.html" target="_self" >List</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/list/list.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listForm"></a>
+                        <span class="name">
+                            <b>
+                            listForm</b>
+                            <a href="#listForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/list/list.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listTotals"></a>
+                        <span class="name">
+                            <b>
+                            listTotals</b>
+                            <a href="#listTotals"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{ listTotal: 0, cartTotal: 0, total: 5 }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/list/list.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="search"></a>
+                        <span class="name"><b>search</b><a href="#search"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>search()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/modules/list/list.component.ts:54</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>search(val)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/modules/list/list.component.ts:51</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>val</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from &quot;@angular/cdk/drag-drop&quot;;
+import { Component, OnInit } from &quot;@angular/core&quot;;
+import { FormBuilder, FormGroup } from &quot;@angular/forms&quot;;
+import { ActivatedRoute, Router } from &quot;@angular/router&quot;;
+import { MatDialog, MatDialogRef } from &quot;@angular/material/dialog&quot;;
+import { HomeService } from &quot;@app/core/home/home.service&quot;;
+import { ItemDTO } from &quot;../item/item.dto&quot;;
+import { ItemService } from &quot;../item/item.service&quot;;
+import { ListItem } from &quot;./list-item.model&quot;;
+import { ListService } from &quot;./list.service&quot;;
+import { ListItemDialogComponent } from &quot;./list-item-dialog/list-item-dialog.component&quot;;
+import { ScannerDialogComponent } from &quot;../scanner/item-scanner-dialog/scanner-dialog.component&quot;;
+import { Item } from &quot;../item/item.model&quot;;
+import { OpenFoodFactsService } from &quot;../open-food-facts/open-food-facts.service&quot;;
+import { List } from &quot;./list.model&quot;;
+import { ImageAttachComponent } from &quot;@app/shared/components/image-attach/image-attach.component&quot;;
+import { ListGalleryComponent } from &quot;@app/shared/components/list-gallery/list-gallery.component&quot;;
+import { ConfirmDialogComponent } from &quot;@app/shared/components/confirm-dialog/confirm-dialog.component&quot;;
+import { forkJoin, Observable, of } from &quot;rxjs&quot;;
+import { catchError } from &quot;rxjs/operators&quot;;
+
+@Component({
+  selector: &quot;app-list&quot;,
+  templateUrl: &quot;./list.component.html&quot;,
+})
+export class ListComponent implements OnInit {
+  list: List;
+  listTotals: any &#x3D; { listTotal: 0, cartTotal: 0, total: 5 };
+  listForm: FormGroup;
+  foundItems &#x3D; [];
+
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    public readonly homeService: HomeService,
+    private route: ActivatedRoute,
+    private listService: ListService,
+    private itemService: ItemService,
+    public dialog: MatDialog,
+    private openFoodFactsService: OpenFoodFactsService
+  ) {
+    this.listForm &#x3D; this.formBuilder.group({
+      search: [&quot;&quot;],
+    });
+  }
+
+  set search(val) {
+    this.listForm.get(&quot;search&quot;).setValue(val);
+  }
+  get search() {
+    return this.listForm.get(&quot;search&quot;).value;
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) &#x3D;&gt; {
+      this.listService.totals.subscribe((totals) &#x3D;&gt; {
+        this.listTotals &#x3D; totals[params.id]
+          ? totals[params.id]
+          : { listTotal: 0, cartTotal: 0, total: 0 };
+      });
+      this.listService.userLists.subscribe((lists) &#x3D;&gt; {
+        this.list &#x3D;
+          lists.length &gt; 0
+            ? lists.find((list) &#x3D;&gt; list._id &#x3D;&#x3D;&#x3D; params.id)
+            : { name: &quot;---&quot; };
+        const navigation &#x3D; {
+          title: this.list.name,
+        };
+        this.homeService.navigationSubject.next(navigation);
+      });
+    });
+  }
+
+  editDialog(listItem: ListItem, type: string): void {
+    const dialogRef &#x3D; this.dialog.open(ListItemDialogComponent, {
+      data: {
+        listItem,
+        listId: this.list._id,
+        type,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) &#x3D;&gt; {
+      console.info(&quot;The dialog was closed&quot;, result);
+    });
+  }
+
+  public getFilteredItems(searchFilter: string) {
+    if (searchFilter.length &gt; 0) {
+      this.itemService.searchItemsByName(searchFilter).subscribe((data) &#x3D;&gt; {
+        this.foundItems &#x3D; data;
+      });
+    } else {
+      this.foundItems &#x3D; [];
+    }
+  }
+
+  public newItem() {
+    const item: ItemDTO &#x3D; { name: this.search };
+    this.itemService.addItem(item).subscribe((item) &#x3D;&gt; {
+      this.addItemToList(item);
+      this.search &#x3D; &quot;&quot;;
+    });
+  }
+
+  public addItemToList(item: ItemDTO): void {
+    const listItem: ListItem &#x3D; new ListItem(
+      item._id,
+      item.name,
+      1,
+      item.price,
+      item.barcode
+    );
+
+    this.listService.addItemToList(this.list._id, listItem).subscribe((res) &#x3D;&gt; {
+      this.listService.getUserLists();
+      this.foundItems &#x3D; [];
+      this.search &#x3D; &quot;&quot;;
+    });
+  }
+
+  public addListItemToList(listItem: ListItem): void {
+    this.listService.addItemToList(this.list._id, listItem).subscribe((res) &#x3D;&gt; {
+      this.listService.getUserLists();
+      this.foundItems &#x3D; [];
+      this.search &#x3D; &quot;&quot;;
+    });
+  }
+
+  public addListItemToListCart(listItem: ListItem): void {
+    this.listService
+      .addItemToListCart(this.list._id, listItem)
+      .subscribe((res) &#x3D;&gt; {
+        this.listService.getUserLists();
+        this.foundItems &#x3D; [];
+        this.search &#x3D; &quot;&quot;;
+      });
+  }
+
+  public clear() {
+    this.search &#x3D; &quot;&quot;;
+  }
+
+  public removeItemFromList(listItem) {
+    this.listService.removeItemFromList(this.list._id, listItem._id);
+  }
+
+  public removeItemFromListCart(listItem) {
+    this.listService.removeItemFromListCart(this.list._id, listItem._id);
+  }
+
+  drop(event: CdkDragDrop&lt;ListItem[]&gt;) {
+    // TODO: Tipear correctamente
+    const listItem: ListItem &#x3D;
+      event.previousContainer.data[event.previousIndex];
+    if (event.previousContainer &#x3D;&#x3D;&#x3D; event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      if (
+        event.previousContainer.id &#x3D;&#x3D;&#x3D; &quot;listItems&quot; &amp;&amp;
+        event.container.id &#x3D;&#x3D;&#x3D; &quot;cartItems&quot;
+      ) {
+        this.moveListItemToCart(listItem);
+      }
+      if (event.previousContainer.id &#x3D;&#x3D;&#x3D; &quot;cartItems&quot;) {
+        this.removeItemFromListCart(listItem);
+        if (event.container.id &#x3D;&#x3D;&#x3D; &quot;listItems&quot;) {
+          this.addListItemToList(
+            event.previousContainer.data[event.previousIndex]
+          );
+        }
+      }
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
+  public moveListItemToCart(listItem: ListItem): void {
+    this.removeItemFromList(listItem);
+    this.addListItemToListCart(listItem);
+  }
+
+  /**
+   * Move cart item to list
+   * @param listItem List item
+   */
+  public moveCartItemToList(listItem: ListItem): void {
+    this.removeItemFromListCart(listItem);
+    this.addListItemToList(listItem);
+  }
+
+  /**
+   * Confirm save current list
+   */
+  public saveListConfirm(): void {
+
+    const dialogRef: MatDialogRef&lt;ConfirmDialogComponent&gt; &#x3D; this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: &quot;lists.confirm.save&quot;,
+        message: &quot;lists.confirm.saveListMessage&quot;
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirm) &#x3D;&gt; {
+      if (confirm) this.saveList();
+    });
+  }
+
+  /**
+   * Save list
+   * Chage saved to true a create new list with de same name
+   */
+  public saveList() {
+    this.list.totals &#x3D; this.listTotals;
+    this.listService.addSavedList(this.list).subscribe( res &#x3D;&gt; {
+      this.emptyList();
+    });
+  }
+
+  /**
+   * emptyList
+  */
+  public emptyList() {
+    const obserbables: Observable&lt;any&gt;[] &#x3D; [
+      this.listService.removeListItems(this.list._id).pipe(catchError(e &#x3D;&gt; of({error: true, e}))),
+      this.listService.removeCartItems(this.list._id).pipe(catchError(e &#x3D;&gt; of({error: true, e}))),
+      this.listService.deleteAllImages(this.list._id).pipe(catchError(e &#x3D;&gt; of({error: true, e})))
+    ]  
+    forkJoin(obserbables).subscribe(
+    next &#x3D;&gt; {
+      next[0].error ? this.list.listItems &#x3D; []: null;
+      next[1].error ? this.list.cartItems &#x3D; []: null;
+      next[2].error ? this.list.images &#x3D; [] : null;
+      this.listService.getUserLists();
+    },
+    error &#x3D;&gt; {
+      console.error(&#x27;Error: &#x27;, error);
+    }
+    );
+  }
+  
+  /**
+   * launchCamera
+   */
+  public launchCamera() {
+    const dialogRef: MatDialogRef&lt;ImageAttachComponent&gt; &#x3D; this.dialog.open(
+      ImageAttachComponent,
+      { data: { listId: this.list._id } }
+    );
+
+    dialogRef.afterClosed().subscribe((capture) &#x3D;&gt; {
+      if (capture) {
+        this.list.images.push(capture);
+        this.listService
+          .addImageToList(this.list._id, capture)
+          .subscribe((res) &#x3D;&gt; {});
+      }
+    });
+  }
+
+  /**
+   * Show list gallery
+   */
+  public showGallery() {
+    const dialogRef: MatDialogRef&lt;ListGalleryComponent&gt; &#x3D; this.dialog.open(
+      ListGalleryComponent,
+      { data: { images: this.list.images } }
+    );
+    dialogRef.afterClosed().subscribe((res) &#x3D;&gt; {
+      console.info(&quot;showGallery res: &quot;, res);
+    });
+  }
+
+  /**
+   * Clear list items from list and from cart.
+   */
+  public clearList(): void {
+    const dialogRef: MatDialogRef&lt;ConfirmDialogComponent&gt; &#x3D; this.dialog.open(
+      ConfirmDialogComponent,
+      {
+        data: {
+          title: &quot;lists.confirm.delete&quot;,
+          message: &quot;lists.confirm.deleteListMessage&quot;,
+        },
+      }
+    );
+    dialogRef.afterClosed().subscribe((res) &#x3D;&gt; {
+      if (res) {
+        this.listService.removeListItems(this.list._id).subscribe((_res) &#x3D;&gt; {
+          this.list.listItems &#x3D; [];
+          this.listService.getUserLists();
+        });
+        this.listService.removeCartItems(this.list._id).subscribe((_res) &#x3D;&gt; {
+          this.list.cartItems &#x3D; [];
+          this.listService.getUserLists();
+        });
+      }
+    });
+  }
+
+  /**
+   * Remove items from cart list
+   */
+  public removeCartItems(): void {
+    this.listService.removeCartItems(this.list._id).subscribe((_res) &#x3D;&gt; {
+      this.list.cartItems &#x3D; [];
+      this.listService.getUserLists();
+    });
+  }
+
+  /**
+   * Open scanner embebed app
+   */
+  public openScanner() {
+    const item &#x3D; {};
+    const dialogRef &#x3D; this.dialog.open(ScannerDialogComponent);
+
+    dialogRef.afterClosed().subscribe((barcode) &#x3D;&gt; {
+      item
+        ? this.processBarcode(barcode)
+        : console.info(&quot;Botón cerrar pulsado&quot;);
+    });
+  }
+
+  /**
+   * Process barcode data on list
+   * @param barcode
+   * @returns 
+   */
+  private async processBarcode(barcode: string) {
+    let item: Item &#x3D; await this.itemService
+      .searchItemsByBarcode(barcode)
+      .toPromise();
+    if (item) {
+      this.addItemToList(item);
+      return;
+    } else {
+      const result &#x3D; await this.openFoodFactsService
+        .getProductByBarcode(barcode)
+        .toPromise();
+      if (result.status !&#x3D;&#x3D; 0) {
+        const productResult &#x3D; result.product;
+        let productName: string &#x3D; &quot;&quot;;
+        if (
+          productResult.generic_name_es &amp;&amp;
+          productResult.generic_name_es !&#x3D;&#x3D; &quot;&quot;
+        ) {
+          productName &#x3D; productResult.generic_name_es;
+        } else if (
+          productResult.product_name_es &amp;&amp;
+          productResult.product_name_es !&#x3D;&#x3D; &quot;&quot;
+        ) {
+          productName &#x3D; productResult.product_name_es;
+        } else if (
+          productResult.generic_name &amp;&amp;
+          productResult.generic_name !&#x3D;&#x3D; &quot;&quot;
+        ) {
+          productName &#x3D; productResult.generic_name;
+        } else if (
+          productResult.product_name &amp;&amp;
+          productResult.product_name !&#x3D;&#x3D; &quot;&quot;
+        ) {
+          productName &#x3D; productResult.product_name;
+        }
+
+        item &#x3D; new Item(productName, barcode);
+        item.openFoodFactsProduct &#x3D; productResult;
+
+        this.itemService.addItem(item).subscribe((res) &#x3D;&gt; {
+          item._id &#x3D; res._id;
+          this.addItemToList(item);
+        });
+      } else {
+        console.info(&quot;No encontrado en OpenFoodFactsService&quot;);
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;list&quot;&gt;
+  &lt;form [formGroup]&#x3D;&quot;listForm&quot; class&#x3D;&quot;list__form&quot;&gt;
+    &lt;mat-form-field class&#x3D;&quot;list__search-field&quot;&gt;
+      &lt;mat-label&gt;{{ &#x27;global.searchOrAdd&#x27; | translate}}&lt;/mat-label&gt;
+      &lt;mat-icon matPrefix&gt;search&lt;/mat-icon&gt;
+      &lt;input type&#x3D;&quot;text&quot; matInput formControlName&#x3D;&quot;search&quot; autocomplete&#x3D;&quot;off&quot;
+        (input)&#x3D;&quot;getFilteredItems($event.target.value)&quot; (keypress.enter)&#x3D;&quot;newItem()&quot; [matAutocomplete]&#x3D;&quot;auto&quot;&gt;
+      &lt;div matSuffix&gt;
+        &lt;button class&#x3D;&quot;list__search-icon-button&quot; mat-icon-button aria-label&#x3D;&quot;Code scanner&quot; *ngIf&#x3D;&quot;search&quot;&gt;
+          &lt;mat-icon&gt;edit&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;list__search-icon-button&quot; mat-icon-button aria-label&#x3D;&quot;Code scanner&quot; *ngIf&#x3D;&quot;search&quot;
+          (click)&#x3D;&quot;clear()&quot;&gt;
+          &lt;mat-icon&gt;clear&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;list__search-icon-button&quot; mat-icon-button aria-label&#x3D;&quot;Code scanner&quot; *ngIf&#x3D;&quot;search&quot;
+          (click)&#x3D;&quot;newItem()&quot;&gt;
+          &lt;mat-icon&gt;done&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;list__search-icon-button&quot; mat-icon-button aria-label&#x3D;&quot;Code scanner&quot; *ngIf&#x3D;&quot;!search&quot;
+          (click)&#x3D;&quot;$event.stopPropagation(); openScanner()&quot;&gt;
+          &lt;mat-icon&gt;qr_code_scanner&lt;/mat-icon&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;mat-autocomplete autoActiveFirstOption #auto&#x3D;&quot;matAutocomplete&quot;&gt;
+        &lt;mat-option *ngFor&#x3D;&quot;let item of foundItems&quot; [value]&#x3D;&quot;item.name&quot; (onSelectionChange)&#x3D;&quot;addItemToList(item)&quot;&gt;
+          {{item.name}}
+        &lt;/mat-option&gt;
+      &lt;/mat-autocomplete&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/form&gt;
+  &lt;!-- Lista Principal--&gt;
+  &lt;div cdkDropListGroup class&#x3D;&quot;list-content&quot;&gt;
+    &lt;div class&#x3D;&quot;list-container&quot;&gt;
+      &lt;div id&#x3D;&quot;listItems&quot; cdkDropList [cdkDropListData]&#x3D;&quot;list.listItems&quot; cdkDropListSortingDisabled
+        cdkDropListLockAxis&#x3D;&quot;y&quot; class&#x3D;&quot;list-item&quot; (cdkDropListDropped)&#x3D;&quot;drop($event)&quot;&gt;
+        &lt;div class&#x3D;&quot;list-item__box&quot; *ngFor&#x3D;&quot;let listItem of list.listItems&quot; cdkDrag&gt;
+          &lt;div class&#x3D;&quot;list-item__actions--handle&quot; cdkDragHandle (click)&#x3D;&quot;moveListItemToCart(listItem)&quot;&gt;
+            &lt;mat-icon&gt;swap_vert&lt;/mat-icon&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;list-item__title&quot;&gt;{{listItem.name}}&lt;/span&gt;&lt;span&gt;{{listItem.quantity}}x{{listItem.price |
+            currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}&#x3D;{{(listItem.quantity * listItem.price) |
+            currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}
+          &lt;/span&gt;
+          &lt;div class&#x3D;&quot;list-item__actions&quot;&gt;
+            &lt;button mat-icon-button [matMenuTriggerFor]&#x3D;&quot;itemMenu&quot; class&#x3D;&quot;toolbar__sidenav-button&quot;&gt;
+              &lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;mat-menu #itemMenu&#x3D;&quot;matMenu&quot;&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;editDialog(listItem, &#x27;list&#x27;)&quot;&gt;
+                &lt;mat-icon&gt;edit&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;global.actions.edit&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;removeItemFromList(listItem)&quot;&gt;
+                &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;global.actions.delete&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;moveListItemToCart(listItem)&quot;&gt;
+                &lt;mat-icon&gt;add_shopping_cart&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;items.actions.moveToCart&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/mat-menu&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Shopping list --&gt;
+    &lt;div class&#x3D;&quot;list-container&quot;&gt;
+      &lt;h2&gt;{{&#x27;lists.shoppingCart&#x27; | translate}}&lt;/h2&gt;
+      &lt;div id&#x3D;&quot;cartItems&quot; cdkDropList cdkDropListSortingDisabled cdkDropListLockAxis&#x3D;&quot;y&quot;
+        [cdkDropListData]&#x3D;&quot;list.cartItems&quot; class&#x3D;&quot;list-item&quot; (cdkDropListDropped)&#x3D;&quot;drop($event)&quot;&gt;
+        &lt;div class&#x3D;&quot;list-item__box&quot; *ngFor&#x3D;&quot;let cartItem of list.cartItems&quot; cdkDrag&gt;
+          &lt;div class&#x3D;&quot;list-item__actions--handle&quot; cdkDragHandle (click)&#x3D;&quot;moveCartItemToList(cartItem)&quot;&gt;
+            &lt;mat-icon&gt;swap_vert&lt;/mat-icon&gt;
+          &lt;/div&gt;
+          &lt;span class&#x3D;&quot;list-item__title&quot;&gt;{{cartItem.name}}&lt;/span&gt;&lt;span&gt;{{cartItem.quantity}}x{{cartItem.price |
+            currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}&#x3D;{{(cartItem.quantity * cartItem.price) |
+            currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}
+          &lt;/span&gt;
+          &lt;div class&#x3D;&quot;list-item__actions&quot;&gt;
+            &lt;button mat-icon-button [matMenuTriggerFor]&#x3D;&quot;itemMenu&quot; class&#x3D;&quot;toolbar__sidenav-button&quot;&gt;
+              &lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;mat-menu #itemMenu&#x3D;&quot;matMenu&quot;&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;editDialog(cartItem, &#x27;cart&#x27;)&quot;&gt;
+                &lt;mat-icon&gt;edit&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;global.actions.edit&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;removeItemFromListCart(cartItem)&quot;&gt;
+                &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;global.actions.delete&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+              &lt;button mat-menu-item (click)&#x3D;&quot;moveCartItemToList(cartItem)&quot;&gt;
+                &lt;mat-icon&gt;list&lt;/mat-icon&gt;
+                &lt;span&gt;{{&#x27;items.actions.moveToList&#x27; | translate}}&lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/mat-menu&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;list-footer&quot;&gt;
+    &lt;div class&#x3D;&quot;list-totals&quot;&gt;
+      &lt;span *ngIf&#x3D;&quot;list.listItems&quot;&gt;Lista: {{listTotals.listTotal | currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}
+        ({{listTotals.listQuantityTotal}} {{&#x27;global.products&#x27; | translate}})&lt;/span&gt;
+      &lt;span *ngIf&#x3D;&quot;list.cartItems&quot;&gt;Carrito: {{ listTotals.cartTotal | currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}
+        ({{listTotals.cartQuantityTotal}} {{&#x27;global.products&#x27; | translate}})&lt;/span&gt;
+      &lt;span&gt;Total: {{listTotals.total | currency:&#x27;EUR&#x27;:&#x27;symbol&#x27;:&#x27;1.2-2&#x27;:&#x27;es&#x27;}}
+        ({{listTotals.listQuantityTotal + listTotals.cartQuantityTotal}} {{&#x27;global.products&#x27; | translate}})&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;list-actions&quot;&gt;
+      &lt;div&gt;
+        &lt;button mat-button (click)&#x3D;&quot;clearList()&quot;&gt;{{&#x27;global.remove&#x27; | translate}}&lt;/button&gt;
+        &lt;button mat-button (click)&#x3D;&quot;saveListConfirm()&quot;&gt;{{&#x27;global.saveCart&#x27; | translate}}&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;button mat-icon-button (click)&#x3D;&quot;launchCamera()&quot;&gt;&lt;mat-icon&gt;camera&lt;/mat-icon&gt;&lt;/button&gt;
+        &lt;button mat-icon-button (click)&#x3D;&quot;showGallery()&quot;&gt;&lt;mat-icon&gt;perm_media&lt;/mat-icon&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="list">  <form [formGroup]="listForm" class="list__form">    <mat-form-field class="list__search-field">      <mat-label>{{ \'global.searchOrAdd\' | translate}}</mat-label>      <mat-icon matPrefix>search</mat-icon>      <input type="text" matInput formControlName="search" autocomplete="off"        (input)="getFilteredItems($event.target.value)" (keypress.enter)="newItem()" [matAutocomplete]="auto">      <div matSuffix>        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">          <mat-icon>edit</mat-icon>        </button>        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search"          (click)="clear()">          <mat-icon>clear</mat-icon>        </button>        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search"          (click)="newItem()">          <mat-icon>done</mat-icon>        </button>        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="!search"          (click)="$event.stopPropagation(); openScanner()">          <mat-icon>qr_code_scanner</mat-icon>        </button>      </div>      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">        <mat-option *ngFor="let item of foundItems" [value]="item.name" (onSelectionChange)="addItemToList(item)">          {{item.name}}        </mat-option>      </mat-autocomplete>    </mat-form-field>  </form>  <!-- Lista Principal-->  <div cdkDropListGroup class="list-content">    <div class="list-container">      <div id="listItems" cdkDropList [cdkDropListData]="list.listItems" cdkDropListSortingDisabled        cdkDropListLockAxis="y" class="list-item" (cdkDropListDropped)="drop($event)">        <div class="list-item__box" *ngFor="let listItem of list.listItems" cdkDrag>          <div class="list-item__actions--handle" cdkDragHandle (click)="moveListItemToCart(listItem)">            <mat-icon>swap_vert</mat-icon>          </div>          <span class="list-item__title">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price |            currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}={{(listItem.quantity * listItem.price) |            currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}          </span>          <div class="list-item__actions">            <button mat-icon-button [matMenuTriggerFor]="itemMenu" class="toolbar__sidenav-button">              <mat-icon>more_vert</mat-icon>            </button>            <mat-menu #itemMenu="matMenu">              <button mat-menu-item (click)="editDialog(listItem, \'list\')">                <mat-icon>edit</mat-icon>                <span>{{\'global.actions.edit\' | translate}}</span>              </button>              <button mat-menu-item (click)="removeItemFromList(listItem)">                <mat-icon>delete</mat-icon>                <span>{{\'global.actions.delete\' | translate}}</span>              </button>              <button mat-menu-item (click)="moveListItemToCart(listItem)">                <mat-icon>add_shopping_cart</mat-icon>                <span>{{\'items.actions.moveToCart\' | translate}}</span>              </button>            </mat-menu>          </div>        </div>      </div>    </div>    <!-- Shopping list -->    <div class="list-container">      <h2>{{\'lists.shoppingCart\' | translate}}</h2>      <div id="cartItems" cdkDropList cdkDropListSortingDisabled cdkDropListLockAxis="y"        [cdkDropListData]="list.cartItems" class="list-item" (cdkDropListDropped)="drop($event)">        <div class="list-item__box" *ngFor="let cartItem of list.cartItems" cdkDrag>          <div class="list-item__actions--handle" cdkDragHandle (click)="moveCartItemToList(cartItem)">            <mat-icon>swap_vert</mat-icon>          </div>          <span class="list-item__title">{{cartItem.name}}</span><span>{{cartItem.quantity}}x{{cartItem.price |            currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}={{(cartItem.quantity * cartItem.price) |            currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}          </span>          <div class="list-item__actions">            <button mat-icon-button [matMenuTriggerFor]="itemMenu" class="toolbar__sidenav-button">              <mat-icon>more_vert</mat-icon>            </button>            <mat-menu #itemMenu="matMenu">              <button mat-menu-item (click)="editDialog(cartItem, \'cart\')">                <mat-icon>edit</mat-icon>                <span>{{\'global.actions.edit\' | translate}}</span>              </button>              <button mat-menu-item (click)="removeItemFromListCart(cartItem)">                <mat-icon>delete</mat-icon>                <span>{{\'global.actions.delete\' | translate}}</span>              </button>              <button mat-menu-item (click)="moveCartItemToList(cartItem)">                <mat-icon>list</mat-icon>                <span>{{\'items.actions.moveToList\' | translate}}</span>              </button>            </mat-menu>          </div>        </div>      </div>    </div>  </div>  <div class="list-footer">    <div class="list-totals">      <span *ngIf="list.listItems">Lista: {{listTotals.listTotal | currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}        ({{listTotals.listQuantityTotal}} {{\'global.products\' | translate}})</span>      <span *ngIf="list.cartItems">Carrito: {{ listTotals.cartTotal | currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}        ({{listTotals.cartQuantityTotal}} {{\'global.products\' | translate}})</span>      <span>Total: {{listTotals.total | currency:\'EUR\':\'symbol\':\'1.2-2\':\'es\'}}        ({{listTotals.listQuantityTotal + listTotals.cartQuantityTotal}} {{\'global.products\' | translate}})</span>    </div>    <div class="list-actions">      <div>        <button mat-button (click)="clearList()">{{\'global.remove\' | translate}}</button>        <button mat-button (click)="saveListConfirm()">{{\'global.saveCart\' | translate}}</button>      </div>      <div>        <button mat-icon-button (click)="launchCamera()"><mat-icon>camera</mat-icon></button>        <button mat-icon-button (click)="showGallery()"><mat-icon>perm_media</mat-icon></button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageAttachComponent', 'selector': 'app-image-attach'},{'name': 'ItemComponent', 'selector': 'app-item'},{'name': 'LayoutComponent', 'selector': 'app-layout'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'ListEditComponent', 'selector': 'app-list-edit'},{'name': 'ListGalleryComponent', 'selector': 'app-list-gallery'},{'name': 'ListHomeComponent', 'selector': 'app-list-home'},{'name': 'ListItemDialogComponent', 'selector': 'app-list-item-dialog'},{'name': 'LoginComponent', 'selector': ''},{'name': 'NavigationBarComponent', 'selector': 'app-navigation-bar'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ScannerComponent', 'selector': 'app-scanner'},{'name': 'ScannerDialogComponent', 'selector': 'app-item-scanner-dialog'},{'name': 'ShareComponent', 'selector': 'app-share'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

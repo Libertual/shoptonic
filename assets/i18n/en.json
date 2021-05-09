@@ -53,7 +53,6 @@
       "description": "Description",
       "income": "Income"
     },
-
     "confirm": {
       "delete": "Delete",
       "deleteListMessage": "Do you want to delete the content of the list?",
@@ -77,6 +76,7 @@
       "moveToList": "Move to list"
     },
     "edit": {
+      "title": "Edit product",
       "name": "Name",
       "quantity": "Quantity",
       "price": "Price",
