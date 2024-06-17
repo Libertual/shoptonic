@@ -6,7 +6,7 @@
            placeholder="{{'lists.share.field.usernameOrEmail' | translate}}"
            aria-label="Number"
            matInput
-           (input)="getFilteredUsers($event.target.value)"
+           (input)="getFilteredUsers($event)"
            formControlName="filter"
            [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayUser">

@@ -14,36 +14,39 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
       <mat-form-field class="finance__filter-chip-list">
         <mat-label>{{ 'finance.filter.tags.title' | translate}}</mat-label>
-        <mat-chip-list #chipList aria-label="Tag selection">
-          <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
-            {{tag}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input placeholder="{{'finance.filter.tags.placeholder' | translate}}" #tagInput [formControl]="tagCtrl"
-            [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            (matChipInputTokenEnd)="add($event)">
-        </mat-chip-list>
+        <mat-chip-grid #chipGrid aria-label="Tag selection">
+          @for (tag of tags; track tag) {
+            <mat-chip-row (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          }
+        </mat-chip-grid>
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
           <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
             {{tag}}
           </mat-option>
         </mat-autocomplete>
+        <input placeholder="tag..." #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto"
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
       </mat-form-field>
+
     </mat-expansion-panel>
   </div>
-  <mat-tab-group>
-    <mat-tab label="{{ 'finance.tabs.graphic' | translate }}">
-      <div style="display: block;">
-        <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels"
-          [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-          [plugins]="lineChartPlugins" (click)="onClick($event)">
-        </canvas>
-      </div>
-    </mat-tab>
-    <mat-tab label="{{ 'finance.tabs.table' | translate }}">
 
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="{{ 'finance.tabs.graphic' | translate }}">
+        <canvas id="ctx"></canvas>
+  </mat-tab>
+    <mat-tab label="{{ 'finance.tabs.table' | translate }}">
       <div class="finance__total">Total: {{ globalTotal |
         currency:'EUR':'symbol':'1.2-2':'es'}}</div>
       <div class="finance__table mat-elevation-z8">

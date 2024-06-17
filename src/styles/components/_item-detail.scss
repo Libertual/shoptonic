@@ -1,0 +1,22 @@
+.item-detail {
+  //color: white;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  &-header {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  .item-detail-prices {
+    margin-bottom: 1rem;
+    &__table {
+      display: flex;
+      flex-direction: row;
+      div:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

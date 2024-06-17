@@ -12,7 +12,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title class="sidenav__menu-item">
-            <a [routerLink]="['/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close(); onHome();">
               <mat-icon>list</mat-icon><span>{{'sidenav.menu.myLists' | translate}}</span>
             </a>
           </mat-panel-title>

@@ -13,7 +13,7 @@ const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'list'
       },
-      { 
+      {
         path: 'scanner',
         loadChildren: () => import('@app/modules/scanner/scanner.module').then(m => m.ScannerModule)
       },

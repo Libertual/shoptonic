@@ -1,4 +1,4 @@
-<div class="dialog">
+<div class="dialog list-edit">
   <div class="dialog-header">
     <h2 *ngIf="isAddMode">{{ 'lists.add' | translate }}</h2>
     <h2 *ngIf="!isAddMode">{{ 'lists.edit.button' | translate }}</h2>
@@ -6,48 +6,66 @@
       <mat-icon>close</mat-icon>
     </button>
   </div>
-  <div mat-dialog-content class="dialog-content">
+  <div class="list-edit-content">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div>
+      <div class="list-edit-form">
         <mat-form-field>
-              <mat-label for="name">{{'lists.edit.name' | translate }}</mat-label>
-              <input matInput type="text" formControlName="name" />
-              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                  <div *ngIf="f.name.errors.required">Name is required</div>
-              </div>
-          </mat-form-field>
-          <mat-form-field>
-              <mat-label for="description">{{ 'lists.edit.description' | translate }}</mat-label>
-              <input matInput type="text" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
-              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-              </div>
-          </mat-form-field>
-          <mat-form-field class="example-chip-list">
-            <mat-label>Tags</mat-label>
-            <mat-chip-list #chipList aria-label="tag selection" formControlName="tags">
-              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                       [removable]="removable" (removed)="remove(tag)">
-                {{ tag }}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input placeholder="nuevo tag..."
-                     [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-          </mat-form-field>
+          <mat-label for="name">{{'lists.edit.name' | translate }}</mat-label>
+          <input matInput type="text" formControlName="name" />
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+          </div>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="description">{{ 'lists.edit.description' | translate }}</mat-label>
+          <input matInput type="text" formControlName="description"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          </div>
+        </mat-form-field>
+        <mat-form-field class="example-chip-list">
+          <mat-label>Tags</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Tag selection">
+            @for (tag of tags; track tag) {
+            <mat-chip-row (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+            }
+          </mat-chip-grid>
+
+          <input placeholder="nuevo tag..." [matChipInputFor]="chipGrid"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+
+        </mat-form-field>
+        <div class="margin-bottom--m">
+          <mat-slide-toggle formControlName="income" color="primary" [checked]="incomeChecked">{{'lists.edit.income' |
+            translate}}</mat-slide-toggle>
         </div>
-      <div>
-        <mat-slide-toggle formControlName="income" color="primary" checked>{{'lists.edit.income' | translate}}</mat-slide-toggle>
+      <div class="margin-bottom--m">
+        <button type="button" mat-raised-button (click)="file.click()" class="margin-bottom--m">{{'lists.card' | translate}}</button>
+        <input hidden formControlName="file" id="file" #file type="file" (change)="onFileSelected($event)">
+        <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
+          <div *ngIf="f['file'].errors && f['file'].errors['required']">File is required.</div>
+        </div>
+        <div>
+          <img with="50" height="50" [src]="preview" class="preview" />
+        </div>
       </div>
-  </form>
+
+      </div>
+
+    </form>
   </div>
   <div class="dialog-actions">
     <button (click)="onSubmit()" mat-button [disabled]="!form.valid">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        <mat-icon>save</mat-icon> {{ 'global.actions.save' | translate }}
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      <mat-icon>save</mat-icon> {{ 'global.actions.save' | translate }}
     </button>
-    <button mat-button type="button" (click)="close()" cdkFocusInitial><mat-icon>cancel</mat-icon> {{ 'global.actions.cancel' | translate }}</button>
-</div>
+    <button mat-button type="button" (click)="close()" cdkFocusInitial><mat-icon>cancel</mat-icon> {{
+      'global.actions.cancel' | translate }}</button>
+  </div>
 </div>

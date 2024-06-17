@@ -1,15 +1,18 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { DecimalPipe, registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
+
+// import { ChartDataSets, ChartOptions } from 'chart.js';
+// import { Color, Label } from 'ng2-charts';
+
+import { Chart, registerables } from 'chart.js';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FinanceService } from './finance.service';
@@ -22,7 +25,9 @@ registerLocaleData(es, 'es');
   styles: [
   ]
 })
-export class FinanceComponent implements OnInit {
+export class FinanceComponent implements OnInit, AfterViewInit {
+
+  addOnBlur = true;
   /** True if a tag can be selected */
   selectable = true;
   /** True if can remove a tag */
@@ -47,7 +52,7 @@ export class FinanceComponent implements OnInit {
 
   /** Material accordion component */
   @ViewChild(MatAccordion) accordion: MatAccordion;
-  
+
   /** Table data Source */
   tableDataSource: MatTableDataSource<any>;
   /** Material paginator */
@@ -57,9 +62,9 @@ export class FinanceComponent implements OnInit {
   dateGroupsSelect: any[] = [ 'day', 'week', 'month', 'year'];
   globalTotal = 0;
 
-  public lineChartData: ChartDataSets[] = [];
-  public lineChartLabels: Label[] = [];
-  public lineChartOptions: ChartOptions = {
+  public lineChartData: any[] = [];
+  public lineChartLabels: any[] = [];
+  public lineChartOptions: any = {
     responsive: true,
     scales: {
       xAxes: [{
@@ -80,7 +85,7 @@ export class FinanceComponent implements OnInit {
     }
   };
 
-  public lineChartColors: Color[] = [
+  public lineChartColors: any[] = [
     {
       borderColor: 'black',
       backgroundColor: 'rgba(255,0,0,0.3)',
@@ -90,15 +95,16 @@ export class FinanceComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
   public lineChartPlugins = [];
-  
+
   /**
    * Constructor
-   * @param financeService 
-   * @param _decimalPipe 
+   * @param financeService
+   * @param _decimalPipe
    */
   constructor(
     private financeService: FinanceService,
-    private _decimalPipe: DecimalPipe
+    private _decimalPipe: DecimalPipe,
+    private elementRef: ElementRef
   ) {
     this.financeService.getStats();
     this.filterTags();
@@ -112,12 +118,55 @@ export class FinanceComponent implements OnInit {
       startWith(''),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.filter(tag => !this.tags.includes(tag))));
    }
+   ngAfterViewInit() {
+    Chart.register(...registerables);
 
+    const ctx = this.elementRef.nativeElement.querySelector('MyChart');
+
+//"ctx" hace referencia al id del componente canvas
+
+const myChart = new Chart("ctx", {
+  type: 'bar',
+  data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
+});
+
+   }
   /**
    * On init
    */
   ngOnInit(): void {
     this.groupData();
+
   }
 
   /**
@@ -125,7 +174,7 @@ export class FinanceComponent implements OnInit {
    */
   public groupData() {
     this.financeService.filteredData.subscribe(
-      res => { 
+      res => {
         this.setTableDataSource(res);
         this.lineChartLabels = [];
         this.lineChartData = [];
@@ -162,11 +211,11 @@ export class FinanceComponent implements OnInit {
         this.allTags = this.financeService.getListTags();
         this.filterTags();
       }
-    );    
+    );
   }
   /**
    * Set table data source
-   * @param data 
+   * @param data
    */
   public setTableDataSource(data) {
     const datasource = data.map( item => {
@@ -174,7 +223,7 @@ export class FinanceComponent implements OnInit {
         date: item.createdAt,
         name: item.name,
         total: item.totals.total
-        
+
       }
     });
     this.tableDataSource = new MatTableDataSource<any>(datasource);
@@ -190,7 +239,7 @@ export class FinanceComponent implements OnInit {
 
   /**
    * Add tag
-   * @param event 
+   * @param event
    */
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -211,7 +260,7 @@ export class FinanceComponent implements OnInit {
 
   /**
    * Remove tag
-   * @param tag 
+   * @param tag
    */
   remove(tag: string): void {
     const index = this.tags.indexOf(tag);
@@ -225,7 +274,7 @@ export class FinanceComponent implements OnInit {
 
   /**
    * Filter data on selected tag
-   * @param event 
+   * @param event
    */
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
@@ -236,23 +285,23 @@ export class FinanceComponent implements OnInit {
 
   /**
    * Filtro
-   * @param value 
-   * @returns 
+   * @param value
+   * @returns
    */
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-  
+
     return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0 && !this.tags.includes(tag));
   }
 
   /**
    * Get date of the week
-   * @param date 
-   * @returns 
+   * @param date
+   * @returns
    */
   public getWeekDate(date)
   {
     var lastday = date.getDate() - date.getDay() + 1;
-    return new Date(date.setDate(lastday)); 
+    return new Date(date.setDate(lastday));
   }
 }

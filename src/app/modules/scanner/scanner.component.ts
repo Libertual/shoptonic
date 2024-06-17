@@ -19,7 +19,7 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   torch = false;
 
   camerasFound: MediaDeviceInfo[];
-  camerasNotFound;
+  camerasNotFound: any;
   //device: MediaDeviceInfo;
   error;
   failure;
@@ -51,13 +51,13 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   constructor(
     private OpenFoodFactsService: OpenFoodFactsService,
   ) {}
-  
+
   ngOnInit(): void {
   }
   ngAfterViewInit() {
 
   }
-  
+
   clearResult(): void {
     this.qrResultString = null;
   }
@@ -75,7 +75,8 @@ export class ScannerComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onDeviceSelectChange(selected: string) {
+  onDeviceSelectChange(event: Event) {
+    const selected = (event.target as HTMLInputElement).value;
     const device = this.availableDevices.find(x => x.deviceId === selected);
     this.currentDevice = device || null;
   }

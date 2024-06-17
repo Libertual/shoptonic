@@ -2,74 +2,79 @@ import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
-} from "@angular/cdk/drag-drop";
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { HomeService } from "@app/core/home/home.service";
-import { ItemDTO } from "../item/item.dto";
-import { ItemService } from "../item/item.service";
-import { ListItem } from "./list-item.model";
-import { ListService } from "./list.service";
-import { ListItemDialogComponent } from "./list-item-dialog/list-item-dialog.component";
-import { ScannerDialogComponent } from "../scanner/item-scanner-dialog/scanner-dialog.component";
-import { Item } from "../item/item.model";
-import { OpenFoodFactsService } from "../open-food-facts/open-food-facts.service";
-import { List } from "./list.model";
-import { ImageAttachComponent } from "@app/shared/components/image-attach/image-attach.component";
-import { ListGalleryComponent } from "@app/shared/components/list-gallery/list-gallery.component";
-import { ConfirmDialogComponent } from "@app/shared/components/confirm-dialog/confirm-dialog.component";
-import { forkJoin, Observable, of } from "rxjs";
-import { catchError } from "rxjs/operators";
+} from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { HomeService } from '@app/core/home/home.service';
+import { ItemDTO } from '../item/item.dto';
+import { ItemService } from '../item/item.service';
+import { ListItem } from './list-item.model';
+import { ListService } from './list.service';
+import { ListItemDialogComponent } from './list-item-dialog/list-item-dialog.component';
+import { ScannerDialogComponent } from '../scanner/item-scanner-dialog/scanner-dialog.component';
+import { Item } from '../item/item.model';
+import { OpenFoodFactsService } from '../open-food-facts/open-food-facts.service';
+import { List } from './list.model';
+import { ImageAttachComponent } from '@app/shared/components/image-attach/image-attach.component';
+import { ListGalleryComponent } from '@app/shared/components/list-gallery/list-gallery.component';
+import { ConfirmDialogComponent } from '@app/shared/components/confirm-dialog/confirm-dialog.component';
+import { forkJoin, Observable, of, lastValueFrom } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { ItemComponent } from '../item/item.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: "app-list",
-  templateUrl: "./list.component.html",
+  selector: 'app-list',
+  templateUrl: './list.component.html',
 })
 export class ListComponent implements OnInit {
   list: List;
   listTotals: any = { listTotal: 0, cartTotal: 0, total: 5 };
   listForm: FormGroup;
   foundItems = [];
+  MIN_SEARCH_LENGTH = 3;
 
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
     public readonly homeService: HomeService,
     private route: ActivatedRoute,
     private listService: ListService,
     private itemService: ItemService,
     public dialog: MatDialog,
-    private openFoodFactsService: OpenFoodFactsService
+    private openFoodFactsService: OpenFoodFactsService,
+    private snackBar: MatSnackBar
   ) {
     this.listForm = this.formBuilder.group({
-      search: [""],
+      search: [''],
     });
   }
 
   set search(val) {
-    this.listForm.get("search").setValue(val);
+    this.listForm.get('search').setValue(val);
   }
   get search() {
-    return this.listForm.get("search").value;
+    return this.listForm.get('search').value;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.listService.totals.subscribe((totals) => {
-        this.listTotals = totals[params.id]
-          ? totals[params.id]
+        this.listTotals = totals[params['id']]
+          ? totals[params['id']]
           : { listTotal: 0, cartTotal: 0, total: 0 };
       });
       this.listService.userLists.subscribe((lists) => {
         this.list =
           lists.length > 0
             ? lists.find((list) => list._id === params.id)
-            : { name: "---" };
+            : { name: '---' };
         const navigation = {
           title: this.list.name,
+          list: this.list
         };
+        console.log('params: ', params);
         this.homeService.navigationSubject.next(navigation);
       });
     });
@@ -85,13 +90,29 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.info("The dialog was closed", result);
+      console.info('The dialog was closed', result);
     });
   }
 
-  public getFilteredItems(searchFilter: string) {
-    if (searchFilter.length > 0) {
-      this.itemService.searchItemsByName(searchFilter).subscribe((data) => {
+  openItemDetail(listItem) {
+    const dialogRef = this.dialog.open(ItemComponent, {
+      autoFocus: false,
+      panelClass: 'custom-dialog-container',
+      data: {
+        listItem,
+        listId: this.list._id,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.info('The dialog was closed', result);
+    });
+  }
+
+  public getFilteredItems(searchFilter: Event) {
+    const filterValue = (searchFilter.target as HTMLInputElement).value;
+    if (filterValue.length >= this.MIN_SEARCH_LENGTH) {
+      this.itemService.searchItemsByName(filterValue).subscribe((data) => {
         this.foundItems = data;
       });
     } else {
@@ -103,7 +124,7 @@ export class ListComponent implements OnInit {
     const item: ItemDTO = { name: this.search };
     this.itemService.addItem(item).subscribe((item) => {
       this.addItemToList(item);
-      this.search = "";
+      this.search = '';
     });
   }
 
@@ -119,7 +140,7 @@ export class ListComponent implements OnInit {
     this.listService.addItemToList(this.list._id, listItem).subscribe((res) => {
       this.listService.getUserLists();
       this.foundItems = [];
-      this.search = "";
+      this.search = '';
     });
   }
 
@@ -127,7 +148,7 @@ export class ListComponent implements OnInit {
     this.listService.addItemToList(this.list._id, listItem).subscribe((res) => {
       this.listService.getUserLists();
       this.foundItems = [];
-      this.search = "";
+      this.search = '';
     });
   }
 
@@ -137,12 +158,12 @@ export class ListComponent implements OnInit {
       .subscribe((res) => {
         this.listService.getUserLists();
         this.foundItems = [];
-        this.search = "";
+        this.search = '';
       });
   }
 
   public clear() {
-    this.search = "";
+    this.search = '';
   }
 
   public removeItemFromList(listItem) {
@@ -165,14 +186,14 @@ export class ListComponent implements OnInit {
       );
     } else {
       if (
-        event.previousContainer.id === "listItems" &&
-        event.container.id === "cartItems"
+        event.previousContainer.id === 'listItems' &&
+        event.container.id === 'cartItems'
       ) {
         this.moveListItemToCart(listItem);
       }
-      if (event.previousContainer.id === "cartItems") {
+      if (event.previousContainer.id === 'cartItems') {
         this.removeItemFromListCart(listItem);
-        if (event.container.id === "listItems") {
+        if (event.container.id === 'listItems') {
           this.addListItemToList(
             event.previousContainer.data[event.previousIndex]
           );
@@ -205,13 +226,15 @@ export class ListComponent implements OnInit {
    * Confirm save current list
    */
   public saveListConfirm(): void {
-
-    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(ConfirmDialogComponent, {
-      data: {
-        title: "lists.confirm.save",
-        message: "lists.confirm.saveListMessage"
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
+      ConfirmDialogComponent,
+      {
+        data: {
+          title: 'lists.confirm.save',
+          message: 'lists.confirm.saveListMessage',
+        },
       }
-    });
+    );
 
     dialogRef.afterClosed().subscribe((confirm) => {
       if (confirm) this.saveList();
@@ -224,33 +247,39 @@ export class ListComponent implements OnInit {
    */
   public saveList() {
     this.list.totals = this.listTotals;
-    this.listService.addSavedList(this.list).subscribe( res => {
+    this.listService.addSavedList(this.list).subscribe((res) => {
       this.emptyList();
     });
   }
 
   /**
    * emptyList
-  */
+   */
   public emptyList() {
     const obserbables: Observable<any>[] = [
-      this.listService.removeListItems(this.list._id).pipe(catchError(e => of({error: true, e}))),
-      this.listService.removeCartItems(this.list._id).pipe(catchError(e => of({error: true, e}))),
-      this.listService.deleteAllImages(this.list._id).pipe(catchError(e => of({error: true, e})))
-    ]  
+      this.listService
+        .removeListItems(this.list._id)
+        .pipe(catchError((e) => of({ error: true, e }))),
+      this.listService
+        .removeCartItems(this.list._id)
+        .pipe(catchError((e) => of({ error: true, e }))),
+      this.listService
+        .deleteAllImages(this.list._id)
+        .pipe(catchError((e) => of({ error: true, e }))),
+    ];
     forkJoin(obserbables).subscribe(
-    next => {
-      next[0].error ? this.list.listItems = []: null;
-      next[1].error ? this.list.cartItems = []: null;
-      next[2].error ? this.list.images = [] : null;
-      this.listService.getUserLists();
-    },
-    error => {
-      console.error('Error: ', error);
-    }
+      (next) => {
+        next[0].error ? (this.list.listItems = []) : null;
+        next[1].error ? (this.list.cartItems = []) : null;
+        next[2].error ? (this.list.images = []) : null;
+        this.listService.getUserLists();
+      },
+      (error) => {
+        console.error('Error: ', error);
+      }
     );
   }
-  
+
   /**
    * launchCamera
    */
@@ -276,10 +305,13 @@ export class ListComponent implements OnInit {
   public showGallery() {
     const dialogRef: MatDialogRef<ListGalleryComponent> = this.dialog.open(
       ListGalleryComponent,
-      { data: { images: this.list.images } }
+      {
+        autoFocus: false,
+        data: { listId: this.list._id, images: this.list.images, cards: this.list.cards, files: this.list.files, }
+      }
     );
     dialogRef.afterClosed().subscribe((res) => {
-      console.info("showGallery res: ", res);
+      console.info('showGallery res: ', res);
     });
   }
 
@@ -291,8 +323,8 @@ export class ListComponent implements OnInit {
       ConfirmDialogComponent,
       {
         data: {
-          title: "lists.confirm.delete",
-          message: "lists.confirm.deleteListMessage",
+          title: 'lists.confirm.delete',
+          message: 'lists.confirm.deleteListMessage',
         },
       }
     );
@@ -330,19 +362,11 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((barcode) => {
       item
         ? this.processBarcode(barcode)
-        : console.info("Botón cerrar pulsado");
+        : console.info('Botón cerrar pulsado');
     });
   }
 
-  /**
-   * Process barcode data on list
-   * @param barcode
-   * @returns 
-   */
-  private async processBarcode(barcode: string) {
-    let item: Item = await this.itemService
-      .searchItemsByBarcode(barcode)
-      .toPromise();
+  private async checkItem(item: Item, barcode: string) {
     if (item) {
       this.addItemToList(item);
       return;
@@ -352,25 +376,25 @@ export class ListComponent implements OnInit {
         .toPromise();
       if (result.status !== 0) {
         const productResult = result.product;
-        let productName: string = "";
+        let productName: string = '';
         if (
           productResult.generic_name_es &&
-          productResult.generic_name_es !== ""
+          productResult.generic_name_es !== ''
         ) {
           productName = productResult.generic_name_es;
         } else if (
           productResult.product_name_es &&
-          productResult.product_name_es !== ""
+          productResult.product_name_es !== ''
         ) {
           productName = productResult.product_name_es;
         } else if (
           productResult.generic_name &&
-          productResult.generic_name !== ""
+          productResult.generic_name !== ''
         ) {
           productName = productResult.generic_name;
         } else if (
           productResult.product_name &&
-          productResult.product_name !== ""
+          productResult.product_name !== ''
         ) {
           productName = productResult.product_name;
         }
@@ -383,8 +407,21 @@ export class ListComponent implements OnInit {
           this.addItemToList(item);
         });
       } else {
-        console.info("No encontrado en OpenFoodFactsService");
+        console.info('No encontrado en OpenFoodFactsService');
       }
     }
+  }
+  /**
+   * Process barcode data on list
+   * @param barcode
+   * @returns
+   */
+  private async processBarcode(barcode: string) {
+    this.snackBar.open('Codigo de barras: ' + barcode, 'Close', {
+      duration: 3000,
+    });
+    this.itemService.searchItemsByBarcode(barcode).subscribe((item) => {
+      this.checkItem(item, barcode);
+    });
   }
 }

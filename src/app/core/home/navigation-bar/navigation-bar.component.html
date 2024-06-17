@@ -1,37 +1,58 @@
 <mat-toolbar color="primary" class="toolbar">
-    <mat-toolbar-row class="toolbar__row">
-  
-      <button mat-icon-button (click)="toggleSidenav.emit()" class="toolbar__sidenav-button">
-        <mat-icon>menu</mat-icon>
-      </button>
-  
-      <span> {{ navigation.title }} </span>
-  
-      <div class="toolbar__right">
-        <button mat-icon-button [matMenuTriggerFor]="account" class="toolbar__sidenav-button">
-          <mat-icon>account_box</mat-icon>
+  <mat-toolbar-row class="toolbar__row">
+
+    <button mat-icon-button (click)="toggleSidenav.emit()" class="toolbar__sidenav-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span> {{ navigation.title }} </span>
+
+    <div class="toolbar-right">
+      <div class="toolbar-right-menus">
+        <div class="toolbar-user-menu">
+          <button mat-icon-button [matMenuTriggerFor]="account" class="toolbar__sidenav-button">
+            <mat-icon>account_box</mat-icon>
+          </button>
+          <mat-menu #account="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="language">
+              <mat-icon>language</mat-icon><span>{{'lang.language' | translate}}</span>
+            </button>
+            <button mat-menu-item class="toolbar__language-button" (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>{{'account.logout' | translate}}</span>
+            </button>
+          </mat-menu>
+          <mat-menu #language="matMenu">
+            <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('es')"
+              [disabled]="translate.currentLang === 'es'">
+              <img src="assets/img/flags/flag-es.svg">
+              <span>{{'lang.spanish' | translate}}</span>
+            </button>
+            <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('en')"
+              [disabled]="translate.currentLang === 'en'">
+              <img src="assets/img/flags/flag-en.svg">
+              <span>{{'lang.english' | translate}}</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      @if (navigation.list) {
+      <div class="toolbar-list-menu">
+        <button mat-icon-button [matMenuTriggerFor]="listMenu" class="toolbar__sidenav-button">
+          <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #account="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="language">
-            <mat-icon>language</mat-icon><span>{{'lang.language' | translate}}</span>
+        <mat-menu #listMenu="matMenu">
+          <button mat-menu-item (click)="onEdit(navigation.list)">
+            <mat-icon>edit</mat-icon><span>{{'global.actions.edit' | translate}}</span>
           </button>
-          <button mat-menu-item class="toolbar__language-button" (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span>{{'account.logout' | translate}}</span>
+          <button mat-menu-item (click)="onTickets(navigation.list.invoices)">
+            <mat-icon>my_library_books</mat-icon><span>{{'global.invoices' | translate}}</span>
           </button>
-        </mat-menu>
-        <mat-menu #language="matMenu">
-          <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('es')" [disabled]="translate.currentLang === 'es'">
-            <img src="assets/img/flags/flag-es.svg">
-            <span>{{'lang.spanish' | translate}}</span>
-          </button>
-          <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('en')" [disabled]="translate.currentLang === 'en'">
-            <img src="assets/img/flags/flag-en.svg">
-            <span>{{'lang.english' | translate}}</span>
-          </button>
+
         </mat-menu>
       </div>
-  
-    </mat-toolbar-row>
-  
-  </mat-toolbar>
+      }
+    </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>

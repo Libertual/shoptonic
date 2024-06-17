@@ -9,7 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatChipsModule} from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -55,7 +55,7 @@ const materialModules = [
   declarations: [],
   imports: [
     CommonModule,
-    
+
     ...materialModules
   ],
   exports: [

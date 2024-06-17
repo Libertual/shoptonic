@@ -7,21 +7,11 @@
 @import 'abstracts/placeholders';
 @import 'abstracts/colors';
 
+@import 'base/global';
 @import 'base/reset';
 @import 'base/typography';
 
-@import 'components/toolbar';
-@import 'components/sidenav';
-@import 'components/list-home';
-@import 'components/list';
-@import 'components/list';
-@import 'components/edit-item';
-@import 'components/scanner';
-@import 'components/image-attach';
-@import 'components/dialog';
-@import 'components/list-gallery';
-@import 'components/list-edit';
-@import 'components/finance';
+@import 'components';
 
 @import 'layout/grid';
 
@@ -30,3 +20,6 @@
 @import 'pages/register';
 
 @import 'themes/dark';
+
+
+

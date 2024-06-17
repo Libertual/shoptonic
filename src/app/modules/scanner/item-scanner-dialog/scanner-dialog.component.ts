@@ -50,10 +50,10 @@ export class ScannerDialogComponent {
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = true;
   model:any;
-  
+
   mostrar = '';
   constructor(public dialogRef: MatDialogRef<ScannerDialogComponent>) {}
-  
+
   clearResult(): void {
     this.qrResultString = null;
   }

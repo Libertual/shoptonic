@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { AlertComponent } from './components/alert/alert.component';
-import { AccountModule } from './account/account.module';
+import { AccountModule } from './auth/account.module';
 import { HomeModule } from './home/home.module';
 
 

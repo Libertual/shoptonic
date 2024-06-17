@@ -1,9 +1,28 @@
-import { User } from "@app/core/account/user.model";
+import { User } from "@app/core/auth/user.model";
 import { ListItem } from "./list-item.model";
 
 export interface Ticket {
   capture?: string;
 }
+export class Card {
+  file: string;
+}
+
+export interface ListFile {
+  file: string;
+  type: FileType;
+  mimeType: string;
+  date: Date;
+}
+
+export enum FileType {
+  IMAGE = 'Image',
+  TICKET = 'Ticket',
+  CARD = 'CARD',
+  OTHER  = 'Other'
+}
+
+
 export class List {
   _id?: string;
   name?: string;
@@ -17,6 +36,8 @@ export class List {
   income?: boolean;
   tags?: string[];
   createdAt?: string;
+  cards?: Card[];
+  files?: ListFile[];
 
   //constructor(_id?: string, name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean, tags?: string[]) {
   constructor(list: List) {

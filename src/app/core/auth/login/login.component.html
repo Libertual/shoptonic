@@ -1,0 +1,26 @@
+<div class="login">
+<mat-card class="login__card">
+  <mat-card-content>
+    <form [formGroup]="form" class="login__form">
+      <h2>Log In</h2>
+      <mat-error *ngIf="loginInvalid">
+        The username and password were not recognised
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="{{ 'account.login.user' | translate }}" formControlName="username" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="{{ 'account.login.password' | translate }}" formControlName="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Login</button>
+      <a routerLink="../register" class="mat-button">{{ 'account.newAccount' | translate}}</a>
+    </form>
+  </mat-card-content>
+</mat-card>
+</div>

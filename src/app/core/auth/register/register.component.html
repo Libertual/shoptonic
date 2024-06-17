@@ -1,0 +1,41 @@
+<div class="register">
+  <mat-card class="register__card">
+    <mat-card-content>
+      <form [formGroup]="form" class="login__form">
+        <h2>{{ 'global.actions.register' | translate}}</h2>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="{{ 'global.form.field.username' | translate }}" formControlName="username" required>
+          <mat-error>
+            Please provide a valid username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="{{ 'global.form.field.name' | translate }}" formControlName="name" required>
+          <mat-error>
+            Please provide a valid name
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="{{ 'global.form.field.email' | translate}}" formControlName="email" type="email" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="{{ 'global.form.field.password' | translate }}" formControlName="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="{{ 'global.form.field.repeatPassword' | translate}}" formControlName="rePassword" required>
+          <div class="mat-error" *ngIf="form.hasError('notSame') && f.rePassword.touched">
+            {{ 'register.error.passwordNotMatch' | translate}}
+          </div>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="register()" [disabled]="!form.valid">{{ 'global.actions.register' | translate }}</button>
+        <a routerLink="../login" class="mat-button">{{ 'global.actions.cancel' | translate }}</a>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  </div>

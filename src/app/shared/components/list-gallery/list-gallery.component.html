@@ -5,10 +5,51 @@
       <mat-icon>close</mat-icon>
     </button>
   </div>
-
   <div mat-dialog-content>
+    <span class="list-gallery-title">{{ 'lists.cards' | translate }}</span>
+
     <div class="list-gallery-container">
-      <img *ngFor="let image of data.images" src="{{image}}" alt="{{ 'image' | translate }}">
+
+      @for (card of data.cards; track card) {
+      <img src="{{card.file}}" alt="{{ 'image' | translate }}" (click)="onImageClick($event)">
+      } @empty {
+      <span>No hay ninguna tarjeta asociada a esta lista</span>
+      }
+    </div>
+    <span class="list-gallery-title">{{ 'lists.images' | translate }}</span>
+    <div class="list-gallery-container">
+      @for (image of data.images; track image) {
+        <img src="{{image}}" alt="{{ 'image' | translate }}" (click)="onImageClick($event)">
+      }@empty {
+        <span>No hay imagenes asociadas a esta lista</span>
+      }
+    </div>
+    <div class="list-gallery-fileUpload">
+      <button type="button" mat-raised-button (click)="file.click()" class="margin-bottom--m">
+        <mat-icon>upload</mat-icon>
+        {{'lists.ticket' | translate}}
+      </button>
+      <input hidden id="file" #file type="file" (change)="onFileSelected($event)">
+    </div>
+    <div class="dialog-actions">
+      <button mat-flat-button color="primary" (click)="save()" [disabled]="filesToUpload.length <= 0" cdkFocusInitial>
+        <mat-icon>save</mat-icon>{{ 'global.actions.save' | translate }}
+      </button>
+    </div>
+    <div>
+      @for (file of data.files; track file) {
+        <div class="list-gallery-file-list">
+          <div><mat-icon>file</mat-icon> </div> <div>{{ file.date | date: 'dd/MM/yyyy' }}</div> <div>{{ file.type }}</div>
+        </div>
+      } @empty {
+        <span>No hay archivos asociados a esta lista</span>
+      }
     </div>
   </div>
 </div>
+@if(showLargeImage) {
+<div class="large--image">
+  <img src="{{ imgSrc }}" alt="{{ 'image' | translate }}" (click)="toggleLargeImage()">
+</div>
+} @else {
+}

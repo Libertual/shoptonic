@@ -70,8 +70,11 @@
     margin: 1rem;
   }
 
-  & .mat-card-content {
+  & .mat-mdc-card-content {
     display: flex;
     flex-direction: row;
+  }
+  & .mat-mdc-card {
+    padding: 16px;
   }
 }

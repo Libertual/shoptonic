@@ -1,1 +1,23 @@
-<p>item works!</p>
+<div class="item-detail">
+  <header class="item-detail-header">
+    <h2 class="item-detail-header__title">{{ item.name }} <span>{{ item.openFoodFactsProduct?.brands }}</span></h2>
+    <button mat-icon-button aria-label="close dialog" mat-dialog-close onclick="this.blur()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <div class="item-detail-prices">
+    <h3>Precios</h3>
+    @for(elem of prices; track elem) {
+    <div class="item-detail-prices__table">
+      <div> {{ elem.price | currency:'EUR':'symbol':'1.2-2':'es'}}</div>
+      <div> {{ elem.date | date: 'dd/MM/yyyy' }}</div>
+      @if(elem.source === 'User') {
+        <div> {{ elem.createdBy.name }}</div>
+      } @else {
+        <div> {{ elem.source }}</div>
+      }
+    </div>
+    }
+  </div>
+  <img [src]="item?.openFoodFactsProduct?.image_thumb_url" class="item__image--thumbnail item">
+</div>

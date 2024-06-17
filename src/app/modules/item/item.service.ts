@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { ItemDTO } from './item.dto';
-import { Item } from './item.model';
+import { Item, Price } from './item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +37,9 @@ export class ItemService {
   public updateItem(item: Item) {
     return this.http.post<Item>(`${environment.apiUrl}/item`, item);
   }
+
+  public getItemPrices(itemId: string) {
+    return this.http.get<Price[]>(`${environment.apiUrl}/item/${itemId}/prices`);
+  }
+
 }

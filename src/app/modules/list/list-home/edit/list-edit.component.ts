@@ -16,6 +16,9 @@ export class ListEditComponent implements OnInit {
   isAddMode: boolean;
   form: FormGroup;
   list: List;
+  preview = '';
+  currentFile?: File;
+  incomeChecked: boolean = false;
 
   tags: string[] = [];
   addOnBlur = true;
@@ -29,7 +32,7 @@ export class ListEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ListEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { 
+  ) {
     this.list = data.list || {};
     this.isAddMode = data.isAddMode;
   }
@@ -39,7 +42,9 @@ export class ListEditComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       tags: [''],
-      income:[true]
+      income:[false],
+      file: [''],
+      fileSource: ['']
     });
 
     if (this.list._id) {
@@ -47,6 +52,7 @@ export class ListEditComponent implements OnInit {
       this.f.description.setValue(this.list.description);
       this.f.income.setValue(this.list.income);
       this.tags = this.list.tags;
+      this.preview = this.list.cards[0]?.file;
     }
   }
 
@@ -59,6 +65,8 @@ export class ListEditComponent implements OnInit {
     this.list.name = this.f.name.value;
     this.list.description = this.f.description.value;
     this.list.income = this.f.income.value;
+    this.list.cards = [{file: this.f.fileSource.value}];
+
     if (this.tags.length > 0) this.list.tags = this.tags;
     this.listService.saveList(this.list).subscribe(data => {
       this.dialogRef.close(data);
@@ -90,5 +98,49 @@ export class ListEditComponent implements OnInit {
     if (index >= 0) {
       this.tags.splice(index, 1);
     }
+  }
+
+  /**
+   * File upload on click
+   *
+   * @return response()
+   */
+  async onFileSelected(event:any) {
+    if (event.target.files.length > 0) {
+      const file: File = event.target.files[0];
+      if (file) {
+        this.preview = '';
+        this.currentFile = file;
+
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          //console.log(e.target.result);
+          this.preview = e.target.result;
+          this.form.patchValue({
+            fileSource: e.target.result
+          });
+        };
+        reader.readAsDataURL(this.currentFile);
+      }
+    }
+  }
+
+  readFileContent(file: File): Promise<string> { // TODO: borrar este método
+    return new Promise<string>((resolve, reject) => {
+        if (!file) {
+            resolve('');
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const text = reader.result.toString();
+            resolve(text);
+
+        };
+
+        reader.readAsText(file);
+    });
   }
 }

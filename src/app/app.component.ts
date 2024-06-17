@@ -1,16 +1,18 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AccountService } from './core/account/account.service';
-import { User } from './core/account/user.model';
+import { AccountService } from './core/auth/account.service';
 
+import { User } from './core/auth/user.model';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  standalone: false,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
-  user: User;
+  title = 'shopitify-web';
+  user: User|null = null;
 
   constructor (
     private accountService: AccountService,
@@ -27,5 +29,4 @@ export class AppComponent {
     //this.data = this.scanner.isAutostarting;
 
   }
-  title = 'Shoptonic';
 }

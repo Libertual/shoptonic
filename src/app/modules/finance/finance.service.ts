@@ -22,11 +22,11 @@ export class FinanceService {
 
   /**
    * Constructor
-   * @param http 
+   * @param http
    */
   constructor(
     private http: HttpClient,
-  ) { 
+  ) {
     this.allData = this.dataSubject.asObservable();
     this.filteredData = this.filteredDataSubject.asObservable();
   }
@@ -49,7 +49,7 @@ export class FinanceService {
 
   /**
    * Get list tags
-   * @returns 
+   * @returns
    */
   public getListTags(): string[]{
     const tags: string[] = [];
@@ -58,17 +58,18 @@ export class FinanceService {
         !tags.includes(tag) ? tags.push(tag): null;
       }
     });
+    console.log('Alltags: ',tags);
     return tags;
   }
 
   /**
    * Filter data
-   * @param tags 
+   * @param tags
    */
   public filterData(tags: string[]) {
-    const filteredData = (tags && tags.length > 0 ) ? 
+    const filteredData = (tags && tags.length > 0 ) ?
       this.dataSubject.value.filter(data => data.tags.some(t => tags.indexOf(t) >= 0)):
       this.dataSubject.value;
-    this.filteredDataSubject.next(filteredData);    
+    this.filteredDataSubject.next(filteredData);
   }
 }

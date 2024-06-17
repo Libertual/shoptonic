@@ -1,0 +1,22 @@
+.confirm {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &__message {
+    width: auto;
+
+    p {
+      padding: 0.5rem;
+      margin: 1rem;
+      line-height: 1rem;
+      color: $grey-light-1;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;    
+    }
+  }
+}

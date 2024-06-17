@@ -4,7 +4,7 @@
       <mat-label>{{ 'global.searchOrAdd' | translate}}</mat-label>
       <mat-icon matPrefix>search</mat-icon>
       <input type="text" matInput formControlName="search" autocomplete="off"
-        (input)="getFilteredItems($event.target.value)" (keypress.enter)="newItem()" [matAutocomplete]="auto">
+        (input)="getFilteredItems($event)" (keypress.enter)="newItem()" [matAutocomplete]="auto">
       <div matSuffix>
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
           <mat-icon>edit</mat-icon>
@@ -38,7 +38,7 @@
           <div class="list-item__actions--handle" cdkDragHandle (click)="moveListItemToCart(listItem)">
             <mat-icon>swap_vert</mat-icon>
           </div>
-          <span class="list-item__title">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price |
+          <span class="list-item__title" (click)="openItemDetail(listItem)">{{listItem.name}}</span><span>{{listItem.quantity}}x{{listItem.price |
             currency:'EUR':'symbol':'1.2-2':'es'}}={{(listItem.quantity * listItem.price) |
             currency:'EUR':'symbol':'1.2-2':'es'}}
           </span>

@@ -1,0 +1,10 @@
+.item {
+  color: red;
+  &__image {
+    &--thumbnail {
+      height: 80px;
+      width: fit-content;
+      margin: auto;
+    }
+  }
+}

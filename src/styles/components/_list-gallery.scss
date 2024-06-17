@@ -11,10 +11,20 @@
       height: 65px;
       margin-left: 1rem;
       margin-top: 1rem;
-    
+
       &:first-child {
         margin-left: 0;
       }
     }
+  }
+
+  &-file-list {
+    display: flex;
+    flex-direction: row;
+
+    div:not(:last-child) {
+      margin-right: 1rem;
+    }
+
   }
 }

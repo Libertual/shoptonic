@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AccountService } from '@app/core/account/account.service';
-import { User } from '@app/core/account/user.model';
+import { AccountService } from '@app/core/auth/account.service';
+import { User } from '@app/core/auth/user.model';
 import { List } from '../list.model';
 import { ListService } from '../list.service';
 
@@ -42,8 +42,8 @@ export class ShareComponent implements OnInit {
   }
 
   public onSubmit() {
-    if (this.f.filter.value._id) {
-      this.listService.shareList(this.listId, this.f.filter.value).subscribe();
+    if (this.f['filter'].value._id) {
+      this.listService.shareList(this.listId, this.f['filter'].value).subscribe();
     }
   }
 
@@ -51,8 +51,9 @@ export class ShareComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
-  public getFilteredUsers(filter) {
-    this.accountService.geFilteredUsers(filter).subscribe(data => {
+  public getFilteredUsers(filter: Event) {
+    const filterValue = (filter.target as HTMLInputElement).value;
+    this.accountService.geFilteredUsers(filterValue).subscribe(data => {
       this.usersFound = data;
     })
   }

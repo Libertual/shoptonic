@@ -5,9 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HomeService {
-  public navigationSubject: BehaviorSubject<any> = new BehaviorSubject({title: 'Shoptonic'});
+  public navigationSubject: BehaviorSubject<any> = new BehaviorSubject({title: 'Shopitify'});
   public navigation : Observable<any>;
-  constructor() { 
+  constructor() {
+    console.log('HomeService: ', this.navigation);
     this.navigation = this.navigationSubject.asObservable();
   }
 

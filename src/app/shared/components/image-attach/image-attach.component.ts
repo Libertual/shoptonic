@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import Integer from '@zxing/library/esm/core/util/Integer';
 
 @Component({
   selector: 'app-image-attach',
@@ -24,8 +23,8 @@ export class ImageAttachComponent implements OnInit {
 
   text: string = '';
 
-  HEIGHT = 0;
-  WIDTH = 0;
+  HEIGHT: any = 0;
+  WIDTH: any = 0;
 
   constructor(
     public dialogRef: MatDialogRef<ImageAttachComponent>,
@@ -46,11 +45,11 @@ export class ImageAttachComponent implements OnInit {
    }
 
   async ngOnInit() {
-    
+
     this.setSizeParams();
 
     await this.setupDevices();
-    
+
     this.dialogRef.afterClosed().subscribe(data => {
       this.video.nativeElement.pause();
     });
@@ -64,7 +63,7 @@ export class ImageAttachComponent implements OnInit {
       const devices = await navigator.mediaDevices.enumerateDevices();
       this.cameras = devices.filter(device => device.kind === 'videoinput');
       this.cameraSelectedIndex = this.getBackCameraIndex();
-      
+
       this.setupDevice(this.cameras[this.cameraSelectedIndex != -1 ? this.cameraSelectedIndex: 0]);
     }
   }

@@ -9,10 +9,10 @@
   <span *ngIf="error">Error: {{ error }}</span>
   <mat-menu #appMenu="matMenu">
     <mat-selection-list>
-      <mat-list-option checkboxPosition="start" (click)="toggleTryHarder()" [selected]="tryHarder">
+      <mat-list-option checkboxPosition="before" (click)="toggleTryHarder()" [selected]="tryHarder">
         Enable Try-harder
       </mat-list-option>
-      <mat-list-option checkboxPosition="start" (click)="toggleTorch()" [selected]="torchEnabled"
+      <mat-list-option checkboxPosition="before" (click)="toggleTorch()" [selected]="torchEnabled"
         *ngIf="torchAvailable$ | async">
         Enable Torch
       </mat-list-option>
@@ -22,7 +22,7 @@
 
   <header>
     <mat-form-field appearance="fill">
-      <select matNativeControl matInput (change)="onDeviceSelectChange($event.target.value)">
+      <select matNativeControl matInput (change)="onDeviceSelectChange($event)">
         <option value="" [selected]="!currentDevice">No Device Selected</option>
         <option *ngFor="let device of availableDevices" [value]="device.deviceId"
           [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>

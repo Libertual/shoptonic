@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AccountService } from '@app/core/account/account.service';
-import { User } from '@app/core/account/user.model';
+import { AccountService } from '@app/core/auth/account.service';
+import { User } from '@app/core/auth/user.model';
 import { ConfirmDialogComponent } from '@app/shared/components/confirm-dialog/confirm-dialog.component';
 import { List } from '../list.model';
 import { ListService } from '../list.service';
 import { ShareComponent } from '../share/share.component';
 import { ListEditComponent } from './edit/list-edit.component';
 import { environment } from 'src/environments/environment'
+import { HomeService } from '@app/core/home/home.service';
 
 @Component({
   selector: 'app-list-home',
@@ -16,20 +17,26 @@ import { environment } from 'src/environments/environment'
 export class ListHomeComponent implements OnInit {
   user: User;
   userLists: any;
-  apiUrl: string; 
+  apiUrl: string;
 
   constructor(
     public dialog: MatDialog,
     private listService: ListService,
     private accountService: AccountService,
-  ) { 
+    public readonly homeService: HomeService
+  ) {
     this.userLists = this.listService.userListsSubject;
     this.user = this.accountService.sessionValue.user;
     this.apiUrl = environment.apiUrl;
-  } 
+  }
 
   ngOnInit(): void {
     this.listService.getUserLists();
+    const navigation = {
+      title: 'Shopitify',
+      list: null
+    };
+    this.homeService.navigationSubject.next(navigation);
   }
 
   public onEdit(list: List) {
@@ -72,6 +79,6 @@ export class ListHomeComponent implements OnInit {
       console.info('The share dialog was closed', res);
       this.listService.getUserLists();
     });
-    
+
   }
 }

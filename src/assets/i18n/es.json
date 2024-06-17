@@ -7,7 +7,15 @@
     "english": "Inglés"
   },
   "account": {
-    "logout": "Salir"
+    "newAccount": "Nueva cuenta",
+    "logout": "Salir",
+    "login": {
+      "user": "Usuario",
+      "password": "Contraseña"
+    },
+    "confirmedMessage": "¡Muchas gracias por registrarte con ShopTonic! Tu cuenta se ha activado correctamente.",
+    "NotConfirmedMessage": "¡Lo siento! Tu cuenta se no se ha podido activar",
+    "unauthorized": "Usuario o contraseña inválidos"
   },
   "sidenav": {
     "menu": {
@@ -23,6 +31,7 @@
     "saveCart": "Guardar cesta",
     "products": "Artículos",
     "searchOrAdd": "Buscar o Añadir",
+    "invoices": "Tickets",
     "actions": {
       "register": "Registrar",
       "share": "Compartir",
@@ -47,6 +56,9 @@
   "lists": {
     "shoppingCart": "Cesta de la compra",
     "add": "Añadir nueva lista",
+    "cards": "Tarjetas",
+    "card": "Tarjeta",
+    "images": "Imágenes",
     "edit": {
       "button": "Editar Lista",
       "name": "Nombre",
