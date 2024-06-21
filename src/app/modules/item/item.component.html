@@ -11,11 +11,8 @@
     <div class="item-detail-prices__table">
       <div> {{ elem.price | currency:'EUR':'symbol':'1.2-2':'es'}}</div>
       <div> {{ elem.date | date: 'dd/MM/yyyy' }}</div>
-      @if(elem.source === 'User') {
-        <div> {{ elem.createdBy.name }}</div>
-      } @else {
-        <div> {{ elem.source }}</div>
-      }
+      <div> {{ elem.source }}</div>
+
     </div>
     }
   </div>

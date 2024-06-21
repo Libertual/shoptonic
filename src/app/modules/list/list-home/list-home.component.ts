@@ -31,19 +31,14 @@ export class ListHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listService.getUserLists();
-    const navigation = {
-      title: 'Shopitify',
-      list: null
-    };
-    this.homeService.navigationSubject.next(navigation);
+    this.listService.getUserLists(null);
   }
 
   public onEdit(list: List) {
     const dialogRef = this.dialog.open(ListEditComponent, {data: {list, isAddMode: false}});
 
     dialogRef.afterClosed().subscribe(list => {
-      this.listService.getUserLists();
+      this.listService.getUserLists(null);
     });
   }
 
@@ -55,7 +50,7 @@ export class ListHomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(isConfirmed => {
       if (isConfirmed) {
         this.listService.deleteList(listId).subscribe(res => {
-          this.listService.getUserLists();
+          this.listService.getUserLists(null);
         });
       } else {
         console.info('closed without confirm');
@@ -68,7 +63,7 @@ export class ListHomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(list => {
       console.info('The list edit dialog was closed', list);
-      this.listService.getUserLists();
+      this.listService.getUserLists(null);
     });
   }
 
@@ -77,8 +72,10 @@ export class ListHomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(res => {
       console.info('The share dialog was closed', res);
-      this.listService.getUserLists();
+      this.listService.getUserLists(null);
     });
-
+  }
+  onListClick(list) {
+    this.listService.listValue = list;
   }
 }

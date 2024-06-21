@@ -58,7 +58,6 @@ export class FinanceService {
         !tags.includes(tag) ? tags.push(tag): null;
       }
     });
-    console.log('Alltags: ',tags);
     return tags;
   }
 

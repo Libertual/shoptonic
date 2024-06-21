@@ -20,10 +20,11 @@ import { List } from './list.model';
 import { ImageAttachComponent } from '@app/shared/components/image-attach/image-attach.component';
 import { ListGalleryComponent } from '@app/shared/components/list-gallery/list-gallery.component';
 import { ConfirmDialogComponent } from '@app/shared/components/confirm-dialog/confirm-dialog.component';
-import { forkJoin, Observable, of, lastValueFrom } from 'rxjs';
+import { forkJoin, Observable, of, lastValueFrom, firstValueFrom } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ItemComponent } from '../item/item.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AccountService } from '@app/core/auth/account.service';
 
 @Component({
   selector: 'app-list',
@@ -35,6 +36,7 @@ export class ListComponent implements OnInit {
   listForm: FormGroup;
   foundItems = [];
   MIN_SEARCH_LENGTH = 3;
+  user;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,8 +46,10 @@ export class ListComponent implements OnInit {
     private itemService: ItemService,
     public dialog: MatDialog,
     private openFoodFactsService: OpenFoodFactsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private accountService: AccountService
   ) {
+    this.user = this.accountService.sessionValue.user;
     this.listForm = this.formBuilder.group({
       search: [''],
     });
@@ -65,17 +69,8 @@ export class ListComponent implements OnInit {
           ? totals[params['id']]
           : { listTotal: 0, cartTotal: 0, total: 0 };
       });
-      this.listService.userLists.subscribe((lists) => {
-        this.list =
-          lists.length > 0
-            ? lists.find((list) => list._id === params.id)
-            : { name: '---' };
-        const navigation = {
-          title: this.list.name,
-          list: this.list
-        };
-        console.log('params: ', params);
-        this.homeService.navigationSubject.next(navigation);
+      this.listService.list.subscribe(list => {
+        this.list = list;
       });
     });
   }
@@ -86,6 +81,7 @@ export class ListComponent implements OnInit {
         listItem,
         listId: this.list._id,
         type,
+        user: this.user
       },
     });
 
@@ -138,7 +134,7 @@ export class ListComponent implements OnInit {
     );
 
     this.listService.addItemToList(this.list._id, listItem).subscribe((res) => {
-      this.listService.getUserLists();
+      this.listService.getUserLists(this.list._id);
       this.foundItems = [];
       this.search = '';
     });
@@ -146,7 +142,7 @@ export class ListComponent implements OnInit {
 
   public addListItemToList(listItem: ListItem): void {
     this.listService.addItemToList(this.list._id, listItem).subscribe((res) => {
-      this.listService.getUserLists();
+      this.listService.getUserLists(this.list._id);
       this.foundItems = [];
       this.search = '';
     });
@@ -156,7 +152,7 @@ export class ListComponent implements OnInit {
     this.listService
       .addItemToListCart(this.list._id, listItem)
       .subscribe((res) => {
-        this.listService.getUserLists();
+        this.listService.getUserLists(this.list._id);
         this.foundItems = [];
         this.search = '';
       });
@@ -272,7 +268,7 @@ export class ListComponent implements OnInit {
         next[0].error ? (this.list.listItems = []) : null;
         next[1].error ? (this.list.cartItems = []) : null;
         next[2].error ? (this.list.images = []) : null;
-        this.listService.getUserLists();
+        this.listService.getUserLists(this.list._id);
       },
       (error) => {
         console.error('Error: ', error);
@@ -332,11 +328,11 @@ export class ListComponent implements OnInit {
       if (res) {
         this.listService.removeListItems(this.list._id).subscribe((_res) => {
           this.list.listItems = [];
-          this.listService.getUserLists();
+          this.listService.getUserLists(this.list._id);
         });
         this.listService.removeCartItems(this.list._id).subscribe((_res) => {
           this.list.cartItems = [];
-          this.listService.getUserLists();
+          this.listService.getUserLists(this.list._id);
         });
       }
     });
@@ -348,7 +344,7 @@ export class ListComponent implements OnInit {
   public removeCartItems(): void {
     this.listService.removeCartItems(this.list._id).subscribe((_res) => {
       this.list.cartItems = [];
-      this.listService.getUserLists();
+      this.listService.getUserLists(this.list._id);
     });
   }
 
@@ -371,9 +367,8 @@ export class ListComponent implements OnInit {
       this.addItemToList(item);
       return;
     } else {
-      const result = await this.openFoodFactsService
-        .getProductByBarcode(barcode)
-        .toPromise();
+      const result = await firstValueFrom(this.openFoodFactsService
+        .getProductByBarcodev1(barcode))
       if (result.status !== 0) {
         const productResult = result.product;
         let productName: string = '';
@@ -399,11 +394,12 @@ export class ListComponent implements OnInit {
           productName = productResult.product_name;
         }
 
-        item = new Item(productName, barcode);
+        item = new Item(productName, [productName], barcode);
         item.openFoodFactsProduct = productResult;
 
         this.itemService.addItem(item).subscribe((res) => {
           item._id = res._id;
+          item.price = res.price;
           this.addItemToList(item);
         });
       } else {

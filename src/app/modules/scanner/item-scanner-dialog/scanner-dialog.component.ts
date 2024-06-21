@@ -12,7 +12,6 @@ import { MatDialogRef } from '@angular/material/dialog';
   ]
 })
 export class ScannerDialogComponent {
-  allowedFormats = [ BarcodeFormat.QR_CODE, BarcodeFormat.EAN_13, BarcodeFormat.CODE_128, BarcodeFormat.DATA_MATRIX ];
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent = new ZXingScannerComponent();
   data: any;
@@ -51,7 +50,6 @@ export class ScannerDialogComponent {
   tryHarder = true;
   model:any;
 
-  mostrar = '';
   constructor(public dialogRef: MatDialogRef<ScannerDialogComponent>) {}
 
   clearResult(): void {
@@ -75,14 +73,11 @@ export class ScannerDialogComponent {
   }
 
   public toggleDevice() {
-    this.mostrar = 'mal';
     let index: number = this.availableDevices.indexOf(this.currentDevice);
     index === -1 ? index = 0: null;
     if (index === (this.availableDevices.length - 1)) {
-      this.mostrar = 'vale igual ' + index;
       index = 0
     } else {
-      this.mostrar = 'no vale ' + index;
        index++;
     }
     this.currentDevice = this.availableDevices[index];
@@ -109,6 +104,7 @@ export class ScannerDialogComponent {
   }
 
   public close() {
+    this.scannerEnabled = false;
     this.dialogRef.close();
   }
 }

@@ -70,7 +70,7 @@ export class ScannerComponent implements OnInit, AfterViewInit {
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
     this.scannerEnabled = false;
-    this.OpenFoodFactsService.getProductByBarcode(resultString).subscribe(data => {
+    this.OpenFoodFactsService.getProductByBarcodev1(resultString).subscribe(data => {
       this.productResult = data.product;
     });
   }

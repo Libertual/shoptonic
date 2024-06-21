@@ -30,9 +30,8 @@ export class ItemComponent implements OnInit {
     if (this.data.listItem.itemId) {
       this.itemService.searchItemById(this.data.listItem.itemId).subscribe(async item => {
         this.item = item;
-        await this.getPrices(this.item);
         this.prices = item.prices;
-        console.log('this.prices', this.prices )
+        await this.getPrices(this.item);
       });
     }
   }
@@ -43,7 +42,6 @@ export class ItemComponent implements OnInit {
     const lastPriceUpdateDate: Date = new Date(item.lastPriceUpdateDate);
     if (!item.prices || lastPriceUpdateDate?.getTime() < monthAgo.getTime() ) {
       this.itemService.getItemPrices(item._id).subscribe (req => {
-        console.log('req; ', req);
         this.prices = req as Price[];
       });
     }

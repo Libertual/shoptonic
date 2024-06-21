@@ -1,0 +1,10 @@
+.floating-button {
+  position: fixed;
+  margin: 1rem;
+
+  &--bottom {
+    bottom: 0;
+    right: 0;
+
+  }
+}

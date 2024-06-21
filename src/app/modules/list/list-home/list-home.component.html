@@ -3,7 +3,7 @@
     <div>
       <div class="list-home__card-header">
           <div class="list-home__card-header-title">
-            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onListClick(list);">
               <mat-card-title>
                 {{ list.name }}
                 <mat-icon *ngIf="list.income">file_download</mat-icon>
@@ -50,7 +50,7 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div class="list-home__add-button">
+<div class="floating-button floating-button--bottom">
   <button mat-fab color="primary" aria-label="Add list" (click)="addList()" class="mat-elevation-z6">
     <mat-icon>add</mat-icon>
   </button>

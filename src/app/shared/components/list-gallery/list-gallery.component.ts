@@ -43,7 +43,6 @@ export class ListGalleryComponent {
    */
     async onFileSelected(event:any) {
       if (event.target.files.length > 0) {
-        console.log('Files: ', event.target.files);
         const file: File = event.target.files[0];
         if (file) {
           this.currentFile = file;
@@ -55,7 +54,9 @@ export class ListGalleryComponent {
               file: e.target.result,
               type: FileType.TICKET,
               mimeType: file.type,
-              date: new Date()
+              date: new Date(),
+              name: file.name,
+              size: file.size
             }];
           };
           reader.readAsDataURL(this.currentFile);
@@ -64,10 +65,10 @@ export class ListGalleryComponent {
     }
 
     async save() {
-      this.listService.addFilesToList(this.data.listId ,this.filesToUpload).subscribe({
+      await this.listService.addFilesToList(this.data.listId ,this.filesToUpload).subscribe({
         next: (res) => {
-          console.log('Ok: ', res);
           this.data.files = res.data.files;
+          this.listService.getUserLists(this.data.listId);
         },
         error: (e) => console.error('Error en consola: ', e),
         complete: () => console.info('complete')

@@ -1,0 +1,26 @@
+.invoices-list {
+  &__element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+}
+.invoice {
+  &-table {
+    width: 100%;
+    padding: 1rem;
+    color: white;
+
+    tr:nth-child(even) {
+      background-color: #00000040;
+      }
+
+  }
+
+  &-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

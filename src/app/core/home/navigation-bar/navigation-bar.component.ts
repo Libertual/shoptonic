@@ -6,6 +6,7 @@ import { List } from '@app/modules/list/list.model';
 import { ListEditComponent } from '@app/modules/list/list-home/edit/list-edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ListService } from '@app/modules/list/list.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -13,20 +14,21 @@ import { Router } from '@angular/router';
 })
 export class NavigationBarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
-
+  list: List;
   public navigation: any;
   constructor(
     private router: Router,
     public readonly homeService: HomeService,
+    public readonly listService: ListService,
     public readonly translate: TranslateService,
     private readonly accountService: AccountService,
     public dialog: MatDialog,
     ) { }
 
   ngOnInit(): void {
-    this.homeService.navigation.subscribe(nav => {
-      this.navigation = nav;
-    })
+    this.listService.list.subscribe(list => {
+      this.list = list;
+    });
   }
 
   changeLanguage(lang: string): void {
@@ -40,11 +42,10 @@ public onEdit(list: List) {
   const dialogRef = this.dialog.open(ListEditComponent, {data: {list, isAddMode: false}});
 
   dialogRef.afterClosed().subscribe(list => {
-    console.log('cerrado', list);
+    console.info('cerrado', list);
   });
 }
 public onTickets(invoices) {
-  console.log('Invoices: ', invoices);
-  this.router.navigate(['/list/12345/invoice'],{ queryParams: { invoices: 'dale' }})
+  this.router.navigate(['/list/' + this.list._id + '/invoice']);
 }
 }

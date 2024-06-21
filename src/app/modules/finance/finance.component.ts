@@ -234,7 +234,7 @@ const myChart = new Chart("ctx", {
    * onClick
    */
   public onClick($event) {
-    console.log('onClick', $event);
+    console.info('onClick', $event);
   }
 
   /**

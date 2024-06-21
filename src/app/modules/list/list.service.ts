@@ -12,11 +12,11 @@ import { DefaultResponse, IDefaultResponse } from '@app/shared/models/default-re
   providedIn: 'root',
 })
 export class ListService {
-  public userListsSubject: BehaviorSubject<ListItem[]> = new BehaviorSubject(
-    []
-  );
+  public userListsSubject: BehaviorSubject<List[]> = new BehaviorSubject([]);
+  public listSubject: BehaviorSubject<List> = new BehaviorSubject(null);
   public listsTotalsSubject: BehaviorSubject<any> = new BehaviorSubject([]);
   public userLists: Observable<any>;
+  public list: Observable<any>;
   public totals: Observable<any>;
 
   constructor(
@@ -24,11 +24,20 @@ export class ListService {
     private accountService: AccountService
   ) {
     this.userLists = this.userListsSubject.asObservable();
+    this.list = this.listSubject.asObservable();
     this.totals = this.listsTotalsSubject.asObservable();
-    this.getUserLists();
+    //this.getUserLists(null);
   }
   public get userListsValue() {
     return this.userListsSubject.value;
+  }
+
+  public set listValue(list: List) {
+    this.listSubject.next(list);
+  }
+
+  public get listValue() {
+    return this.listSubject.value;
   }
 
   public addItemToList(listId: string, listItem: ListItem) {
@@ -40,16 +49,19 @@ export class ListService {
 
   public addItemToListCart(listId: string, listItem: ListItem) {
     return this.http.patch(
-      `${environment.apiUrl}/list/${listId}/cart/item`,
+      `${environment.apiUrl}/list/${listId}/cart-item`,
       listItem
     );
   }
 
-  public getUserLists() {
-    return this.http.get(`${environment.apiUrl}/list`).subscribe((res: any) => {
+  public async getUserLists(listId: string) {
+    return await this.http.get(`${environment.apiUrl}/list`).subscribe((res: any) => {
       this.userListsSubject.next(res);
       const listTotals = {};
       res.map((list) => {
+        if(list._id === listId) {
+          this.listValue = list;
+        }
         listTotals[list._id] = {};
         listTotals[list._id].listTotal = 0;
         listTotals[list._id].listQuantityTotal = 0;
@@ -77,15 +89,15 @@ export class ListService {
     return this.http
       .delete(`${environment.apiUrl}/list/${listId}/item/${listItemId}`)
       .subscribe((res) => {
-        this.getUserLists();
+        this.getUserLists(listId);
       });
   }
 
   public removeItemFromListCart(listId: string, cartItemId: string) {
     return this.http
-      .delete(`${environment.apiUrl}/list/${listId}/cart/item/${cartItemId}`)
+      .delete(`${environment.apiUrl}/list/${listId}/cart-item/${cartItemId}`)
       .subscribe((res) => {
-        this.getUserLists();
+        this.getUserLists(listId);
       });
   }
 
@@ -95,20 +107,20 @@ export class ListService {
     let url: string;
     switch (type) {
       case 'list': {
-        url = `${environment.apiUrl}/list/${listId}/list/item/${listItemId}`;
+        url = `${environment.apiUrl}/list/${listId}/list-item/${listItemId}`;
         break;
       }
       case 'cart': {
-        url = `${environment.apiUrl}/list/${listId}/cart/item/${listItemId}`;
+        url = `${environment.apiUrl}/list/${listId}/cart-item/${listItemId}`;
         break;
       }
       default: {
-        url = `${environment.apiUrl}/list/${listId}/list/item/${listItemId}`;
+        url = `${environment.apiUrl}/list/${listId}/list-item/${listItemId}`;
         break;
       }
     }
     return this.http.put(url, listItem).subscribe((res) => {
-      this.getUserLists();
+      this.getUserLists(listId);
     });
   }
 
@@ -180,7 +192,6 @@ export class ListService {
    * @returns
    */
   public addFilesToList(listId: string, files: ListFile[]): Observable<any> {
-    console.log('Enviar ficheros: ', listId, files);
     return this.http.post(`${environment.apiUrl}/list/${listId}/file`, files);
   }
 }

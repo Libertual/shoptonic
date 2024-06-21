@@ -1,0 +1,43 @@
+<div class="dialog">
+  <header class="dialog-header">
+    <h2>{{ 'invoices.addInvoice' | translate }}</h2>
+    <button
+      mat-icon-button
+      aria-label="close dialog"
+      mat-dialog-close
+      onclick="this.blur()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <main class="dialog-content">
+    <div class="list-gallery-fileUploadd">
+      <button type="button" mat-raised-button (click)="file.click()" class="margin-bottom--m">
+        <mat-icon>upload</mat-icon>
+        {{'global.actions.selectFile' | translate}}
+      </button>
+      <input hidden id="file" #file type="file" (change)="onFileSelected($event)">
+    </div>
+@if (filesToUpload) {
+  <div class="add-invoice-file">
+    <div>{{ filesToUpload.name }}</div>
+    <div>{{ filesToUpload.size | filesize }}</div>
+  </div>
+}
+
+  </main>
+  <footer class="dialog-footer">
+      <div class="dialog-actions">
+        <button  mat-button extended
+        aria-label="close dialog"
+        mat-dialog-close
+        onclick="this.blur()"
+      >
+        <mat-icon>close</mat-icon>{{ 'global.actions.close' | translate }}
+      </button>
+        <button mat-flat-button color="primary" (click)="save()" [disabled]="!filesToUpload" cdkFocusInitial>
+          <mat-icon>save</mat-icon>{{ 'global.actions.send' | translate }}
+        </button>
+      </div>
+  </footer>
+</div>

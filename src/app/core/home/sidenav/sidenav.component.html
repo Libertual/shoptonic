@@ -12,15 +12,15 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title class="sidenav__menu-item">
-            <a [routerLink]="['/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close(); onHome();">
+            <a [routerLink]="['/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close(); onClick(null);">
               <mat-icon>list</mat-icon><span>{{'sidenav.menu.myLists' | translate}}</span>
             </a>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ul class="sidenav__menu">
           <li class="sidenav__menu-item" *ngFor="let list of userLists | async">
-            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-              (click)="drawer.close()">
+            <a [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true} "
+              (click)="drawer.close(); onClick(list);">
               <mat-icon>playlist_add_check</mat-icon><span matTooltip="{{list.description}}">{{ list.name }}</span>
             </a>
           </li>
@@ -29,7 +29,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title class="sidenav__menu-item">
-            <a [routerLink]="['/finance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['/finance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close(); onClick(null);">
               <mat-icon>insert_chart_outlined</mat-icon><span>{{'sidenav.menu.finance' | translate}}</span>
             </a>
           </mat-panel-title>
@@ -38,7 +38,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title class="sidenav__menu-item">
-            <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close(); onClick(null);">
               <mat-icon>settings</mat-icon><span>{{'sidenav.menu.configuration' | translate}}</span>
             </a>
           </mat-panel-title>
@@ -48,7 +48,7 @@
   </mat-drawer>
   <mat-drawer-content>
     <app-navigation-bar (toggleSidenav)="drawer.toggle()" class="home__toolbar"></app-navigation-bar>
-    <div class="home__content">
+    <div class="home-content">
       <div class="home__toolbar-space"></div>
       <router-outlet></router-outlet>
       <div class="home__footer-space"></div>

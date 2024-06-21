@@ -41,7 +41,9 @@
       "cancel": "Cancelar",
       "save": "Guardar",
       "yes": "Sí",
-      "no": "No"
+      "no": "No",
+      "selectFile": "Selecciona fichero...",
+      "send": "Enviar"
     },
     "form": {
       "field": {
@@ -124,5 +126,8 @@
         "placeholder": "tag..."
       }
     }
+  },
+  "invoices": {
+    "addInvoice": "Añadir factura"
   }
 }

@@ -1,11 +1,16 @@
 <mat-toolbar color="primary" class="toolbar">
-  <mat-toolbar-row class="toolbar__row">
+  <mat-toolbar-row class="toolbar-row">
 
     <button mat-icon-button (click)="toggleSidenav.emit()" class="toolbar__sidenav-button">
       <mat-icon>menu</mat-icon>
     </button>
-
-    <span> {{ navigation.title }} </span>
+    @if (list) {
+      <a class="u_nolink" [routerLink]="['/list/' + list._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <span> {{ list.name }} </span>
+      </a>
+    } @else {
+      <span> IntellyShop </span>
+    }
 
     <div class="toolbar-right">
       <div class="toolbar-right-menus">
@@ -36,16 +41,16 @@
           </mat-menu>
         </div>
       </div>
-      @if (navigation.list) {
+      @if (list) {
       <div class="toolbar-list-menu">
         <button mat-icon-button [matMenuTriggerFor]="listMenu" class="toolbar__sidenav-button">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #listMenu="matMenu">
-          <button mat-menu-item (click)="onEdit(navigation.list)">
+          <button mat-menu-item (click)="onEdit(list)">
             <mat-icon>edit</mat-icon><span>{{'global.actions.edit' | translate}}</span>
           </button>
-          <button mat-menu-item (click)="onTickets(navigation.list.invoices)">
+          <button mat-menu-item (click)="onTickets(list.invoices)">
             <mat-icon>my_library_books</mat-icon><span>{{'global.invoices' | translate}}</span>
           </button>
 

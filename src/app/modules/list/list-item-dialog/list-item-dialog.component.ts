@@ -34,9 +34,9 @@ export class ListItemDialogComponent implements OnInit {
     if (data.listItem)
       this.listItem = data.listItem;
     if (data.listItem.itemId) {
-      this.itemService.searchItemById(data.listItem.itemId).subscribe(item => {
-        this.item = item;
-        this.barcode = item.barcode;
+      this.itemService.searchItemById(data.listItem.itemId).subscribe(res => {
+        this.item = res.data;
+        this.barcode = res.data.barcode;
       });
     }
 
@@ -98,14 +98,16 @@ export class ListItemDialogComponent implements OnInit {
 
   save() {
     this.data.listItem.name = this.name;
-    this.data.listItem.price = this.price;
     this.data.listItem.quantity = this.quantity;
     this.data.listItem.barcode = this.barcode;
-    this.listService.updateListItem(this.data.listId, this.data.listItem, this.data.type);
     const item: ItemDTO = {};
     item.name = this.name;
-    item.price = this.price;
-    this.itemService.updateItemPrice(this.data.listItem.itemId, item).subscribe();
+    if (this.data.listItem.price !== this.price) {
+      this.data.listItem.price = this.price;
+      item.price = this.price;
+      this.itemService.updateItemPrice(this.data.listItem.itemId, this.price, this.data.user._id ).subscribe();
+    }
+    this.listService.updateListItem(this.data.listId, this.data.listItem, this.data.type);
     this.dialogRef.close();
   }
 
@@ -126,7 +128,7 @@ export class ListItemDialogComponent implements OnInit {
         duration: 7000,
       });
     } else {
-      const result = await this.openFoodFactsService.getProductByBarcode(barcode).toPromise();
+      const result = await this.openFoodFactsService.getProductByBarcodev1(barcode).toPromise();
       if(result.status !== 0) {
         const productResult = result.product;
         this.item.openFoodFactsProduct = productResult;

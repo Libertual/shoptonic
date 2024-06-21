@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { ItemDTO } from './item.dto';
-import { Item, Price } from './item.model';
+import { Item, Price, Source } from './item.model';
+import { InvoiceLine } from '../invoice/invoice.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,9 @@ export class ItemService {
     return this.http.post<any>(`${environment.apiUrl}/item`, item);
   }
 
-  public updateItemPrice(itemId: string, item: ItemDTO) {
-    return this.http.patch<any>(`${environment.apiUrl}/item/${itemId}`, item);
+  public updateItemPrice(itemId: string, itemPrice: number, user: string) {
+    const price = new Price(itemPrice, user, Source.USER, 'EUR', new Date());
+    return this.http.put<any>(`${environment.apiUrl}/item/${itemId}/prices`, price);
   }
 
   public updateItem(item: Item) {
@@ -42,4 +44,7 @@ export class ItemService {
     return this.http.get<Price[]>(`${environment.apiUrl}/item/${itemId}/prices`);
   }
 
+  public setInvoiceLineBarcode(invoiceId: string, invoiceLine: InvoiceLine): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/invoice/${invoiceId}/line/${invoiceLine._id}`,{invoiceLine});
+  }
 }

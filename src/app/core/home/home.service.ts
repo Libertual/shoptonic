@@ -8,7 +8,6 @@ export class HomeService {
   public navigationSubject: BehaviorSubject<any> = new BehaviorSubject({title: 'Shopitify'});
   public navigation : Observable<any>;
   constructor() {
-    console.log('HomeService: ', this.navigation);
     this.navigation = this.navigationSubject.asObservable();
   }
 

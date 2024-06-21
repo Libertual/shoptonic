@@ -1,5 +1,6 @@
 import { User } from "@app/core/auth/user.model";
 import { ListItem } from "./list-item.model";
+import { Invoice } from "../invoice/invoice.model";
 
 export interface Ticket {
   capture?: string;
@@ -9,10 +10,12 @@ export class Card {
 }
 
 export interface ListFile {
+  name: string;
   file: string;
   type: FileType;
   mimeType: string;
   date: Date;
+  size: number;
 }
 
 export enum FileType {
@@ -38,6 +41,7 @@ export class List {
   createdAt?: string;
   cards?: Card[];
   files?: ListFile[];
+  invoices?: Invoice[];
 
   //constructor(_id?: string, name?: string, description?: string, listItems?: ListItem[], cartItems?: ListItem[], owner?: User, sharedUsers?: User[], images?: string[], totals?: any, income?: boolean, tags?: string[]) {
   constructor(list: List) {

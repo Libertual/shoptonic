@@ -9,30 +9,19 @@ import { HomeService } from '../home.service';
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html'
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
   @ViewChild(MatAccordion) accordion: MatAccordion;
   session;
   userLists: any;
   constructor(
-    private router: Router,
     private accountService: AccountService,
     private listService: ListService,
-    private homeService: HomeService
     ) {
       this.session = this.accountService.sessionValue;
       this.userLists = this.listService.userListsSubject;
     }
 
-  ngOnInit(): void {
-
-  }
-
-  onHome() {
-    const navigation = {
-      title: 'Shopitify',
-      list: null
-    };
-    console.log('onHome: ', navigation);
-    this.homeService.navigationSubject.next(navigation);
+  onClick(list) {
+    this.listService.listValue = list;
   }
 }

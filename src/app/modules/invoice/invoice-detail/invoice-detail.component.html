@@ -1,0 +1,69 @@
+<div class="dialog">
+  <header class="dialog-header">
+    <h2 class="dialog-header__title">{{ data.invoice.number }}</h2>
+    <button
+      mat-icon-button
+      aria-label="close dialog"
+      mat-dialog-close
+      onclick="this.blur()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <table class="invoice-table">
+    <tr>
+      <th>U</th>
+      <th>Descripción</th>
+      <th>€/u</th>
+      <th>€</th>
+      <th></th>
+    </tr>
+    @for (line of data.invoice.lines; track $index) {
+    <tr>
+      <td>
+        {{ line.quantity | number : '1.0-2' }}
+        {{ line.unitType === 'u' ? '' : line.unitType }}
+      </td>
+      <td>{{ line.description }}</td>
+      <td>
+        {{
+          line.price
+            | currency : data.invoice.currency : 'symbol' : '1.2-2' : 'es'
+        }}{{ line.unitType === 'u' ? '' : '/' + line.unitType }}
+      </td>
+      <td>
+        {{
+          line.price * line.quantity
+            | currency : data.invoice.currency : 'symbol' : '1.2-2' : 'es'
+        }}
+      </td>
+      <td>
+        <button
+          mat-icon-button
+          aria-label="edit dialog"
+          (click)="openScanner(line)"
+        >
+          <mat-icon class="u-size-s {{ line.item_id ? 'u-color-green' : '' }}"
+            >qr_code_scanner</mat-icon
+          >
+        </button>
+      </td>
+    </tr>
+    } @empty {
+    <tr>
+      <td colspan="4">No hay líneas para este ticket</td>
+    </tr>
+    }
+  </table>
+
+  <footer class="dialog-footer">
+    <div>{{ data.invoice.lines.length }} Productos</div>
+    <div>
+      Total:
+      {{
+        data.invoice.total
+          | currency : data.invoice.currency : 'symbol' : '1.2-2' : 'es'
+      }}
+    </div>
+  </footer>
+</div>
