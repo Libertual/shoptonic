@@ -14,7 +14,7 @@ import { SharedModule } from '@app/shared/shared.module';
   styles: ``
 })
 export class AddInvoiceComponent {
-  filesToUpload: ListFile = null;
+  fileToUpload: ListFile = null;
   currentFile?: File;
 
   constructor(
@@ -36,7 +36,7 @@ export class AddInvoiceComponent {
           const reader = new FileReader();
 
           reader.onload = (e: any) => {
-            this.filesToUpload = {
+            this.fileToUpload = {
               file: e.target.result,
               type: FileType.TICKET,
               mimeType: file.type,
@@ -51,7 +51,7 @@ export class AddInvoiceComponent {
     }
 
   async save() {
-    await this.listService.addFilesToList(this.data.list._id , [this.filesToUpload]).subscribe({
+    await this.listService.addFileToList(this.data.list._id , this.fileToUpload).subscribe({
       next: (res) => {
         this.data.files = res.data.files;
         this.listService.getUserLists(this.data.list._id);

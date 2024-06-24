@@ -16,7 +16,7 @@ export class ListGalleryComponent {
   showLargeImage: boolean = false;
   currentFile?: File;
   fileSource?: string;
-  filesToUpload: ListFile[] = [];
+  fileToUpload: ListFile;
 
   constructor(
     private readonly listService: ListService,
@@ -50,14 +50,14 @@ export class ListGalleryComponent {
 
           reader.onload = (e: any) => {
             //console.log(e.target.result);
-            this.filesToUpload = [{
+            this.fileToUpload = {
               file: e.target.result,
               type: FileType.TICKET,
               mimeType: file.type,
               date: new Date(),
               name: file.name,
               size: file.size
-            }];
+            };
           };
           reader.readAsDataURL(this.currentFile);
         }
@@ -65,7 +65,7 @@ export class ListGalleryComponent {
     }
 
     async save() {
-      await this.listService.addFilesToList(this.data.listId ,this.filesToUpload).subscribe({
+      await this.listService.addFileToList(this.data.listId ,this.fileToUpload).subscribe({
         next: (res) => {
           this.data.files = res.data.files;
           this.listService.getUserLists(this.data.listId);

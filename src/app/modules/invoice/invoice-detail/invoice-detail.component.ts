@@ -11,6 +11,7 @@ import { ScannerDialogComponent } from '@app/modules/scanner/item-scanner-dialog
 import { SharedModule } from '@app/shared/shared.module';
 import { InvoiceLine } from '../invoice.model';
 import { OpenFoodFactsService } from '@app/modules/open-food-facts/open-food-facts.service';
+import { ItemComponent } from '@app/modules/item/item.component';
 
 @Component({
   selector: 'app-invoice-detail',
@@ -19,7 +20,7 @@ import { OpenFoodFactsService } from '@app/modules/open-food-facts/open-food-fac
   templateUrl: './invoice-detail.component.html',
   styles: ``
 })
-export class InvoiceDetailComponent implements OnInit {
+export class InvoiceDetailComponent {
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<InvoiceDetailComponent>,
@@ -27,10 +28,6 @@ export class InvoiceDetailComponent implements OnInit {
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-
-  ngOnInit(): void {
-    console.trace('data: ', this.data.invoice);
-  }
 
   /**
    * Open scanner embebed app
@@ -61,5 +58,18 @@ export class InvoiceDetailComponent implements OnInit {
     await this.itemService.setInvoiceLineBarcode(invoiceId, line).subscribe( res => {
       line = res.data;
     });
+    }
+    openItemDetail(line) {
+      const dialogRef = this.dialog.open(ItemComponent, {
+        autoFocus: false,
+        panelClass: 'custom-dialog-container',
+        data: {
+          itemId: line.item_id._id
+        },
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.info('The dialog was closed', result);
+      });
     }
 }

@@ -59,8 +59,17 @@
 
 .u-color-green {
   color: green;
+  & svg {
+    fill: green;
+  }
+
 }
 /* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
-.u-color-green svg {
-  fill: green;
+
+.u-color-yellow {
+  color: yellow;
+  & svg {
+    fill: yellow;
+  }
 }
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */

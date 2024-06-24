@@ -27,10 +27,10 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.data.listItem.itemId) {
-      this.itemService.searchItemById(this.data.listItem.itemId).subscribe(async item => {
-        this.item = item;
-        this.prices = item.prices;
+    if (this.data.itemId) {
+      this.itemService.searchItemById(this.data.itemId).subscribe(async res => {
+        this.item = res.data;
+        this.prices = res.data.prices;
         await this.getPrices(this.item);
       });
     }

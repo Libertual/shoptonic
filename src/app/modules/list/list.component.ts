@@ -95,7 +95,7 @@ export class ListComponent implements OnInit {
       autoFocus: false,
       panelClass: 'custom-dialog-container',
       data: {
-        listItem,
+        itemId: listItem.itemId,
         listId: this.list._id,
       },
     });
