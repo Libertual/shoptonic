@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HomeService {
-  public navigationSubject: BehaviorSubject<any> = new BehaviorSubject({title: 'Shopitify'});
+  public navigationSubject: BehaviorSubject<any> = new BehaviorSubject({title: 'IntellyShop'});
   public navigation : Observable<any>;
   constructor() {
     this.navigation = this.navigationSubject.asObservable();

@@ -11,7 +11,7 @@ import { User } from './core/auth/user.model';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'shopitify-web';
+  title = 'IntellyShop';
   user: User|null = null;
 
   constructor (

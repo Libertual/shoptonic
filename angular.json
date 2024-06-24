@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shopitify-web": {
+    "intellyshop-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -22,7 +22,7 @@
                 "node_modules/"
               ]
             },
-            "outputPath": "dist/shopitify-web",
+            "outputPath": "dist/intellyshop-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "shopitify-web:build:production"
+              "buildTarget": "intellyshop-web:build:production"
             },
             "development": {
-              "buildTarget": "shopitify-web:build:development"
+              "buildTarget": "intellyshop-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "shopitify-web:build"
+            "buildTarget": "intellyshop-web:build"
           }
         },
         "test": {
