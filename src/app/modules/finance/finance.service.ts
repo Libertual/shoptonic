@@ -36,17 +36,32 @@ export class FinanceService {
    * @param tags
    */
   public getStats() {
-    return this.http.get<any>(`${environment.apiUrl}/saved-list?hideFields=images,listItems,cartItems`).subscribe(
-      res => {
+    return this.http.get<any>(`${environment.apiUrl}/saved-list?hideFields=images,listItems,cartItems`).subscribe({
+      next: res => {
         this.dataSubject.next(res.data);
         this.filteredDataSubject.next(res.data); //TODO: provisional
       },
-      error => {
+      error: error => {
         console.error('getStats error: ', error);
       }
-    );
+    });
   }
 
+  /**
+   * getStats
+   * @param tags
+   */
+  getInvoicesStats(filter) {
+    return this.http.get<any>(`${environment.apiUrl}/invoice/?filter=${filter}`).subscribe({
+      next: res => {
+        this.dataSubject.next(res.data);
+        this.filteredDataSubject.next(res.data); //TODO: provisional
+      },
+      error: error => {
+        console.error('getInvoicesStats error: ', error);
+      }
+    });
+  }
   /**
    * Get list tags
    * @returns

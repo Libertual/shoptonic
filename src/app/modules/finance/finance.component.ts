@@ -191,7 +191,6 @@ const myChart = new Chart("ctx", {
             else if (this.selectedGroupDate === 'year') dateGroup = date.getFullYear()
             else if (this.selectedGroupDate === 'week') dateGroup = weekDate.getFullYear() + '-' + (weekDate.getMonth() + 1)   + '-' + weekDate.getDate();
 
-          //groupedByDay[day] = item;
           for (let group of this.dateGroupsSelect) {
             if(!totalBy[group]) totalBy[group] = {};
             if (totalBy[group][dateGroup]) totalBy[group][dateGroup] += item.totals.total
@@ -223,7 +222,6 @@ const myChart = new Chart("ctx", {
         date: item.createdAt,
         name: item.name,
         total: item.totals.total
-
       }
     });
     this.tableDataSource = new MatTableDataSource<any>(datasource);

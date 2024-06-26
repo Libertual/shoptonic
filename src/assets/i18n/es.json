@@ -103,6 +103,7 @@
   },
   "finance": {
     "title": "Finanzas",
+    "advancedSearch": "Búsqueda avanzada",
     "tabs": {
       "graphic": "Gráfico",
       "table": "Tabla"

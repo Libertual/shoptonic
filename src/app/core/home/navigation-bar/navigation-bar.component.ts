@@ -22,11 +22,11 @@ export class NavigationBarComponent implements OnInit {
     public readonly listService: ListService,
     public readonly translate: TranslateService,
     private readonly accountService: AccountService,
-    public dialog: MatDialog,
-    ) { }
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.listService.list.subscribe(list => {
+    this.listService.list.subscribe((list) => {
       this.list = list;
     });
   }
@@ -37,15 +37,22 @@ export class NavigationBarComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-}
-public onEdit(list: List) {
-  const dialogRef = this.dialog.open(ListEditComponent, {data: {list, isAddMode: false}});
+  }
+  public onEdit(list: List) {
+    const dialogRef = this.dialog.open(ListEditComponent, {
+      data: { list, isAddMode: false }
+    });
 
-  dialogRef.afterClosed().subscribe(list => {
-    console.info('cerrado', list);
-  });
-}
-public onTickets(invoices) {
-  this.router.navigate(['/list/' + this.list._id + '/invoice']);
-}
+    dialogRef.afterClosed().subscribe((list) => {
+      console.info('cerrado', list);
+    });
+  }
+  public onTickets(invoices) {
+    this.router.navigate(['/list/' + this.list._id + '/invoice']);
+  }
+
+  public openSettings() {
+    console.log('Go Settings');
+    this.router.navigate(['/account/settings']);
+  }
 }

@@ -6,9 +6,9 @@
       <input type="text" matInput formControlName="search" autocomplete="off"
         (input)="getFilteredItems($event)" (keypress.enter)="newItem()" [matAutocomplete]="auto">
       <div matSuffix>
-        <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
+        <!-- <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search">
           <mat-icon>edit</mat-icon>
-        </button>
+        </button>-->
         <button class="list__search-icon-button" mat-icon-button aria-label="Code scanner" *ngIf="search"
           (click)="clear()">
           <mat-icon>clear</mat-icon>

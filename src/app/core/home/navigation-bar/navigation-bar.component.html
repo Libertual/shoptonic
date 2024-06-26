@@ -26,6 +26,10 @@
               <mat-icon>exit_to_app</mat-icon>
               <span>{{'account.logout' | translate}}</span>
             </button>
+            <button mat-menu-item class="toolbar__language-button" (click)="openSettings()">
+              <mat-icon>settings</mat-icon>
+              <span>{{'account.settings' | translate}}</span>
+            </button>
           </mat-menu>
           <mat-menu #language="matMenu">
             <button mat-menu-item class="toolbar__language-button" (click)="changeLanguage('es')"

@@ -103,6 +103,7 @@
   },
   "finance": {
     "title": "Finance",
+    "advancedSearch": "Advanced search",
     "tabs": {
       "graphic": "Graphic",
       "table": "Table"
